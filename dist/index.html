@@ -46,86 +46,365 @@ var renderer = null;
 var scene = null;
 var camera = null;
 var infoData = [{
-  name: '94fe0af37871ce44de8395a18aeb5fb0',
-  fileName: './static/resource/90.png',
-  width: 1488,
-  height: 806,
+  name: '开始按钮',
+  fileName: './static/resource/开始按钮.png',
+  width: 339,
+  height: 208,
   opacity: 100,
-  left: 10850,
-  top: 3192,
+  left: 2350,
+  top: 956,
+  index: 0
+}, {
+  name: '编者按',
+  fileName: './static/resource/编者按.png',
+  width: 1681,
+  height: 164,
+  opacity: 100,
+  left: 606,
+  top: 991,
+  index: 0
+}, {
+  name: '头-燕子1',
+  fileName: './static/resource/头-燕子1.png',
+  width: 92,
+  height: 115,
+  opacity: 100,
+  left: 1822,
+  top: 395,
   index: 2
 }, {
-  name: '图层 28 拷贝',
-  fileName: './static/resource/502.png',
-  width: 19978,
-  height: 2671,
-  opacity: 65,
-  left: 4719,
-  top: 2601,
-  index: 4
-}, {
-  name: '山1',
-  fileName: './static/resource/187.png',
-  width: 3203,
-  height: 1969,
+  name: '头-花',
+  fileName: './static/resource/头-花.png',
+  width: 177,
+  height: 159,
   opacity: 100,
-  left: 9495,
-  top: 1928,
+  left: 844,
+  top: 634,
+  index: 2.2
+}, {
+  name: '头-燕子2',
+  fileName: './static/resource/头-燕子2.png',
+  width: 92,
+  height: 87,
+  opacity: 100,
+  left: 1905,
+  top: 343,
   index: 3
 }, {
-  name: '山2',
-  fileName: './static/resource/205.png',
-  width: 3793,
-  height: 1974,
+  name: '头-主文字',
+  fileName: './static/resource/头-主文字.png',
+  width: 1206,
+  height: 452,
   opacity: 100,
-  left: 12076,
-  top: 1945,
-  index: 6
+  left: 1013,
+  top: 426,
+  index: 2.4
 }, {
-  name: '高铁',
-  fileName: './static/resource/198.png',
-  width: 4371,
-  height: 267,
+  name: '头-山',
+  fileName: './static/resource/头-山.png',
+  width: 703,
+  height: 228,
   opacity: 100,
-  left: 8496,
-  top: 2681,
-  index: 10
+  left: 808,
+  top: 632,
+  index: 3
 }, {
-  name: '桥',
-  fileName: './static/resource/219.png',
-  width: 8664,
-  height: 545,
+  name: '头-山-2',
+  fileName: './static/resource/头-山-2.png',
+  width: 555,
+  height: 392,
   opacity: 100,
-  left: 8317,
-  top: 2928,
-  index: 10
+  left: 1971,
+  top: 504,
+  index: 2.2
 }, {
-  name: '图层 87',
-  fileName: './static/resource/251.png',
-  width: 14855,
-  height: 2370,
+  name: '头-山-3',
+  fileName: './static/resource/头-山-3.png',
+  width: 336,
+  height: 103,
   opacity: 100,
-  left: 6246,
-  top: 2604,
-  index: 14
+  left: 1621,
+  top: 634,
+  index: 3.2
 }, {
-  name: '山4',
-  fileName: './static/resource/224.png',
-  width: 4392,
-  height: 2016,
+  name: '头-树-1',
+  fileName: './static/resource/头-树-1.png',
+  width: 315,
+  height: 429,
   opacity: 100,
-  left: 6827,
-  top: 1103,
-  index: 16
+  left: 828,
+  top: 300,
+  index: 3.2
 }, {
-  name: '山3',
-  fileName: './static/resource/201.png',
-  width: 3685,
-  height: 2117,
+  name: '头-背后的山',
+  fileName: './static/resource/头-背后的山.png',
+  width: 2390,
+  height: 593,
   opacity: 100,
-  left: 10647,
-  top: 975,
-  index: 18
+  left: 274,
+  top: 154,
+  index: 4
+}, {
+  name: '头-卷轴',
+  fileName: './static/resource/头-卷轴.png',
+  width: 2927,
+  height: 615,
+  opacity: 100,
+  left: 93,
+  top: 525,
+  index: 3.5
+}, {
+  name: '文字-村',
+  fileName: './static/resource/文字-村.png',
+  width: 84,
+  height: 84,
+  opacity: 100,
+  left: 1680,
+  top: 712,
+  index: 128
+}, {
+  name: '文字-山',
+  fileName: './static/resource/文字-山.png',
+  width: 85,
+  height: 85,
+  opacity: 0,
+  left: 558,
+  top: 741,
+  index: 180
+}, {
+  name: '路山村-房子-1',
+  fileName: './static/resource/路山村-房子-1.png',
+  width: 351,
+  height: 241,
+  opacity: 100,
+  left: 2094,
+  top: 782,
+  index: 125
+}, {
+  name: '路山村-房子-2',
+  fileName: './static/resource/路山村-房子-2.png',
+  width: 715,
+  height: 250,
+  opacity: 100,
+  left: 1477,
+  top: 779,
+  index: 130
+}, {
+  name: '路山村-房子-3',
+  fileName: './static/resource/路山村-房子-3.png',
+  width: 311,
+  height: 232,
+  opacity: 100,
+  left: 2329,
+  top: 773,
+  index: 126
+}, {
+  name: '路山村-房子-4',
+  fileName: './static/resource/路山村-房子-4.png',
+  width: 407,
+  height: 384,
+  opacity: 100,
+  left: 2295,
+  top: 640,
+  index: 127
+}, {
+  name: '路山村-大树',
+  fileName: './static/resource/路山村-大树.png',
+  width: 455,
+  height: 428,
+  opacity: 100,
+  left: 1994,
+  top: 568,
+  index: 128
+}, {
+  name: '路山村-房子-5',
+  fileName: './static/resource/路山村-房子-5.png',
+  width: 477,
+  height: 325,
+  opacity: 100,
+  left: 2560,
+  top: 637,
+  index: 128
+}, {
+  name: '路山村-瓷器-1',
+  fileName: './static/resource/路山村-瓷器-1.png',
+  width: 39,
+  height: 66,
+  opacity: 100,
+  left: 3154,
+  top: 796,
+  index: 128
+}, {
+  name: '路山村-瓷器-2',
+  fileName: './static/resource/路山村-瓷器-2.png',
+  width: 54,
+  height: 100,
+  opacity: 100,
+  left: 3107,
+  top: 764,
+  index: 128
+}, {
+  name: '路山村-房子-6',
+  fileName: './static/resource/路山村-房子-6.png',
+  width: 272,
+  height: 255,
+  opacity: 100,
+  left: 2899,
+  top: 604,
+  index: 129
+}, {
+  name: '路山村-房子-7',
+  fileName: './static/resource/路山村-房子-7.png',
+  width: 383,
+  height: 157,
+  opacity: 100,
+  left: 2797,
+  top: 668,
+  index: 130
+}, {
+  name: '路山村-房子-8',
+  fileName: './static/resource/路山村-房子-8.png',
+  width: 357,
+  height: 188,
+  opacity: 100,
+  left: 2327,
+  top: 563,
+  index: 129
+}, {
+  name: '路山村-房子-9',
+  fileName: './static/resource/路山村-房子-9.png',
+  width: 392,
+  height: 177,
+  opacity: 100,
+  left: 2677,
+  top: 593,
+  index: 131
+}, {
+  name: '路山村-井冈山装饰',
+  fileName: './static/resource/路山村-井冈山装饰.png',
+  width: 377,
+  height: 206,
+  opacity: 100,
+  left: 783,
+  top: 557,
+  index: 165
+}, {
+  name: '路山村-竹子',
+  fileName: './static/resource/路山村-竹子.png',
+  width: 165,
+  height: 120,
+  opacity: 100,
+  left: 652,
+  top: 610,
+  index: 166
+}, {
+  name: '路山村-大树-2',
+  fileName: './static/resource/路山村-大树-2.png',
+  width: 302,
+  height: 234,
+  opacity: 100,
+  left: 1305,
+  top: 730,
+  index: 132
+}, {
+  name: '路山村-背景',
+  fileName: './static/resource/路山村-背景.png',
+  width: 5135,
+  height: 674,
+  opacity: 100,
+  left: -918,
+  top: 649,
+  index: 134
+}, {
+  name: '路山村-大山-2',
+  fileName: './static/resource/路山村-大山-2.png',
+  width: 799,
+  height: 499,
+  opacity: 100,
+  left: 294,
+  top: 439,
+  index: 136
+}, {
+  name: '路山村-大山',
+  fileName: './static/resource/路山村-大山.png',
+  width: 949,
+  height: 557,
+  opacity: 100,
+  left: 956,
+  top: 410,
+  index: 138
+}, {
+  name: '路山村-竹子-2',
+  fileName: './static/resource/路山村-竹子-2.png',
+  width: 229,
+  height: 327,
+  opacity: 100,
+  left: 908,
+  top: 540,
+  index: 140
+}, {
+  name: '路山村-房子-10',
+  fileName: './static/resource/路山村-房子-10.png',
+  width: 601,
+  height: 305,
+  opacity: 100,
+  left: 1660,
+  top: 535,
+  index: 142
+}, {
+  name: '路山村-房子-11',
+  fileName: './static/resource/路山村-房子-11.png',
+  width: 372,
+  height: 158,
+  opacity: 100,
+  left: 2099,
+  top: 489,
+  index: 144
+}, {
+  name: '路山村-云',
+  fileName: './static/resource/路山村-云.png',
+  width: 851,
+  height: 372,
+  opacity: 100,
+  left: 670,
+  top: 421,
+  index: 138
+}, {
+  name: '路山村-大山-3',
+  fileName: './static/resource/路山村-大山-3.png',
+  width: 868,
+  height: 601,
+  opacity: 100,
+  left: 607,
+  top: 261,
+  index: 188
+}, {
+  name: '路山村-大山-4',
+  fileName: './static/resource/路山村-大山-4.png',
+  width: 1097,
+  height: 515,
+  opacity: 100,
+  left: -285,
+  top: 289,
+  index: 182
+}, {
+  name: '路山村-大山-5',
+  fileName: './static/resource/路山村-大山-5.png',
+  width: 1071,
+  height: 445,
+  opacity: 100,
+  left: 1175,
+  top: 278,
+  index: 152
+}, {
+  name: '远山',
+  fileName: './static/resource/远山.png',
+  width: 5094,
+  height: 779,
+  opacity: 100,
+  left: -1010,
+  top: 46,
+  index: 190
 }];
 owo.script = {
   "page1": {
@@ -137,9 +416,9 @@ owo.script = {
 
       var container = document.getElementById('container'); // 设立相机
 
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(120, -20, 100);
-      camera.lookAt(120, -20, 0); // 建立一个场景
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 300);
+      camera.position.set(150, -65, 100);
+      camera.lookAt(150, -65, 0); // 建立一个场景
 
       scene = new THREE.Scene(); // 像素级的渲染，渲染效果更好
 
@@ -147,7 +426,7 @@ owo.script = {
         antialias: true,
         depthTest: false
       });
-      renderer.setClearColor(0xf6f8ef, 1.0);
+      renderer.setClearColor(0xfffefb, 1.0);
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
       container.appendChild(renderer.domElement); // renderer.outputEncoding = THREE.sRGBEncoding;
@@ -165,7 +444,7 @@ owo.script = {
       // scene.add(pointLight);
       // 添加控制器
       // controls = new THREE.OrbitControls( camera, container );
-      // controls.target.set( 0, 0.5, 0 );
+      // controls.target.set( 150, -50, 150 );
       // controls.update();
 
       this.creatMode();
@@ -177,7 +456,7 @@ owo.script = {
 
       setTimeout(function () {
         _this.play();
-      }, 100);
+      }, 1000);
     },
     "creatMode": function creatMode() {
       // 辅助参考线
@@ -187,23 +466,23 @@ owo.script = {
       // console.log(infoData)
       infoData.forEach(function (element) {
         new THREE.TextureLoader().load(element.fileName, function (texture) {
-          var obgW = element.width / 100;
-          var obgH = element.height / 100;
-          var objL = element.left / 100;
-          var objT = element.top / 100;
-          console.log(element.name);
+          var obgW = element.width / 10;
+          var obgH = element.height / 10;
+          var objL = element.left / 10;
+          var objT = element.top / 10; // console.log(element.name)
+
           texture.minFilter = THREE.LinearFilter; // MeshBasicMaterial SpriteMaterial
 
           var textObj = new THREE.MeshBasicMaterial({
             map: texture,
-            opacity: 1,
+            opacity: element.opacity / 100,
             transparent: true,
             color: 0xffffff,
             depthTest: false,
             sizeAttenuation: false
           });
           var logo = new THREE.Sprite(textObj);
-          logo.scale.set(element.width / 100, element.height / 100, 0.01);
+          logo.scale.set(element.width / 10, element.height / 10, 0.1);
           logo.name = element.name;
           logo.updateMatrix();
           logo.position.set(objL + obgW / 2, -objT - obgH / 2, -2 * element.index);
@@ -218,25 +497,46 @@ owo.script = {
 
       var tl = new TimelineMax({}); // 火车驶过
 
-      tl.to(camera.position, 2, {
-        x: 112,
-        y: -35,
-        z: 10
-      }, 2).to(gaotie.position, 4, {
-        x: 160
-      }, 7.2) // .to(camera.position, 1.6, {x: 90, y: -30, z: -10}, 4)
-      .to(camera.position, 4, {
+      tl.to(scene.getObjectByName('头-燕子1').position, 2, {
+        x: 280,
+        y: -10
+      }, 0).to(scene.getObjectByName('头-燕子1').material, 2, {
+        opacity: 0
+      }, 0).to(scene.getObjectByName('头-燕子2').position, 2, {
+        x: 288,
+        y: -4
+      }, 0).to(scene.getObjectByName('头-燕子2').material, 2, {
+        opacity: 0
+      }, 0) // 摄像机前移
+      // .to(camera.position, 2, {y: -60, z: -100, ease:	Sine.easeIn}, 1)
+      .to(camera.position, 3, {
         x: 90,
-        y: -30,
-        z: -10
-      }, 4).to(camera.position, 6, {
-        x: 160,
-        y: -30
-      }, 7.2).to(camera.position, 6, {
-        x: 160,
-        y: -30,
-        z: 60
-      }, 8.4);
+        y: -70,
+        z: -210,
+        ease: Sine.easeOut
+      }, 1).to(camera.position, 4, {
+        x: 90,
+        y: -65,
+        z: -280,
+        ease: Sine.easeOut
+      }, 4) // 摄像机旋转
+      .to(camera.rotation, 1.5, {
+        z: -0.8,
+        ease: Power1.easeOut
+      }, 5.5).to(camera.rotation, 1.5, {
+        z: 0,
+        ease: Power1.easeOut
+      }, 7).to(scene.getObjectByName('文字-山').material, 2, {
+        opacity: 1
+      }, 8); // 山文字的动画
+      // .to(camera.position, 3, {x: 20, y: -70, z: -280, ease:Power1.easeOut }, 7)
+      // .to(camera.rotation, 1, {z: 0, ease:Power1.easeOut }, 9)
+      // .to(camera.position, 2, {x: 400,}, 2)
+      // .to(gaotie.position, 4, {x: 160}, 7.2)
+      // // .to(camera.position, 1.6, {x: 90, y: -30, z: -10}, 4)
+      // .to(camera.position , 4, {x: 90, y: -30, z: -10}, 4)
+      // .to(camera.position , 6, {x: 160, y: -30}, 7.2)
+      // .to(camera.position , 6, {x: 160, y: -30, z: 60}, 8.4)
     },
     "onWindowResize": function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
