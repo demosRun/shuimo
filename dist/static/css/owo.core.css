@@ -68,3 +68,23 @@ li {
   transition: opacity 1s;
 }
 
+.conn-box {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ccc;
+}
+
+.conn-box input {
+  display: block;
+}
+
+.conn-box span {
+  background-color: #009fe9;
+  color: white;
+  padding: 5px;
+  margin: 5px 5px;
+}
+

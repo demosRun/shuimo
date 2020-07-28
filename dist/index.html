@@ -30,7 +30,7 @@
   <body>
     
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas></div>
+    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('y', 1)">上</span><span o-tap="changeValue('y', -1)">下</span><span o-tap="changeValue('x', -1)">左</span><span o-tap="changeValue('x', 1)">右</span><span o-tap="changeValue('z', -1)">前</span><span o-tap="changeValue('z', 1)">后</span></div></div>
     
 
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
@@ -307,7 +307,7 @@ var infoData = [{
   opacity: 100,
   left: -1868,
   top: 439,
-  index: 280
+  index: 288
 }, {
   name: '路山村-房子-1',
   fileName: './static/resource/路山村-房子-1.png',
@@ -352,88 +352,144 @@ var infoData = [{
   opacity: 100,
   left: 644,
   top: 358,
-  index: 278
+  index: 278.5
 }, {
-  name: '路山村-房子-5',
-  fileName: './static/resource/路山村-房子-5.png',
-  width: 477,
-  height: 325,
+  name: '路山村-房子-8-copy',
+  fileName: './static/resource/路山村-房子-8.png',
+  width: 357,
+  height: 188,
   opacity: 100,
-  left: 1210,
-  top: 427,
-  index: 278
+  left: 277,
+  top: 453,
+  index: 284
 }, {
+  name: '路山村-房子-11-copy',
+  fileName: './static/resource/路山村-房子-11.png',
+  width: 372,
+  height: 158,
+  opacity: 100,
+  left: 49,
+  top: 389,
+  index: 286.5
+}, // 旋转的房子
+{
   name: '路山村-瓷器-1',
   fileName: './static/resource/路山村-瓷器-1.png',
   width: 39,
   height: 66,
   opacity: 100,
-  left: 1804,
+  left: 1804 + 3500,
   top: 586,
-  index: 278
+  index: 278,
+  rotationY: -1
 }, {
   name: '路山村-瓷器-2',
   fileName: './static/resource/路山村-瓷器-2.png',
   width: 54,
   height: 100,
   opacity: 100,
-  left: 1757,
+  left: 1757 + 3500,
   top: 554,
-  index: 278
+  index: 278,
+  rotationY: -1
+}, {
+  name: '路山村-房子-5',
+  fileName: './static/resource/路山村-房子-5.png',
+  width: 477,
+  height: 325,
+  opacity: 100,
+  left: 1210 + 3500,
+  top: 427,
+  index: 278,
+  rotationY: -1
 }, {
   name: '路山村-房子-6',
   fileName: './static/resource/路山村-房子-6.png',
   width: 272,
   height: 255,
   opacity: 100,
-  left: 1549,
+  left: 1549 + 3500,
   top: 394,
-  index: 279
+  index: 279,
+  rotationY: -1
 }, {
   name: '路山村-房子-7',
   fileName: './static/resource/路山村-房子-7.png',
   width: 383,
   height: 157,
   opacity: 100,
-  left: 1447,
+  left: 1447 + 3500,
   top: 458,
-  index: 280
+  index: 280,
+  rotationY: -1
 }, {
   name: '路山村-房子-8',
   fileName: './static/resource/路山村-房子-8.png',
   width: 357,
   height: 188,
   opacity: 100,
-  left: 977,
+  left: 977 + 3500,
   top: 353,
-  index: 279
+  index: 279,
+  rotationY: -1
 }, {
   name: '路山村-房子-9',
   fileName: './static/resource/路山村-房子-9.png',
   width: 392,
   height: 177,
   opacity: 100,
-  left: 1327,
+  left: 1327 + 3500,
   top: 383,
-  index: 281
+  index: 281,
+  rotationY: -1
 }, {
   name: '路山村-房子-10',
   fileName: './static/resource/路山村-房子-10.png',
   width: 601,
   height: 305,
   opacity: 100,
-  left: 310,
+  left: 310 + 3500,
   top: 325,
-  index: 292
+  index: 292,
+  rotationY: -1
 }, {
   name: '路山村-房子-11',
   fileName: './static/resource/路山村-房子-11.png',
   width: 372,
   height: 158,
   opacity: 100,
-  left: 749,
+  left: 749 + 3500,
   top: 389,
-  index: 294
+  index: 294,
+  rotationY: -1
+}, // 增加的装饰性房子
+{
+  name: '房子-加-1',
+  fileName: './static/resource/房子-加-1.png',
+  width: 145 * 2,
+  height: 151 * 2,
+  opacity: 100,
+  left: -600 + 588,
+  top: 400 + 55,
+  index: 286
+}, {
+  name: '房子-加-2',
+  fileName: './static/resource/房子-加-2.png',
+  width: 413 * 2,
+  height: 192 * 2,
+  opacity: 100,
+  left: -600 + 37,
+  top: 400 + 51,
+  index: 287
+}, {
+  name: '房子-加-3',
+  fileName: './static/resource/房子-加-3.png',
+  width: 98 * 2,
+  height: 63 * 2,
+  opacity: 100,
+  left: -600 + 26,
+  top: 400 + 131,
+  index: 289
 }, // 橙子
 {
   name: '路山村-云-copy',
@@ -819,6 +875,10 @@ var infoData = [{
 }];
 owo.script = {
   "page1": {
+    "data": {
+      "inputValue": "",
+      "beishu": 1
+    },
     "created": function created() {
       var _this = this;
 
@@ -863,11 +923,12 @@ owo.script = {
     "init": function init() {
       var container = document.getElementById('container'); // 设立相机
 
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 300);
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 800);
       camera.position.set(150, -65, 100);
       camera.lookAt(150, -65, 0); // 建立一个场景
 
-      scene = new THREE.Scene(); // 像素级的渲染，渲染效果更好
+      scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0xffffff, 100, 320); // 像素级的渲染，渲染效果更好
 
       renderer = new THREE.WebGLRenderer({
         antialias: true,
@@ -926,6 +987,7 @@ owo.script = {
           var logo = new THREE.Sprite(textObj);
           logo.scale.set(element.width / 10, element.height / 10, 0.1);
           logo.name = element.name;
+          if (element.rotationY) logo.rotation.y = element.rotationY;
           logo.updateMatrix();
           logo.position.set(objL + obgW / 2, -objT - obgH / 2, -2 * element.index);
           scene.add(logo);
@@ -994,108 +1056,63 @@ owo.script = {
         }, {
           x: 70,
           y: -65,
-          z: -450
+          z: -480
         }]
       }, 8).to(scene.getObjectByName('文字-村').material, 2, {
         opacity: 1
       }, 11) // 视角移动到瓷
-      .to(camera.position, 2, {
+      .to(camera.rotation, 5, {
+        y: -1.4
+      }, 16) // .to(camera.position, 4, {bezier:[{x: 220, y: -65, z: -420}]}, 17)
+      .to(camera.position, 6, {
         bezier: [{
-          x: 110,
+          x: 75,
           y: -65,
-          z: -475
+          z: -555
         }, {
-          x: 190,
-          y: -60,
-          z: -510
+          x: 285,
+          y: -65,
+          z: -645
         }]
-      }, 15).to(scene.getObjectByName('文字-瓷').material, 2, {
-        opacity: 1
-      }, 16) // 视角移动到橙子
-      .to(camera.position, 7, {
-        bezier: [{
-          x: 165,
-          y: -60,
-          z: -560
-        }, {
-          x: 60,
-          y: -50,
-          z: -660
-        }, {
-          x: -60,
-          y: -20,
-          z: -720
-        }]
-      }, 18).to(scene.getObjectByName('文字-橙').material, 2, {
-        opacity: 1
-      }, 24) // 移动到水
-      .to(camera.position, 4, {
-        bezier: [{
-          x: 0,
-          y: -15,
-          z: -760
-        }, {
-          x: 80,
-          y: 0,
-          z: -790
-        }]
-      }, 26).to(scene.getObjectByName('文字-水').material, 2, {
-        opacity: 1
-      }, 28) // 茶
-      .to(camera.position, 4, {
-        bezier: [{
-          x: 69,
-          y: 2.5,
-          z: -870
-        }, {
-          x: 175,
-          y: -10,
-          z: -1000
-        }]
-      }, 31).to(scene.getObjectByName('文字-茶').material, 2, {
-        opacity: 1
-      }, 33) // 药土路
-      .to(camera.position, 4, {
-        bezier: [{
-          x: 185,
-          y: -30,
-          z: -1130
-        }, {
-          x: 25,
-          y: 40,
-          z: -1230
-        }, {
-          x: -15,
-          y: 40,
-          z: -1290
-        }]
-      }, 36).to(scene.getObjectByName('文字-药').material, 2, {
-        opacity: 1
-      }, 38).to(camera.position, 8, {
-        x: 60,
-        y: 40,
-        z: -1290
-      }, 40).to(scene.getObjectByName('文字-土').material, 2, {
-        opacity: 1
-      }, 42).to(scene.getObjectByName('文字-路').material, 2, {
-        opacity: 1
-      }, 44) // 高铁前进
-      .to(scene.getObjectByName('高铁').position, 6, {
-        x: 500
-      }, 48).to(scene.getObjectByName('高铁').material, 1, {
-        opacity: 0
-      }, 50).to(camera.position, 6, {
-        x: 560,
-        y: 40,
-        z: -1330
-      }, 48.5).to(camera.rotation, 3, {
-        y: -0.6
-      }, 48.5);
+      }, 15); // .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 16)
+      // // 视角移动到橙子
+      // .to(camera.position, 7, {bezier:[{x: 165, y: -60, z: -560}, {x: 60, y: -50, z: -660}, {x: -60, y: -20, z: -720}]}, 18)
+      // .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 24)
+      // // 移动到水
+      // .to(camera.position, 4, {bezier:[{x: 0, y: -15, z: -760}, {x: 80, y: 0, z: -790}]}, 26)
+      // .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 28)
+      // // 茶
+      // .to(camera.position, 4, {bezier:[{x: 69, y: 2.5, z: -870}, {x: 175, y: -10, z: -1000}]}, 31)
+      // .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 33)
+      // // 药土路
+      // .to(camera.position, 4, {bezier:[{x: 185, y: -30, z: -1130}, {x: 25, y: 40, z: -1230}, {x: -15, y: 40, z: -1290}]}, 36)
+      // .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 38)
+      // .to(camera.position, 8, {x: 60, y: 40, z: -1290}, 40)
+      // .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 42)
+      // .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 44)
+      // // 高铁前进
+      // .to(scene.getObjectByName('高铁').position, 6, {x: 500}, 48)
+      // .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 50)
+      // .to(camera.position, 6, {x: 560, y: 40, z: -1330}, 48.5)
+      // .to(camera.rotation, 3, {y: -0.6}, 48.5)
     },
     "onWindowResize": function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+    },
+    "changeValue": function changeValue(key, value) {
+      value = parseInt(value) * this.data.beishu;
+      var target = scene.getObjectByName(this.data.inputValue);
+
+      if (target) {
+        target.position[key] += value;
+        console.log({
+          left: target.position.x * 10 - target.scale.x * 10 / 2,
+          top: -target.position.y * 10 - target.scale.y * 10 / 2,
+          index: target.position.z / -2
+        });
+      }
     }
   }
 };
