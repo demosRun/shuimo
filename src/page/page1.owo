@@ -128,35 +128,63 @@
       top: 525,
       index: 3.5
     },
-  {name: '文字-村',fileName: '@|文字-村.png|',width: 84,height: 84,opacity: 100,left: 1680,top: 712,index: 128},
-  {name: '文字-山',fileName: '@|文字-山.png|',width: 85,height: 85,opacity: 0,left: 558,top: 741,index: 180},
-
-  {name: '路山村-井冈山装饰',fileName: '@|路山村-井冈山装饰.png|',width: 377,height: 206,opacity: 100,left: 783,top: 557,index: 165},
-  {name: '路山村-竹子',fileName: '@|路山村-竹子.png|',width: 165,height: 120,opacity: 100,left: 652,top: 610,index: 166},
-  {name: '路山村-大树-2',fileName: '@|路山村-大树-2.png|',width: 302,height: 234,opacity: 100,left: 1305,top: 730,index: 132},
-  {name: '路山村-背景',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -918,top: 649,index: 134},
-  {name: '路山村-大山-2',fileName: '@|路山村-大山-2.png|',width: 799,height: 499,opacity: 100,left: 294,top: 439,index: 136},
-  {name: '路山村-大山',fileName: '@|路山村-大山.png|',width: 949,height: 557,opacity: 100,left: 956,top: 410,index: 138},
-  {name: '路山村-云',fileName: '@|路山村-云.png|',width: 851,height: 372,opacity: 100,left: 670,top: 421,index: 138},
-  {name: '路山村-大山-3',fileName: '@|路山村-大山-3.png|',width: 868,height: 601,opacity: 100,left: 607,top: 261,index: 180},
-  {name: '路山村-大山-4',fileName: '@|路山村-大山-4.png|',width: 1097,height: 515,opacity: 100,left: -285,top: 289,index: 182},
-  {name: '路山村-大山-5',fileName: '@|路山村-大山-5.png|',width: 1071,height: 445,opacity: 100,left: 1175,top: 278,index: 152},
-  {name: '远山',fileName: '@|远山.png|',width: 5094,height: 779,opacity: 100,left: -1010,top: 46,index: 183},
-  {name: '路山村-房子-1',fileName: '@|路山村-房子-1.png|',width: 351,height: 241,opacity: 100,left: 2094,top: 782,index: 125},
-  {name: '路山村-房子-2',fileName: '@|路山村-房子-2.png|',width: 715,height: 250,opacity: 100,left: 1477,top: 779,index: 130},
-  {name: '路山村-房子-3',fileName: '@|路山村-房子-3.png|',width: 311,height: 232,opacity: 100,left: 2329,top: 773,index: 126},
-  {name: '路山村-房子-4',fileName: '@|路山村-房子-4.png|',width: 407,height: 384,opacity: 100,left: 2295,top: 640,index: 127},
-  {name: '路山村-大树',fileName: '@|路山村-大树.png|',width: 455,height: 428,opacity: 100,left: 1994,top: 568,index: 128},
-  {name: '路山村-房子-5',fileName: '@|路山村-房子-5.png|',width: 477,height: 325,opacity: 100,left: 2560,top: 637,index: 128},
-  {name: '路山村-瓷器-1',fileName: '@|路山村-瓷器-1.png|',width: 39,height: 66,opacity: 100,left: 3154,top: 796,index: 128},
-  {name: '路山村-瓷器-2',fileName: '@|路山村-瓷器-2.png|',width: 54,height: 100,opacity: 100,left: 3107,top: 764,index: 128},
-  {name: '路山村-房子-6',fileName: '@|路山村-房子-6.png|',width: 272,height: 255,opacity: 100,left: 2899,top: 604,index: 129},
-  {name: '路山村-房子-7',fileName: '@|路山村-房子-7.png|',width: 383,height: 157,opacity: 100,left: 2797,top: 668,index: 130},
-  {name: '路山村-房子-8',fileName: '@|路山村-房子-8.png|',width: 357,height: 188,opacity: 100,left: 2327,top: 563,index: 129},
-  {name: '路山村-房子-9',fileName: '@|路山村-房子-9.png|',width: 392,height: 177,opacity: 100,left: 2677,top: 593,index: 131},
-  {name: '路山村-竹子-2',fileName: '@|路山村-竹子-2.png|',width: 229,height: 327,opacity: 100,left: 908,top: 540,index: 140},
-  {name: '路山村-房子-10',fileName: '@|路山村-房子-10.png|',width: 601,height: 305,opacity: 100,left: 1660,top: 535,index: 142},
-  {name: '路山村-房子-11',fileName: '@|路山村-房子-11.png|',width: 372,height: 158,opacity: 100,left: 2099,top: 489,index: 144},
+    {name: '文字-山',fileName: '@|文字-山.png|',width: 85,height: 85,opacity: 0,left: 558,top: 741,index: 180},
+    {name: '路山村-井冈山装饰',fileName: '@|路山村-井冈山装饰.png|',width: 377,height: 206,opacity: 100,left: 783,top: 557,index: 165},
+    {name: '路山村-竹子',fileName: '@|路山村-竹子.png|',width: 165,height: 120,opacity: 100,left: 652,top: 610,index: 166},
+    {name: '路山村-大树-2',fileName: '@|路山村-大树-2.png|',width: 302,height: 234,opacity: 100,left: 1305,top: 730,index: 132},
+    {name: '路山村-背景',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -918,top: 649,index: 134},
+    {name: '路山村-大山-2',fileName: '@|路山村-大山-2.png|',width: 799,height: 499,opacity: 100,left: 294,top: 439,index: 136},
+    {name: '路山村-大山',fileName: '@|路山村-大山.png|',width: 949,height: 557,opacity: 100,left: 956,top: 410,index: 138},
+    {name: '路山村-云',fileName: '@|路山村-云.png|',width: 851,height: 372,opacity: 100,left: 670,top: 421,index: 138},
+    {name: '路山村-大山-3',fileName: '@|路山村-大山-3.png|',width: 868,height: 601,opacity: 100,left: 607,top: 261,index: 180},
+    {name: '路山村-大山-4',fileName: '@|路山村-大山-4.png|',width: 1097,height: 515,opacity: 100,left: -285,top: 289,index: 182},
+    {name: '路山村-大山-5',fileName: '@|路山村-大山-5.png|',width: 1071,height: 445,opacity: 100,left: 1175,top: 278,index: 152},
+    {name: '远山',fileName: '@|远山.png|',width: 5094,height: 779,opacity: 100,left: -1010,top: 46,index: 183},
+    {name: '路山村-竹子-2',fileName: '@|路山村-竹子-2.png|',width: 229,height: 327,opacity: 100,left: 908,top: 540,index: 140},
+    // 房子
+    {name: '文字-村',fileName: '@|文字-村.png|',width: 84,height: 84,opacity: 0,left: 380,top: 712,index: 276},
+    {name: '文字-瓷',fileName: '@|文字-瓷.png|',width: 84,height: 84,opacity: 0,left: 1880,top: 582,index: 278},
+    {name: '远山-copy',fileName: '@|远山.png|',width: 5094,height: 779,opacity: 100,left: -2360,top: -164,index: 293},
+    {name: '路山村-背景-copy',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -1868,top: 439,index: 280},
+    {name: '路山村-房子-1',fileName: '@|路山村-房子-1.png|',width: 351,height: 241,opacity: 100,left: 744,top: 582,index: 275},
+    {name: '路山村-房子-2',fileName: '@|路山村-房子-2.png|',width: 715,height: 250,opacity: 100,left: 127,top: 569,index: 280},
+    {name: '路山村-房子-3',fileName: '@|路山村-房子-3.png|',width: 311,height: 232,opacity: 100,left: 989,top: 563,index: 276},
+    {name: '路山村-房子-4',fileName: '@|路山村-房子-4.png|',width: 407,height: 384,opacity: 100,left: 945,top: 430,index: 277},
+    {name: '路山村-大树',fileName: '@|路山村-大树.png|',width: 455,height: 428,opacity: 100,left: 644,top: 358,index: 278},
+    {name: '路山村-房子-5',fileName: '@|路山村-房子-5.png|',width: 477,height: 325,opacity: 100,left: 1210,top: 427,index: 278},
+    {name: '路山村-瓷器-1',fileName: '@|路山村-瓷器-1.png|',width: 39,height: 66,opacity: 100,left: 1804,top: 586,index: 278},
+    {name: '路山村-瓷器-2',fileName: '@|路山村-瓷器-2.png|',width: 54,height: 100,opacity: 100,left: 1757,top: 554,index: 278},
+    {name: '路山村-房子-6',fileName: '@|路山村-房子-6.png|',width: 272,height: 255,opacity: 100,left: 1549,top: 394,index: 279},
+    {name: '路山村-房子-7',fileName: '@|路山村-房子-7.png|',width: 383,height: 157,opacity: 100,left: 1447,top: 458,index: 280},
+    {name: '路山村-房子-8',fileName: '@|路山村-房子-8.png|',width: 357,height: 188,opacity: 100,left: 977,top: 353,index: 279},
+    {name: '路山村-房子-9',fileName: '@|路山村-房子-9.png|',width: 392,height: 177,opacity: 100,left: 1327,top: 383,index: 281},
+    {name: '路山村-房子-10',fileName: '@|路山村-房子-10.png|',width: 601,height: 305,opacity: 100,left: 310,top: 325,index: 292},
+    {name: '路山村-房子-11',fileName: '@|路山村-房子-11.png|',width: 372,height: 158,opacity: 100,left: 749,top: 389,index: 294},
+    // 橙子
+    {name: '路山村-背景-copy-2',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -5954,top: 39,index: 412},
+    {name: '文字-橙',fileName: '@|文字-橙.png|',width: 85,height: 85,opacity: 0,left: -1254,top: -115,index: 412},
+    {name: '橙-橙子',fileName: '@|橙-橙子.png|',width: 196,height: 178,opacity: 100,left: -601,top: 185,index: 420.2},
+    {name: '橙-橙树-1',fileName: '@|橙-橙树-1.png|',width: 565,height: 378,opacity: 100,left: -1069,top: -75,index: 421},
+    {name: '橙-房子-1',fileName: '@|橙-房子-1.png|',width: 427,height: 327,opacity: 100,left: -708,top: -75,index: 420.5},
+    {name: '橙-石头',fileName: '@|橙-石头.png|',width: 1421,height: 472,opacity: 100,left: -1614,top: 28,index: 420},
+    {name: '橙-橙树-2',fileName: '@|橙-橙树-2.png|',width: 359,height: 368,opacity: 100,left: -1263,top: -33,index: 421},
+    {name: '橙-橙树-3',fileName: '@|橙-橙树-3.png|',width: 379,height: 310,opacity: 100,left: -436,top: -66,index: 422},
+    {name: '橙-橙树-4',fileName: '@|橙-橙树-4.png|',width: 399,height: 281,opacity: 100,left: -145,top: 208,index: 420},
+    {name: '橙-路面',fileName: '@|橙-路面.png|',width: 1628,height: 330,opacity: 100,left: -1318,top: 157,index: 421},
+    {name: '橙-树',fileName: '@|橙-树.png|',width: 501,height: 385,opacity: 100,left: -1125,top: -140,index: 422},
+    {name: '橙-江水',fileName: '@|橙-江水.png|',width: 589,height: 263,opacity: 100,left: -1447,top: -118,index: 423},
+    {name: '远山-2',fileName: '@|远山-2.png|',width: 3287,height: 547,opacity: 100,left: -1699,top: -807,index: 436},
+    // 水
+    {name: '文字-水',fileName: '@|文字-水.png|',width: 88,height: 87,opacity: 0,left: 408,top: -167,index: 436},
+    {name: '水-小舟',fileName: '@|水-小舟.png|',width: 115,height: 123,opacity: 100,left: 1412,top: -41,index: 430},
+    {name: '水-江水',fileName: '@|水-江水.png|',width: 662,height: 123,opacity: 100,left: -512,top: -130,index: 430},
+    {name: '水-江水-2',fileName: '@|水-江水-2.png|',width: 595,height: 85,opacity: 100,left: 1258,top: -33,index: 431},
+    {name: '水-江水-3',fileName: '@|水-江水-3.png|',width: 1062,height: 123,opacity: 100,left: 808,top: 80,index: 432},
+    {name: '水-江水-4',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292,top: 188,index: 433},
+    {name: '水-江水-5',fileName: '@|水-江水-5.png|',width: 557,height: 102,opacity: 100,left: -47,top: 130,index: 434},
+    {name: '水-渔网',fileName: '@|水-渔网.png|',width: 373,height: 215,opacity: 100,left: -44,top: -82,index: 437},
+    {name: '水-鸟',fileName: '@|水-鸟.png|',width: 51,height: 36,opacity: 100,left: 859,top: -104,index: 442},
+    {name: '水-宝塔',fileName: '@|水-宝塔.png|',width: 1063,height: 380,opacity: 100,left: 259,top: -201,index: 438},
   ]
   module.exports = {
     data: {
@@ -210,7 +238,7 @@
       // 播放动画
       setTimeout(() => {
         this.play()
-      }, 1000);
+      }, 2000);
     },
     creatMode: function () {
       // 辅助参考线
@@ -259,14 +287,23 @@
         .to(scene.getObjectByName('头-燕子2').material, 2, {opacity: 0}, 0)
         // 摄像机前移
         .to(camera.position, 5.5, {bezier:[{x: 140, y: -65, z: -60}, {x: 110, y: -70, z: -210}, {x: 90, y: -70, z: -290}]}, 1)
-        .to(camera.position, 3, {bezier:[{x: 130, y: -65, z: -200}, {x: 180, y: -70, z: -190}]}, 8)
-        // .to(camera.position, 3, {x: 90, y: -70, z: -210, ease:	Sine.easeOut}, 1)
-        // .to(camera.position, 4, {x: 90, y: -65, z: -280, ease:	Sine.easeOut}, 4)
-        // // 摄像机旋转
+        // 摄像机旋转
         .to(camera.rotation, 1.5, {z: -0.8, ease:Power1.easeOut }, 4.5)
         .to(camera.rotation, 1.5, {z: 0, ease:Power1.easeOut }, 6)
         .to(scene.getObjectByName('文字-山').material, 2, {opacity: 1}, 6)
-
+        // 视角移动到村
+        .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -330}, {x: 70, y: -45, z: -380}, {x: 70, y: -65, z: -500}]}, 8)
+        .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 11)
+        // 视角移动到瓷
+        .to(camera.position, 2, {bezier:[{x: 90, y: -65, z: -490}, {x: 170, y: -60, z: -490}]}, 15)
+        .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 16)
+        // 视角移动到橙子
+        .to(camera.position, 6, {bezier:[{x: 150, y: -60, z: -590}, {x: -60, y: -20, z: -720}]}, 19)
+        .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 24)
+        // 移动到水
+        .to(camera.position, 4, {bezier:[{x: 0, y: -15, z: -760}, {x: 80, y: 0, z: -790}]}, 26)
+        .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 28)
+        
     },
     onWindowResize: function () {
       camera.aspect = window.innerWidth / window.innerHeight;
