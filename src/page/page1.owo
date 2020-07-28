@@ -1,6 +1,7 @@
 <template lang="pug">
 .page-1
   #container
+  canvas#mainText
 </template>
 
 <script>
@@ -58,16 +59,16 @@
       top: 343,
       index: 3
     },
-    {
-      name: '头-主文字',
-      fileName: '@|头-主文字.png|',
-      width: 1206,
-      height: 452,
-      opacity: 100,
-      left: 1013,
-      top: 426,
-      index: 2.4
-    },
+    // {
+    //   name: '头-主文字',
+    //   fileName: '@|头-主文字.png|',
+    //   width: 1206,
+    //   height: 452,
+    //   opacity: 100,
+    //   left: 1013,
+    //   top: 426,
+    //   index: 2.4
+    // },
     {
       name: '头-山',
       fileName: '@|头-山.png|',
@@ -161,6 +162,7 @@
     {name: '路山村-房子-10',fileName: '@|路山村-房子-10.png|',width: 601,height: 305,opacity: 100,left: 310,top: 325,index: 292},
     {name: '路山村-房子-11',fileName: '@|路山村-房子-11.png|',width: 372,height: 158,opacity: 100,left: 749,top: 389,index: 294},
     // 橙子
+    {name: '路山村-云-copy',fileName: '@|路山村-云.png|',width: 851,height: 372,opacity: 100,left: 540,top: 361,index: 338},
     {name: '路山村-背景-copy-2',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -5954,top: 39,index: 412},
     {name: '文字-橙',fileName: '@|文字-橙.png|',width: 85,height: 85,opacity: 0,left: -1254,top: -115,index: 412},
     {name: '橙-橙子',fileName: '@|橙-橙子.png|',width: 196,height: 178,opacity: 100,left: -601,top: 185,index: 420.2},
@@ -181,6 +183,8 @@
     {name: '水-江水-2',fileName: '@|水-江水-2.png|',width: 595,height: 85,opacity: 100,left: 1258,top: -33,index: 431},
     {name: '水-江水-3',fileName: '@|水-江水-3.png|',width: 1062,height: 123,opacity: 100,left: 808,top: 80,index: 432},
     {name: '水-江水-4',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292,top: 188,index: 433},
+    {name: '水-江水-4-copy',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292,top: 388,index: 433},
+    {name: '水-江水-4-copy-2',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 392,top: 588,index: 433},
     {name: '水-江水-5',fileName: '@|水-江水-5.png|',width: 557,height: 102,opacity: 100,left: -47,top: 130,index: 434},
     {name: '水-渔网',fileName: '@|水-渔网.png|',width: 373,height: 215,opacity: 100,left: -44,top: -82,index: 437},
     {name: '水-鸟',fileName: '@|水-鸟.png|',width: 51,height: 36,opacity: 100,left: 859,top: -104,index: 432},
@@ -190,25 +194,61 @@
     {name: '文字-茶',fileName: '@|文字-茶.png|',width: 87,height: 87,opacity: 0,left: 2054,top: 131,index: 565},
     {name: '茶',fileName: '@|茶.png|',width: 1835,height: 383,opacity: 100,left: 1074,top: 114,index: 566},
     // 药土路
-    {name: '文字-路',fileName: '@|文字-路.png|',width: 85,height: 84,opacity: 0,left: 1226,top: -432,index: 690},
-    {name: '文字-土',fileName: '@|文字-土.png|',width: 88,height: 88,opacity: 0,left: 370,top: -366,index: 689},
-    {name: '文字-药',fileName: '@|文字-药.png|',width: 88,height: 87,opacity: 0,left: -509,top: -449,index: 690},
-    {name: '药土路-土块',fileName: '@|药土路-土块.png|',width: 129,height: 86,opacity: 100,left: 731,top: -198,index: 689},
-    {name: '药土路-房间-1',fileName: '@|药土路-房间-1.png|',width: 248,height: 172,opacity: 100,left: -778,top: -401,index: 689.8},
-    {name: '药土路-房间-2',fileName: '@|药土路-房间-2.png|',width: 609,height: 130,opacity: 100,left: -522,top: -349,index: 690},
-    {name: '药土路-山-1',fileName: '@|药土路-山-1.png|',width: 977,height: 240,opacity: 100,left: -1403,top: -520,index: 690.6},
-    {name: '药土路-山-2',fileName: '@|药土路-山-2.png|',width: 2361,height: 555,opacity: 100,left: -799,top: -533,index: 690},
-    {name: '高铁',fileName: '@|高铁.png|',width: 869,height: 53,opacity: 100,left: 300,top: -371,index: 691},
-    {name: '桥面',fileName: '@|桥面.png|',width: 3706,height: 102,opacity: 100,left: 282,top: -317,index: 691},
-    {name: '药土路-山-3',fileName: '@|药土路-山-3.png|',width: 1178,height: 289,opacity: 100,left: -852,top: -593,index: 696},
-    {name: '药土路-背景',fileName: '@|药土路-背景.png|',width: 5441,height: 676,opacity: 100,left: -1330,top: -402,index: 690.2},
-    {name: '药土路-远山',fileName: '@|药土路-远山.png|',width: 7440,height: 591,opacity: 100,left: -3445,top: -758,index: 699},
+    {name: '文字-路',fileName: '@|文字-路.png|',width: 85,height: 84,opacity: 0,left: 1226,top: -432,index: 689},
+    {name: '文字-土',fileName: '@|文字-土.png|',width: 88,height: 88,opacity: 0,left: 370,top: -366,index: 690},
+    {name: '文字-药',fileName: '@|文字-药.png|',width: 88,height: 87,opacity: 0,left: -509,top: -449,index: 691},
+    {name: '药土路-土块',fileName: '@|药土路-土块.png|',width: 129,height: 86,opacity: 100,left: 731,top: -198,index: 691},
+    {name: '药土路-房间-1',fileName: '@|药土路-房间-1.png|',width: 248,height: 172,opacity: 100,left: -778,top: -401,index: 691.8},
+    {name: '药土路-房间-2',fileName: '@|药土路-房间-2.png|',width: 609,height: 130,opacity: 100,left: -522,top: -349,index: 692},
+    {name: '药土路-山-1',fileName: '@|药土路-山-1.png|',width: 977,height: 240,opacity: 100,left: -1403,top: -520,index: 692.6},
+    {name: '药土路-山-2',fileName: '@|药土路-山-2.png|',width: 2361,height: 555,opacity: 100,left: -799,top: -533,index: 692},
+    {name: '高铁',fileName: '@|高铁.png|',width: 869,height: 53,opacity: 100,left: 300,top: -371,index: 693.8},
+    {name: '桥面',fileName: '@|桥面.png|',width: 3706,height: 102,opacity: 100,left: 282,top: -317,index: 693},
+    {name: '药土路-山-3',fileName: '@|药土路-山-3.png|',width: 1178,height: 289,opacity: 100,left: -852,top: -593,index: 698},
+    {name: '药土路-背景',fileName: '@|药土路-背景.png|',width: 5441,height: 676,opacity: 100,left: -1330,top: -402,index: 693.2},
+    {name: '药土路-远山',fileName: '@|药土路-远山.png|',width: 7440,height: 591,opacity: 100,left: -3445,top: -758,index: 713},
   ]
   module.exports = {
     data: {
     },
     created: function () {
       this.init()
+      var canv = document.getElementById("mainText"),
+        ctx = canv.getContext("2d"),
+        img = new Image(),
+        imgMask = new Image();
+      imgMask.src = "https://cunchu.site/owo/material/shuimo/cloud-texture.png";
+      img.src = "@|头-主文字.png|";
+      var speed = 0;
+      var requestId;
+
+      function draw() {
+        speed += 30;
+        var maskX = (canv.width - (70 + speed)) / 2,
+          maskY = (canv.height - (40 + speed)) / 2;
+        ctx.clearRect(0, 0, canv.width, canv.height);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.drawImage(imgMask, maskX, maskY, 70 + speed, 40 + speed);
+        ctx.globalCompositeOperation = "source-in";
+        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
+        requestId = window.requestAnimationFrame(draw);
+      }
+
+      img.onload = () => {
+        canv.width = img.naturalWidth;
+        canv.height = img.naturalHeight;
+        setTimeout(() => {
+          canv.style.display = "block";
+          draw();
+        }, 500);
+        setTimeout(() => {
+          this.query('#mainText').style.opacity = '0'
+        }, 3000);
+        // 播放动画
+        setTimeout(() => {
+          this.play()
+        }, 3000);
+      };
     },
     init: function () {
       var container = document.getElementById('container');
@@ -253,10 +293,6 @@
 				renderer.render( scene, camera );
       }
       
-      // 播放动画
-      setTimeout(() => {
-        this.play()
-      }, 2000);
     },
     creatMode: function () {
       // 辅助参考线
@@ -308,13 +344,13 @@
         .to(camera.rotation, 1.5, {z: 0, ease:Power1.easeOut }, 6)
         .to(scene.getObjectByName('文字-山').material, 2, {opacity: 1}, 6)
         // 视角移动到村
-        .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -330}, {x: 70, y: -45, z: -380}, {x: 70, y: -65, z: -490}]}, 8)
+        .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -330}, {x: 75, y: -45, z: -380}, {x: 70, y: -65, z: -450}]}, 8)
         .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 11)
         // 视角移动到瓷
-        .to(camera.position, 2, {bezier:[{x: 110, y: -65, z: -500}, {x: 170, y: -60, z: -510}]}, 15)
+        .to(camera.position, 2, {bezier:[{x: 110, y: -65, z: -475}, {x: 190, y: -60, z: -510}]}, 15)
         .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 16)
         // 视角移动到橙子
-        .to(camera.position, 7, {bezier:[{x: 130, y: -60, z: -590}, {x: -60, y: -20, z: -720}]}, 18)
+        .to(camera.position, 7, {bezier:[{x: 165, y: -60, z: -560}, {x: 60, y: -50, z: -660}, {x: -60, y: -20, z: -720}]}, 18)
         .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 24)
         // 移动到水
         .to(camera.position, 4, {bezier:[{x: 0, y: -15, z: -760}, {x: 80, y: 0, z: -790}]}, 26)
@@ -330,7 +366,7 @@
         .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 44)
         // 高铁前进
         .to(scene.getObjectByName('高铁').position, 6, {x: 500}, 48)
-        .to(scene.getObjectByName('高铁').material, 4, {opacity: 0}, 48)
+        .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 50)
         .to(camera.position, 6, {x: 560, y: 40, z: -1330}, 48.5)
         .to(camera.rotation, 3, {y: -0.6}, 48.5)
     },
@@ -344,5 +380,16 @@
 
 
 <style lang="less">
-
+#mainText {
+  display: block;
+  width: 38%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2%;
+  bottom: 0;
+  margin: auto;
+  opacity: 1;
+  transition: opacity 1s;
+}
 </style>

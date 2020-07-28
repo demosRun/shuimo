@@ -30,7 +30,7 @@
   <body>
     
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div></div>
+    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas></div>
     
 
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
@@ -90,16 +90,17 @@ var infoData = [{
   left: 1905,
   top: 343,
   index: 3
-}, {
-  name: '头-主文字',
-  fileName: './static/resource/头-主文字.png',
-  width: 1206,
-  height: 452,
-  opacity: 100,
-  left: 1013,
-  top: 426,
-  index: 2.4
-}, {
+}, // {
+//   name: '头-主文字',
+//   fileName: './static/resource/头-主文字.png',
+//   width: 1206,
+//   height: 452,
+//   opacity: 100,
+//   left: 1013,
+//   top: 426,
+//   index: 2.4
+// },
+{
   name: '头-山',
   fileName: './static/resource/头-山.png',
   width: 703,
@@ -435,6 +436,15 @@ var infoData = [{
   index: 294
 }, // 橙子
 {
+  name: '路山村-云-copy',
+  fileName: './static/resource/路山村-云.png',
+  width: 851,
+  height: 372,
+  opacity: 100,
+  left: 540,
+  top: 361,
+  index: 338
+}, {
   name: '路山村-背景-copy-2',
   fileName: './static/resource/路山村-背景.png',
   width: 5135,
@@ -607,6 +617,24 @@ var infoData = [{
   top: 188,
   index: 433
 }, {
+  name: '水-江水-4-copy',
+  fileName: './static/resource/水-江水-4.png',
+  width: 1171,
+  height: 265,
+  opacity: 100,
+  left: 292,
+  top: 388,
+  index: 433
+}, {
+  name: '水-江水-4-copy-2',
+  fileName: './static/resource/水-江水-4.png',
+  width: 1171,
+  height: 265,
+  opacity: 100,
+  left: 392,
+  top: 588,
+  index: 433
+}, {
   name: '水-江水-5',
   fileName: './static/resource/水-江水-5.png',
   width: 557,
@@ -679,7 +707,7 @@ var infoData = [{
   opacity: 0,
   left: 1226,
   top: -432,
-  index: 690
+  index: 689
 }, {
   name: '文字-土',
   fileName: './static/resource/文字-土.png',
@@ -688,7 +716,7 @@ var infoData = [{
   opacity: 0,
   left: 370,
   top: -366,
-  index: 689
+  index: 690
 }, {
   name: '文字-药',
   fileName: './static/resource/文字-药.png',
@@ -697,7 +725,7 @@ var infoData = [{
   opacity: 0,
   left: -509,
   top: -449,
-  index: 690
+  index: 691
 }, {
   name: '药土路-土块',
   fileName: './static/resource/药土路-土块.png',
@@ -706,7 +734,7 @@ var infoData = [{
   opacity: 100,
   left: 731,
   top: -198,
-  index: 689
+  index: 691
 }, {
   name: '药土路-房间-1',
   fileName: './static/resource/药土路-房间-1.png',
@@ -715,7 +743,7 @@ var infoData = [{
   opacity: 100,
   left: -778,
   top: -401,
-  index: 689.8
+  index: 691.8
 }, {
   name: '药土路-房间-2',
   fileName: './static/resource/药土路-房间-2.png',
@@ -724,7 +752,7 @@ var infoData = [{
   opacity: 100,
   left: -522,
   top: -349,
-  index: 690
+  index: 692
 }, {
   name: '药土路-山-1',
   fileName: './static/resource/药土路-山-1.png',
@@ -733,7 +761,7 @@ var infoData = [{
   opacity: 100,
   left: -1403,
   top: -520,
-  index: 690.6
+  index: 692.6
 }, {
   name: '药土路-山-2',
   fileName: './static/resource/药土路-山-2.png',
@@ -742,7 +770,7 @@ var infoData = [{
   opacity: 100,
   left: -799,
   top: -533,
-  index: 690
+  index: 692
 }, {
   name: '高铁',
   fileName: './static/resource/高铁.png',
@@ -751,7 +779,7 @@ var infoData = [{
   opacity: 100,
   left: 300,
   top: -371,
-  index: 691
+  index: 693.8
 }, {
   name: '桥面',
   fileName: './static/resource/桥面.png',
@@ -760,7 +788,7 @@ var infoData = [{
   opacity: 100,
   left: 282,
   top: -317,
-  index: 691
+  index: 693
 }, {
   name: '药土路-山-3',
   fileName: './static/resource/药土路-山-3.png',
@@ -769,7 +797,7 @@ var infoData = [{
   opacity: 100,
   left: -852,
   top: -593,
-  index: 696
+  index: 698
 }, {
   name: '药土路-背景',
   fileName: './static/resource/药土路-背景.png',
@@ -778,7 +806,7 @@ var infoData = [{
   opacity: 100,
   left: -1330,
   top: -402,
-  index: 690.2
+  index: 693.2
 }, {
   name: '药土路-远山',
   fileName: './static/resource/药土路-远山.png',
@@ -787,16 +815,52 @@ var infoData = [{
   opacity: 100,
   left: -3445,
   top: -758,
-  index: 699
+  index: 713
 }];
 owo.script = {
   "page1": {
     "created": function created() {
-      this.init();
-    },
-    "init": function init() {
       var _this = this;
 
+      this.init();
+      var canv = document.getElementById("mainText"),
+          ctx = canv.getContext("2d"),
+          img = new Image(),
+          imgMask = new Image();
+      imgMask.src = "https://cunchu.site/owo/material/shuimo/cloud-texture.png";
+      img.src = "./static/resource/头-主文字.png";
+      var speed = 0;
+      var requestId;
+
+      function draw() {
+        speed += 30;
+        var maskX = (canv.width - (70 + speed)) / 2,
+            maskY = (canv.height - (40 + speed)) / 2;
+        ctx.clearRect(0, 0, canv.width, canv.height);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.drawImage(imgMask, maskX, maskY, 70 + speed, 40 + speed);
+        ctx.globalCompositeOperation = "source-in";
+        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
+        requestId = window.requestAnimationFrame(draw);
+      }
+
+      img.onload = function () {
+        canv.width = img.naturalWidth;
+        canv.height = img.naturalHeight;
+        setTimeout(function () {
+          canv.style.display = "block";
+          draw();
+        }, 500);
+        setTimeout(function () {
+          _this.query('#mainText').style.opacity = '0';
+        }, 3000); // 播放动画
+
+        setTimeout(function () {
+          _this.play();
+        }, 3000);
+      };
+    },
+    "init": function init() {
       var container = document.getElementById('container'); // 设立相机
 
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 300);
@@ -834,12 +898,7 @@ owo.script = {
 
       function render() {
         renderer.render(scene, camera);
-      } // 播放动画
-
-
-      setTimeout(function () {
-        _this.play();
-      }, 2000);
+      }
     },
     "creatMode": function creatMode() {
       // 辅助参考线
@@ -929,13 +988,13 @@ owo.script = {
           y: -65,
           z: -330
         }, {
-          x: 70,
+          x: 75,
           y: -45,
           z: -380
         }, {
           x: 70,
           y: -65,
-          z: -490
+          z: -450
         }]
       }, 8).to(scene.getObjectByName('文字-村').material, 2, {
         opacity: 1
@@ -944,9 +1003,9 @@ owo.script = {
         bezier: [{
           x: 110,
           y: -65,
-          z: -500
+          z: -475
         }, {
-          x: 170,
+          x: 190,
           y: -60,
           z: -510
         }]
@@ -955,9 +1014,13 @@ owo.script = {
       }, 16) // 视角移动到橙子
       .to(camera.position, 7, {
         bezier: [{
-          x: 130,
+          x: 165,
           y: -60,
-          z: -590
+          z: -560
+        }, {
+          x: 60,
+          y: -50,
+          z: -660
         }, {
           x: -60,
           y: -20,
@@ -1019,9 +1082,9 @@ owo.script = {
       }, 44) // 高铁前进
       .to(scene.getObjectByName('高铁').position, 6, {
         x: 500
-      }, 48).to(scene.getObjectByName('高铁').material, 4, {
+      }, 48).to(scene.getObjectByName('高铁').material, 1, {
         opacity: 0
-      }, 48).to(camera.position, 6, {
+      }, 50).to(camera.position, 6, {
         x: 560,
         y: 40,
         z: -1330

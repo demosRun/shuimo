@@ -55,5 +55,16 @@ li {
   list-style: none;
 }
 
-
+#mainText {
+  display: block;
+  width: 38%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2%;
+  bottom: 0;
+  margin: auto;
+  opacity: 1;
+  transition: opacity 1s;
+}
 
