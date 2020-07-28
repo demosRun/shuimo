@@ -183,8 +183,26 @@
     {name: '水-江水-4',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292,top: 188,index: 433},
     {name: '水-江水-5',fileName: '@|水-江水-5.png|',width: 557,height: 102,opacity: 100,left: -47,top: 130,index: 434},
     {name: '水-渔网',fileName: '@|水-渔网.png|',width: 373,height: 215,opacity: 100,left: -44,top: -82,index: 437},
-    {name: '水-鸟',fileName: '@|水-鸟.png|',width: 51,height: 36,opacity: 100,left: 859,top: -104,index: 442},
+    {name: '水-鸟',fileName: '@|水-鸟.png|',width: 51,height: 36,opacity: 100,left: 859,top: -104,index: 432},
     {name: '水-宝塔',fileName: '@|水-宝塔.png|',width: 1063,height: 380,opacity: 100,left: 259,top: -201,index: 438},
+    // 茶
+    {name: '远山-copy-2',fileName: '@|远山.png|',width: 5094,height: 779,opacity: 100,left: -600,top: -507,index: 567},
+    {name: '文字-茶',fileName: '@|文字-茶.png|',width: 87,height: 87,opacity: 0,left: 2054,top: 131,index: 565},
+    {name: '茶',fileName: '@|茶.png|',width: 1835,height: 383,opacity: 100,left: 1074,top: 114,index: 566},
+    // 药土路
+    {name: '文字-路',fileName: '@|文字-路.png|',width: 85,height: 84,opacity: 0,left: 1226,top: -432,index: 690},
+    {name: '文字-土',fileName: '@|文字-土.png|',width: 88,height: 88,opacity: 0,left: 370,top: -366,index: 689},
+    {name: '文字-药',fileName: '@|文字-药.png|',width: 88,height: 87,opacity: 0,left: -509,top: -449,index: 690},
+    {name: '药土路-土块',fileName: '@|药土路-土块.png|',width: 129,height: 86,opacity: 100,left: 731,top: -198,index: 689},
+    {name: '药土路-房间-1',fileName: '@|药土路-房间-1.png|',width: 248,height: 172,opacity: 100,left: -778,top: -401,index: 689.8},
+    {name: '药土路-房间-2',fileName: '@|药土路-房间-2.png|',width: 609,height: 130,opacity: 100,left: -522,top: -349,index: 690},
+    {name: '药土路-山-1',fileName: '@|药土路-山-1.png|',width: 977,height: 240,opacity: 100,left: -1403,top: -520,index: 690.6},
+    {name: '药土路-山-2',fileName: '@|药土路-山-2.png|',width: 2361,height: 555,opacity: 100,left: -799,top: -533,index: 690},
+    {name: '高铁',fileName: '@|高铁.png|',width: 869,height: 53,opacity: 100,left: 300,top: -371,index: 691},
+    {name: '桥面',fileName: '@|桥面.png|',width: 3706,height: 102,opacity: 100,left: 282,top: -317,index: 691},
+    {name: '药土路-山-3',fileName: '@|药土路-山-3.png|',width: 1178,height: 289,opacity: 100,left: -852,top: -593,index: 696},
+    {name: '药土路-背景',fileName: '@|药土路-背景.png|',width: 5441,height: 676,opacity: 100,left: -1330,top: -402,index: 690.2},
+    {name: '药土路-远山',fileName: '@|药土路-远山.png|',width: 7440,height: 591,opacity: 100,left: -3445,top: -758,index: 699},
   ]
   module.exports = {
     data: {
@@ -274,8 +292,6 @@
       });
     },
     play: function () {
-      // 设置动画前各元素的位置
-      const gaotie = scene.getObjectByName('高铁')
       // gaotie.position.x = 160
       // gaotie.opacity = 0
       var tl = new TimelineMax({
@@ -286,24 +302,37 @@
         .to(scene.getObjectByName('头-燕子2').position, 2, {bezier:[{x:260, y:-20}, {x:288, y: 6}]}, 0)
         .to(scene.getObjectByName('头-燕子2').material, 2, {opacity: 0}, 0)
         // 摄像机前移
-        .to(camera.position, 5.5, {bezier:[{x: 140, y: -65, z: -60}, {x: 110, y: -70, z: -210}, {x: 90, y: -70, z: -290}]}, 1)
+        .to(camera.position, 5.5, {bezier:[{x: 140, y: -65, z: -60}, {x: 100, y: -70, z: -210}, {x: 90, y: -70, z: -290}]}, 1)
         // 摄像机旋转
-        .to(camera.rotation, 1.5, {z: -0.8, ease:Power1.easeOut }, 4.5)
+        .to(camera.rotation, 1.5, {z: -0.4, ease:Power1.easeOut }, 4.5)
         .to(camera.rotation, 1.5, {z: 0, ease:Power1.easeOut }, 6)
         .to(scene.getObjectByName('文字-山').material, 2, {opacity: 1}, 6)
         // 视角移动到村
-        .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -330}, {x: 70, y: -45, z: -380}, {x: 70, y: -65, z: -500}]}, 8)
+        .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -330}, {x: 70, y: -45, z: -380}, {x: 70, y: -65, z: -490}]}, 8)
         .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 11)
         // 视角移动到瓷
-        .to(camera.position, 2, {bezier:[{x: 90, y: -65, z: -490}, {x: 170, y: -60, z: -490}]}, 15)
+        .to(camera.position, 2, {bezier:[{x: 110, y: -65, z: -500}, {x: 170, y: -60, z: -510}]}, 15)
         .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 16)
         // 视角移动到橙子
-        .to(camera.position, 6, {bezier:[{x: 150, y: -60, z: -590}, {x: -60, y: -20, z: -720}]}, 19)
+        .to(camera.position, 7, {bezier:[{x: 130, y: -60, z: -590}, {x: -60, y: -20, z: -720}]}, 18)
         .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 24)
         // 移动到水
         .to(camera.position, 4, {bezier:[{x: 0, y: -15, z: -760}, {x: 80, y: 0, z: -790}]}, 26)
         .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 28)
-        
+        // 茶
+        .to(camera.position, 4, {bezier:[{x: 69, y: 2.5, z: -870}, {x: 175, y: -10, z: -1000}]}, 31)
+        .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 33)
+        // 药土路
+        .to(camera.position, 4, {bezier:[{x: 185, y: -30, z: -1130}, {x: 25, y: 40, z: -1230}, {x: -15, y: 40, z: -1290}]}, 36)
+        .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 38)
+        .to(camera.position, 8, {x: 60, y: 40, z: -1290}, 40)
+        .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 42)
+        .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 44)
+        // 高铁前进
+        .to(scene.getObjectByName('高铁').position, 6, {x: 500}, 48)
+        .to(scene.getObjectByName('高铁').material, 4, {opacity: 0}, 48)
+        .to(camera.position, 6, {x: 560, y: 40, z: -1330}, 48.5)
+        .to(camera.rotation, 3, {y: -0.6}, 48.5)
     },
     onWindowResize: function () {
       camera.aspect = window.innerWidth / window.innerHeight;
