@@ -959,7 +959,7 @@ owo.script = {
       camera.lookAt(150, -65, 0); // 建立一个场景
 
       scene = new THREE.Scene();
-      scene.fog = new THREE.Fog(0xffffff, 100, 320); // 像素级的渲染，渲染效果更好
+      scene.fog = new THREE.Fog(0xffffff, 100, 300); // 像素级的渲染，渲染效果更好
 
       renderer = new THREE.WebGLRenderer({
         antialias: true,
@@ -1092,12 +1092,12 @@ owo.script = {
       }, 8).to(scene.getObjectByName('文字-村').material, 2, {
         opacity: 1
       }, 11) // 视角移动到瓷
-      .to(camera.rotation, 2, {
+      .to(camera.rotation, 4, {
         y: -1.4
-      }, 15.5) // .to(camera.position, 4, {bezier:[{x: 220, y: -65, z: -420}]}, 17)
+      }, 15) // .to(camera.position, 4, {bezier:[{x: 220, y: -65, z: -420}]}, 17)
       .to(camera.position, 6, {
         bezier: [{
-          x: 112,
+          x: 172,
           y: -65,
           z: -605
         }, {
@@ -1117,7 +1117,7 @@ owo.script = {
           y: -55,
           z: -615
         }, {
-          x: 955,
+          x: 975,
           y: -25,
           z: -700
         }]

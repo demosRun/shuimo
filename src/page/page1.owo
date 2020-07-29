@@ -281,7 +281,7 @@
       camera.lookAt(150, -65, 0)
       // 建立一个场景
       scene = new THREE.Scene();
-      scene.fog = new THREE.Fog( 0xffffff, 100, 320)
+      scene.fog = new THREE.Fog( 0xffffff, 100, 300)
       // 像素级的渲染，渲染效果更好
       renderer = new THREE.WebGLRenderer({
         antialias: true,
@@ -372,13 +372,13 @@
         .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -330}, {x: 75, y: -45, z: -380}, {x: 70, y: -65, z: -480}]}, 8)
         .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 11)
         // 视角移动到瓷
-        .to(camera.rotation, 2, {y: -1.4}, 15.5)
+        .to(camera.rotation, 4, {y: -1.4}, 15)
         // .to(camera.position, 4, {bezier:[{x: 220, y: -65, z: -420}]}, 17)
-        .to(camera.position, 6, {bezier:[{x: 112, y: -65, z: -605}, {x: 325, y: -55, z: -640}]}, 15)
+        .to(camera.position, 6, {bezier:[{x: 172, y: -65, z: -605}, {x: 325, y: -55, z: -640}]}, 15)
         .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 20)
         // // 视角移动到橙子
         .to(camera.rotation, 6, {y: 0, ease:Power1.easeOut}, 22)
-        .to(camera.position, 6, {bezier:[{x: 480, y: -55, z: -615}, {x: 955, y: -25, z: -700}]}, 22)
+        .to(camera.position, 6, {bezier:[{x: 480, y: -55, z: -615}, {x: 975, y: -25, z: -700}]}, 22)
         // .to(camera.position, 7, {bezier:[{x: 165, y: -60, z: -560}, {x: 60, y: -50, z: -660}, {x: -60, y: -20, z: -720}]}, 18)
         .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 26)
         // 移动到水
