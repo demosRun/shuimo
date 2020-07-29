@@ -5,12 +5,14 @@
   .conn-box
     input(type="text" o-value="this.data.inputValue")
     input(type="number" o-value="this.data.beishu")
-    span(o-tap="changeValue('y', 1)") 上
-    span(o-tap="changeValue('y', -1)") 下
-    span(o-tap="changeValue('x', -1)") 左
-    span(o-tap="changeValue('x', 1)") 右
-    span(o-tap="changeValue('z', -1)") 前
-    span(o-tap="changeValue('z', 1)") 后
+    span(o-tap="changeValue('position', 'y', 1)") 上
+    span(o-tap="changeValue('position', 'y', -1)") 下
+    span(o-tap="changeValue('position', 'x', -1)") 左
+    span(o-tap="changeValue('position', 'x', 1)") 右
+    span(o-tap="changeValue('position', 'z', -1)") 前
+    span(o-tap="changeValue('position', 'z', 1)") 后
+    span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
+    span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
 </template>
 
 <script>
@@ -153,7 +155,6 @@
     {name: '路山村-竹子-2',fileName: '@|路山村-竹子-2.png|',width: 229,height: 327,opacity: 100,left: 908,top: 540,index: 140},
     // 房子
     {name: '文字-村',fileName: '@|文字-村.png|',width: 84,height: 84,opacity: 0,left: 380,top: 712,index: 276},
-    {name: '文字-瓷',fileName: '@|文字-瓷.png|',width: 84,height: 84,opacity: 0,left: 1880,top: 582,index: 278},
     {name: '远山-copy',fileName: '@|远山.png|',width: 5094,height: 779,opacity: 100,left: -2360,top: -164,index: 293},
     {name: '路山村-背景-copy',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -1868,top: 439,index: 288},
     {name: '路山村-房子-1',fileName: '@|路山村-房子-1.png|',width: 351,height: 241,opacity: 100,left: 744,top: 582,index: 275},
@@ -163,48 +164,52 @@
     {name: '路山村-大树',fileName: '@|路山村-大树.png|',width: 455,height: 428,opacity: 100,left: 644,top: 358,index: 278.5},
     {name: '路山村-房子-8-copy',fileName: '@|路山村-房子-8.png|',width: 357,height: 188,opacity: 100,left: 277, top: 453, index: 284},
     {name: '路山村-房子-11-copy',fileName: '@|路山村-房子-11.png|',width: 372,height: 158,opacity: 100,left: 49, top: 389, index: 286.5},
-    // 旋转的房子
-    {name: '路山村-瓷器-1',fileName: '@|路山村-瓷器-1.png|',width: 39,height: 66,opacity: 100,left: 1804 + 3500,top: 586,index: 278, rotationY: -1},
-    {name: '路山村-瓷器-2',fileName: '@|路山村-瓷器-2.png|',width: 54,height: 100,opacity: 100,left: 1757 + 3500,top: 554,index: 278, rotationY: -1},
-    {name: '路山村-房子-5',fileName: '@|路山村-房子-5.png|',width: 477,height: 325,opacity: 100,left: 1210 + 3500,top: 427,index: 278, rotationY: -1},
-    {name: '路山村-房子-6',fileName: '@|路山村-房子-6.png|',width: 272,height: 255,opacity: 100,left: 1549 + 3500,top: 394,index: 279, rotationY: -1},
-    {name: '路山村-房子-7',fileName: '@|路山村-房子-7.png|',width: 383,height: 157,opacity: 100,left: 1447 + 3500,top: 458,index: 280, rotationY: -1},
-    {name: '路山村-房子-8',fileName: '@|路山村-房子-8.png|',width: 357,height: 188,opacity: 100,left: 977 + 3500,top: 353,index: 279, rotationY: -1},
-    {name: '路山村-房子-9',fileName: '@|路山村-房子-9.png|',width: 392,height: 177,opacity: 100,left: 1327 + 3500,top: 383,index: 281, rotationY: -1},
-    {name: '路山村-房子-10',fileName: '@|路山村-房子-10.png|',width: 601,height: 305,opacity: 100,left: 310 + 3500,top: 325,index: 292, rotationY: -1},
-    {name: '路山村-房子-11',fileName: '@|路山村-房子-11.png|',width: 372,height: 158,opacity: 100,left: 749 + 3500,top: 389,index: 294, rotationY: -1},
     // 增加的装饰性房子
     {name: '房子-加-1',fileName: '@|房子-加-1.png|',width: 145 * 2,height: 151 * 2,opacity: 100,left: -600 + 588,top: 400 + 55,index: 286},
     {name: '房子-加-2',fileName: '@|房子-加-2.png|',width: 413 * 2,height: 192 * 2,opacity: 100,left: -600 + 37,top: 400 + 51,index: 287},
     {name: '房子-加-3',fileName: '@|房子-加-3.png|',width: 98 * 2,height: 63 * 2,opacity: 100,left: -600 + 26,top: 400 + 131,index: 289},
+    // 旋转的房子
+    {name: '文字-瓷',fileName: '@|文字-瓷.png|',width: 84,height: 84,opacity: 0,left: 4094, top: 462, index: 299, rotationY: -1.6},
+    {name: '橙-树-copy',fileName: '@|橙-树.png|',width: 501,height: 385,opacity: 100,left: 3704, top: 289, index: 361.5, rotationY: -1.3},
+    {name: '路山村-大山-5-copy',fileName: '@|路山村-大山-5.png|',width: 1071,height: 445,opacity: 100,left: 4323, top: 9, index: 374, rotationY: -1.3},
+    {name: '路山村-大山-4-copy',fileName: '@|路山村-大山-4.png|',width: 1097,height: 515,opacity: 100,left: 4134, top: 29, index: 336, rotationY: -1.3},
+    {name: '路山村-瓷器-1',fileName: '@|路山村-瓷器-1.png|',width: 39,height: 66,opacity: 100,left: 4434, top: 586, index: 301.5, rotationY: -1.3},
+    {name: '路山村-瓷器-2',fileName: '@|路山村-瓷器-2.png|',width: 54,height: 100,opacity: 100,left: 4577, top: 564, index: 296, rotationY: -1.3},
+    {name: '路山村-房子-5',fileName: '@|路山村-房子-5.png|',width: 477,height: 325,opacity: 100,left: 4030, top: 427, index: 319, rotationY: -1.3},
+    {name: '路山村-房子-6',fileName: '@|路山村-房子-6.png|',width: 272,height: 255,opacity: 100,left: 4199, top: 394, index: 308.5, rotationY: -1.3},
+    {name: '路山村-房子-7',fileName: '@|路山村-房子-7.png|',width: 383,height: 157,opacity: 100,left: 4207, top: 438, index: 322.5, rotationY: -1.3},
+    {name: '路山村-房子-8',fileName: '@|路山村-房子-8.png|',width: 357,height: 188,opacity: 100,left: 4277, top: 303, index: 346.5, rotationY: -1.3},
+    {name: '路山村-房子-9',fileName: '@|路山村-房子-9.png|',width: 392,height: 177,opacity: 100,left: 4227, top: 283, index: 356, rotationY: -1.3},
+    {name: '路山村-房子-10',fileName: '@|路山村-房子-10.png|',width: 601,height: 305,opacity: 100,left: 3780, top: 397, index: 340, rotationY: -1.3},
+    {name: '路山村-房子-11',fileName: '@|路山村-房子-11.png|',width: 372,height: 158,opacity: 100,left: 3899, top: 439, index: 351.5, rotationY: -1.3},
     // 橙子
-    {name: '路山村-云-copy',fileName: '@|路山村-云.png|',width: 851,height: 372,opacity: 100,left: 540,top: 361,index: 338},
-    {name: '路山村-背景-copy-2',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -5954,top: 39,index: 412},
-    {name: '文字-橙',fileName: '@|文字-橙.png|',width: 85,height: 85,opacity: 0,left: -1254,top: -115,index: 412},
-    {name: '橙-橙子',fileName: '@|橙-橙子.png|',width: 196,height: 178,opacity: 100,left: -601,top: 185,index: 420.2},
-    {name: '橙-橙树-1',fileName: '@|橙-橙树-1.png|',width: 565,height: 378,opacity: 100,left: -1069,top: -75,index: 421},
-    {name: '橙-房子-1',fileName: '@|橙-房子-1.png|',width: 427,height: 327,opacity: 100,left: -708,top: -75,index: 420.5},
-    {name: '橙-石头',fileName: '@|橙-石头.png|',width: 1421,height: 472,opacity: 100,left: -1614,top: 28,index: 420},
-    {name: '橙-橙树-2',fileName: '@|橙-橙树-2.png|',width: 359,height: 368,opacity: 100,left: -1263,top: -33,index: 421},
-    {name: '橙-橙树-3',fileName: '@|橙-橙树-3.png|',width: 379,height: 310,opacity: 100,left: -436,top: -66,index: 422},
-    {name: '橙-橙树-4',fileName: '@|橙-橙树-4.png|',width: 399,height: 281,opacity: 100,left: -145,top: 208,index: 420},
-    {name: '橙-路面',fileName: '@|橙-路面.png|',width: 1628,height: 330,opacity: 100,left: -1318,top: 157,index: 421},
-    {name: '橙-树',fileName: '@|橙-树.png|',width: 501,height: 385,opacity: 100,left: -1125,top: -140,index: 422},
-    {name: '橙-江水',fileName: '@|橙-江水.png|',width: 589,height: 263,opacity: 100,left: -1447,top: -118,index: 423},
-    {name: '远山-2',fileName: '@|远山-2.png|',width: 3287,height: 547,opacity: 100,left: -1699,top: -807,index: 436},
+    {name: '路山村-云-copy',fileName: '@|路山村-云.png|',width: 851,height: 372,opacity: 100,left: 540 + 10000,top: 361,index: 338},
+    {name: '路山村-背景-copy-2',fileName: '@|路山村-背景.png|',width: 5135,height: 674,opacity: 100,left: -5954 + 10000,top: 39,index: 412},
+    {name: '文字-橙',fileName: '@|文字-橙.png|',width: 85,height: 85,opacity: 0,left: -1254 + 10000,top: -115,index: 412},
+    {name: '橙-橙子',fileName: '@|橙-橙子.png|',width: 196,height: 178,opacity: 100,left: -601 + 10000,top: 185,index: 420.2},
+    {name: '橙-橙树-1',fileName: '@|橙-橙树-1.png|',width: 565,height: 378,opacity: 100,left: -1069 + 10000,top: -75,index: 420},
+    {name: '橙-房子-1',fileName: '@|橙-房子-1.png|',width: 427,height: 327,opacity: 100,left: -708 + 10000,top: -75,index: 421},
+    {name: '橙-石头',fileName: '@|橙-石头.png|',width: 1421,height: 472,opacity: 100,left: -1614 + 10000,top: 28,index: 420},
+    {name: '橙-橙树-2',fileName: '@|橙-橙树-2.png|',width: 359,height: 368,opacity: 100,left: -1263 + 10000,top: -33,index: 420.5},
+    {name: '橙-橙树-3',fileName: '@|橙-橙树-3.png|',width: 379,height: 310,opacity: 100,left: -436 + 10000,top: -66,index: 422},
+    {name: '橙-橙树-4',fileName: '@|橙-橙树-4.png|',width: 399,height: 281,opacity: 100,left: -145 + 10000,top: 208,index: 419},
+    {name: '橙-路面',fileName: '@|橙-路面.png|',width: 1628,height: 330,opacity: 100,left: -1318 + 10000,top: 157,index: 421},
+    {name: '橙-树',fileName: '@|橙-树.png|',width: 501,height: 385,opacity: 100,left: -1125 + 10000,top: -140,index: 422},
+    {name: '橙-江水',fileName: '@|橙-江水.png|',width: 589,height: 263,opacity: 100,left: -1447 + 10000,top: -118,index: 423},
+    {name: '远山-2',fileName: '@|远山-2.png|',width: 3287,height: 547,opacity: 100,left: -1699 + 10000,top: -807,index: 436},
     // 水
-    {name: '文字-水',fileName: '@|文字-水.png|',width: 88,height: 87,opacity: 0,left: 408,top: -167,index: 436},
-    {name: '水-小舟',fileName: '@|水-小舟.png|',width: 115,height: 123,opacity: 100,left: 1412,top: -41,index: 430},
-    {name: '水-江水',fileName: '@|水-江水.png|',width: 662,height: 123,opacity: 100,left: -512,top: -130,index: 430},
-    {name: '水-江水-2',fileName: '@|水-江水-2.png|',width: 595,height: 85,opacity: 100,left: 1258,top: -33,index: 431},
-    {name: '水-江水-3',fileName: '@|水-江水-3.png|',width: 1062,height: 123,opacity: 100,left: 808,top: 80,index: 432},
-    {name: '水-江水-4',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292,top: 188,index: 433},
-    {name: '水-江水-4-copy',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292,top: 388,index: 433},
-    {name: '水-江水-4-copy-2',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 392,top: 588,index: 433},
-    {name: '水-江水-5',fileName: '@|水-江水-5.png|',width: 557,height: 102,opacity: 100,left: -47,top: 130,index: 434},
-    {name: '水-渔网',fileName: '@|水-渔网.png|',width: 373,height: 215,opacity: 100,left: -44,top: -82,index: 437},
-    {name: '水-鸟',fileName: '@|水-鸟.png|',width: 51,height: 36,opacity: 100,left: 859,top: -104,index: 432},
-    {name: '水-宝塔',fileName: '@|水-宝塔.png|',width: 1063,height: 380,opacity: 100,left: 259,top: -201,index: 438},
+    {name: '文字-水',fileName: '@|文字-水.png|',width: 88,height: 87,opacity: 0,left: 408 + 7500,top: -167,index: 470},
+    {name: '水-小舟',fileName: '@|水-小舟.png|',width: 115,height: 123,opacity: 100,left: 1412 + 7500,top: -41,index: 470},
+    {name: '水-江水',fileName: '@|水-江水.png|',width: 662,height: 123,opacity: 100,left: -512 + 7500,top: -130,index: 470},
+    {name: '水-江水-2',fileName: '@|水-江水-2.png|',width: 595,height: 85,opacity: 100,left: 1258 + 7500,top: -33,index: 470},
+    {name: '水-江水-3',fileName: '@|水-江水-3.png|',width: 1062,height: 123,opacity: 100,left: 808 + 7500,top: 80,index: 470},
+    {name: '水-江水-4',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292 + 7500,top: 188,index: 470},
+    {name: '水-江水-4-copy',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 292 + 7500,top: 388,index: 470},
+    {name: '水-江水-4-copy-2',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 392 + 7500,top: 588,index: 470},
+    {name: '水-江水-5',fileName: '@|水-江水-5.png|',width: 557,height: 102,opacity: 100,left: -47 + 7500,top: 130,index: 470},
+    {name: '水-渔网',fileName: '@|水-渔网.png|',width: 373,height: 215,opacity: 100,left: -44 + 7500,top: -82,index: 470},
+    {name: '水-鸟',fileName: '@|水-鸟.png|',width: 51,height: 36,opacity: 100,left: 859 + 7500,top: -104,index: 470},
+    {name: '水-宝塔',fileName: '@|水-宝塔.png|',width: 1063,height: 380,opacity: 100,left: 259 + 7500,top: -201,index: 470},
     // 茶
     {name: '远山-copy-2',fileName: '@|远山.png|',width: 5094,height: 779,opacity: 100,left: -600,top: -507,index: 567},
     {name: '文字-茶',fileName: '@|文字-茶.png|',width: 87,height: 87,opacity: 0,left: 2054,top: 131,index: 565},
@@ -367,22 +372,24 @@
         .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -330}, {x: 75, y: -45, z: -380}, {x: 70, y: -65, z: -480}]}, 8)
         .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 11)
         // 视角移动到瓷
-        .to(camera.rotation, 5, {y: -1.4}, 16)
+        .to(camera.rotation, 2, {y: -1.4}, 15.5)
         // .to(camera.position, 4, {bezier:[{x: 220, y: -65, z: -420}]}, 17)
-        .to(camera.position, 6, {bezier:[{x: 75, y: -65, z: -555}, {x: 285, y: -65, z: -645}]}, 15)
-        // .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 16)
+        .to(camera.position, 6, {bezier:[{x: 112, y: -65, z: -605}, {x: 325, y: -55, z: -640}]}, 15)
+        .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 20)
         // // 视角移动到橙子
+        .to(camera.rotation, 6, {y: 0, ease:Power1.easeOut}, 22)
+        .to(camera.position, 6, {bezier:[{x: 480, y: -55, z: -615}, {x: 955, y: -25, z: -700}]}, 22)
         // .to(camera.position, 7, {bezier:[{x: 165, y: -60, z: -560}, {x: 60, y: -50, z: -660}, {x: -60, y: -20, z: -720}]}, 18)
-        // .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 24)
-        // // 移动到水
-        // .to(camera.position, 4, {bezier:[{x: 0, y: -15, z: -760}, {x: 80, y: 0, z: -790}]}, 26)
-        // .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 28)
-        // // 茶
-        // .to(camera.position, 4, {bezier:[{x: 69, y: 2.5, z: -870}, {x: 175, y: -10, z: -1000}]}, 31)
-        // .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 33)
-        // // 药土路
-        // .to(camera.position, 4, {bezier:[{x: 185, y: -30, z: -1130}, {x: 25, y: 40, z: -1230}, {x: -15, y: 40, z: -1290}]}, 36)
-        // .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 38)
+        .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 26)
+        // 移动到水
+        .to(camera.position, 4, {bezier:[{x: 950, y: -25, z: -835}, {x: 840, y: -25, z: -845}]}, 29)
+        .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 31)
+        // 茶
+        .to(camera.position, 4, {bezier:[{x: 840, y: -15, z: -900}, {x: 175, y: -10, z: -1000}]}, 34)
+        .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 33)
+        // 药土路
+        .to(camera.position, 4, {bezier:[{x: 185, y: -30, z: -1130}, {x: 25, y: 40, z: -1230}, {x: -15, y: 40, z: -1290}]}, 39)
+        .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 38)
         // .to(camera.position, 8, {x: 60, y: 40, z: -1290}, 40)
         // .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 42)
         // .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 44)
@@ -397,16 +404,17 @@
       camera.updateProjectionMatrix();
       renderer.setSize( window.innerWidth, window.innerHeight );
     },
-    changeValue: function (key, value) {
-      value = parseInt(value) * this.data.beishu
+    changeValue: function (item, key, value) {
+      value = parseFloat(value) * this.data.beishu
       const target = scene.getObjectByName(this.data.inputValue)
       
       if (target) {
-        target.position[key] += value
+        target[item][key] += value
         console.log({
           left: target.position.x * 10 - (target.scale.x * 10 / 2),
           top: -target.position.y * 10 - (target.scale.y * 10 / 2),
-          index: target.position.z / -2
+          index: target.position.z / -2,
+          rotationY: target.rotation.y
         })
       }
       
