@@ -2,17 +2,17 @@
 .page-1
   #container
   canvas#mainText
-  //- .conn-box
-  //-   input(type="text" o-value="this.data.inputValue")
-  //-   input(type="number" o-value="this.data.beishu")
-  //-   span(o-tap="changeValue('position', 'y', 1)") 上
-  //-   span(o-tap="changeValue('position', 'y', -1)") 下
-  //-   span(o-tap="changeValue('position', 'x', -1)") 左
-  //-   span(o-tap="changeValue('position', 'x', 1)") 右
-  //-   span(o-tap="changeValue('position', 'z', -1)") 前
-  //-   span(o-tap="changeValue('position', 'z', 1)") 后
-  //-   span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
-  //-   span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
+  .conn-box
+    input(type="text" o-value="this.data.inputValue")
+    input(type="number" o-value="this.data.beishu")
+    span(o-tap="changeValue('position', 'y', 1)") 上
+    span(o-tap="changeValue('position', 'y', -1)") 下
+    span(o-tap="changeValue('position', 'x', -1)") 左
+    span(o-tap="changeValue('position', 'x', 1)") 右
+    span(o-tap="changeValue('position', 'z', -1)") 前
+    span(o-tap="changeValue('position', 'z', 1)") 后
+    span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
+    span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
 </template>
 
 <script>
@@ -383,17 +383,18 @@
         .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 16)
         // 视角移动到瓷
         .to(camera.rotation, 4, {y: -1.4}, 22)
-        .to(camera.position, 1, {bezier:[{x: 80, y: -80, z: -559}]}, 19)
+        .to(camera.position, 1, {bezier:[{x: 70, y: -66, z: -559.5}]}, 19)
         .to(camera.position, 4, {bezier:[{x: 110, y: -62, z: -650}, {x: 140, y: -50, z: -780}]}, 22)
         .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 24)
         // 视角移动到橙子
         .to(camera.rotation, 4, {y: 0, ease:Power1.easeOut}, 29)
-        .to(camera.position, 1, {bezier:[{x: 220, y: -60, z: -715}]}, 27)
-        .to(camera.position, 4, {bezier:[{x: 220, y: -60, z: -715}, {x: 245, y: -45, z: -760}, {x: 545, y: -5, z: -820}]}, 29)
+        .to(camera.position, 1, {bezier:[{x: 235, y: -60, z: -730}]}, 27)
+        .to(camera.position, 4, {bezier:[{x: 425, y: -30, z: -770}, {x: 545, y: -5, z: -820}]}, 29)
         .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 31)
-        // // 移动到水
-        // .to(camera.position, 4, {bezier:[{x: 550, y: -25, z: -905}, {x: 800, y: -25, z: -1055}]}, 29)
-        // .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 31)
+        // 移动到水
+        .to(camera.position, 1, {bezier:[{x: 571.1, y: -3.5, z: -923.2}]}, 34)
+        .to(camera.position, 4, {bezier:[{x: 690, y: -12, z: -985}, {x: 800, y: -25, z: -1055}]}, 36)
+        .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 31)
         // // 茶
         // .to(camera.position, 4, {bezier:[{x: 790, y: -25, z: -1145}, {x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 34)
         // .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 33)

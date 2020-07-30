@@ -30,7 +30,7 @@
   <body>
     
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas></div>
+    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span></div></div>
     
 
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
@@ -1156,9 +1156,9 @@ owo.script = {
         y: -1.4
       }, 22).to(camera.position, 1, {
         bezier: [{
-          x: 80,
-          y: -80,
-          z: -559
+          x: 70,
+          y: -66,
+          z: -559.5
         }]
       }, 19).to(camera.position, 4, {
         bezier: [{
@@ -1178,19 +1178,15 @@ owo.script = {
         ease: Power1.easeOut
       }, 29).to(camera.position, 1, {
         bezier: [{
-          x: 220,
+          x: 235,
           y: -60,
-          z: -715
+          z: -730
         }]
       }, 27).to(camera.position, 4, {
         bezier: [{
-          x: 220,
-          y: -60,
-          z: -715
-        }, {
-          x: 245,
-          y: -45,
-          z: -760
+          x: 425,
+          y: -30,
+          z: -770
         }, {
           x: 545,
           y: -5,
@@ -1198,10 +1194,26 @@ owo.script = {
         }]
       }, 29).to(scene.getObjectByName('文字-橙').material, 2, {
         opacity: 1
-      }, 31); // // 移动到水
-      // .to(camera.position, 4, {bezier:[{x: 550, y: -25, z: -905}, {x: 800, y: -25, z: -1055}]}, 29)
-      // .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 31)
-      // // 茶
+      }, 31) // 移动到水
+      .to(camera.position, 1, {
+        bezier: [{
+          x: 571.1,
+          y: -3.5,
+          z: -923.2
+        }]
+      }, 34).to(camera.position, 4, {
+        bezier: [{
+          x: 690,
+          y: -12,
+          z: -985
+        }, {
+          x: 800,
+          y: -25,
+          z: -1055
+        }]
+      }, 36).to(scene.getObjectByName('文字-水').material, 2, {
+        opacity: 1
+      }, 31); // // 茶
       // .to(camera.position, 4, {bezier:[{x: 790, y: -25, z: -1145}, {x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 34)
       // .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 33)
       // // 药
