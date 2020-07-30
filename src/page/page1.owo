@@ -379,17 +379,18 @@
         .to(scene.getObjectByName('文字-山').material, 2, {opacity: 1}, 6)
         // 视角移动到村
         .to(camera.position, 1, {bezier:[{x: 82, y: -65, z: -329.4}]}, 9)
-        .to(camera.position, 6, {bezier:[{x: 82, y: -65, z: -329.4}, {x: 75, y: -35, z: -390}, {x: 70, y: -65, z: -500}]}, 12)
-        // .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 13)
-        // // 视角移动到瓷
-        // .to(camera.rotation, 5, {y: -1.4}, 16)
-        // // .to(camera.position, 4, {bezier:[{x: 220, y: -65, z: -420}]}, 17)
-        // .to(camera.position, 6, {bezier:[{x: 80, y: -65, z: -560}, {x: 110, y: -62, z: -650}, {x: 140, y: -50, z: -780}]}, 15)
-        // .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 20)
-        // // 视角移动到橙子
-        // .to(camera.rotation, 4, {y: 0, ease:Power1.easeOut}, 23)
-        // .to(camera.position, 6, {bezier:[{x: 245, y: -45, z: -760}, {x: 545, y: -5, z: -820}]}, 22)
-        // .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 26)
+        .to(camera.position, 4, {bezier:[{x: 75, y: -35, z: -390}, {x: 70, y: -65, z: -500}]}, 12)
+        .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 16)
+        // 视角移动到瓷
+        .to(camera.rotation, 4, {y: -1.4}, 22)
+        .to(camera.position, 1, {bezier:[{x: 80, y: -80, z: -559}]}, 19)
+        .to(camera.position, 4, {bezier:[{x: 110, y: -62, z: -650}, {x: 140, y: -50, z: -780}]}, 22)
+        .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 24)
+        // 视角移动到橙子
+        .to(camera.rotation, 4, {y: 0, ease:Power1.easeOut}, 29)
+        .to(camera.position, 1, {bezier:[{x: 220, y: -60, z: -715}]}, 27)
+        .to(camera.position, 4, {bezier:[{x: 220, y: -60, z: -715}, {x: 245, y: -45, z: -760}, {x: 545, y: -5, z: -820}]}, 29)
+        .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 31)
         // // 移动到水
         // .to(camera.position, 4, {bezier:[{x: 550, y: -25, z: -905}, {x: 800, y: -25, z: -1055}]}, 29)
         // .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 31)
