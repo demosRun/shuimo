@@ -11,22 +11,28 @@ document.body.addEventListener('keyup', function (e) {
   // console.log(e)
   switch (e.keyCode) {
     case 87:
-      camera.position.z = camera.position.z -= 5
+      camera.position.z -= 1 * owo.script.page1.data.beishu
       break;
     case 65:
-      camera.position.x = camera.position.x -= 5
+      camera.position.x -= 1 * owo.script.page1.data.beishu
       break;
     case 83:
-      camera.position.z = camera.position.z += 5
+      camera.position.z += 1 * owo.script.page1.data.beishu
       break;
     case 68:
-      camera.position.x = camera.position.x += 5
+      camera.position.x += 1 * owo.script.page1.data.beishu
       break;
     case 69:
-      camera.rotation.y = camera.rotation.y -= 0.1
+      camera.rotation.y -= 0.1 * owo.script.page1.data.beishu
       break;
     case 81:
-      camera.rotation.y = camera.rotation.y += 0.1
+      camera.rotation.y += 0.1 * owo.script.page1.data.beishu
+      break;
+    case 107:
+      camera.position.y += 1 * owo.script.page1.data.beishu
+      break;
+    case 109:
+      camera.position.y -= 1 * owo.script.page1.data.beishu
       break;
     default:
       break;

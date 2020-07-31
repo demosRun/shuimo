@@ -30,7 +30,7 @@
   <body>
     
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span></div></div>
+    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div></div>
     
 
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
@@ -833,7 +833,7 @@ var infoData = [{
   opacity: 0,
   left: -509 + 6000,
   top: -449,
-  index: 685 + 150
+  index: 685 + 200
 }, {
   name: '药土路-房间-1',
   fileName: './static/resource/药土路-房间-1.png',
@@ -842,7 +842,7 @@ var infoData = [{
   opacity: 100,
   left: -778 + 6000,
   top: -401,
-  index: 691.8 + 150
+  index: 691.8 + 200
 }, {
   name: '药土路-房间-2',
   fileName: './static/resource/药土路-房间-2.png',
@@ -851,7 +851,7 @@ var infoData = [{
   opacity: 100,
   left: -522 + 6000,
   top: -349,
-  index: 692 + 150
+  index: 692 + 200
 }, {
   name: '药土路-山-1',
   fileName: './static/resource/药土路-山-1.png',
@@ -860,7 +860,7 @@ var infoData = [{
   opacity: 100,
   left: -1403 + 6000,
   top: -520,
-  index: 692.6 + 150
+  index: 692.6 + 200
 }, {
   name: '药土路-山-3',
   fileName: './static/resource/药土路-山-3.png',
@@ -869,7 +869,7 @@ var infoData = [{
   opacity: 100,
   left: -852 + 6000,
   top: -593,
-  index: 698 + 150
+  index: 698 + 200
 }, {
   name: '药土路-背景',
   fileName: './static/resource/药土路-背景.png',
@@ -878,7 +878,7 @@ var infoData = [{
   opacity: 100,
   left: -1330 + 6000,
   top: -402,
-  index: 693.2 + 150
+  index: 693.2 + 200
 }, {
   name: '药土路-远山',
   fileName: './static/resource/药土路-远山.png',
@@ -887,18 +887,9 @@ var infoData = [{
   opacity: 100,
   left: -3445 + 6000,
   top: -758,
-  index: 713 + 150
+  index: 713 + 200
 }, // 土路
 {
-  name: '文字-路',
-  fileName: './static/resource/文字-路.png',
-  width: 85,
-  height: 84,
-  opacity: 0,
-  left: 1226 + 6000,
-  top: -432 + 800,
-  index: 673 + 250
-}, {
   name: '文字-土',
   fileName: './static/resource/文字-土.png',
   width: 88,
@@ -906,7 +897,7 @@ var infoData = [{
   opacity: 0,
   left: 370 + 6000,
   top: -366 + 800,
-  index: 673 + 250
+  index: 673 + 350
 }, {
   name: '药土路-土块',
   fileName: './static/resource/药土路-土块.png',
@@ -915,7 +906,7 @@ var infoData = [{
   opacity: 100,
   left: 731 + 6000,
   top: -198 + 800,
-  index: 691 + 250
+  index: 691 + 350
 }, {
   name: '药土路-山-2',
   fileName: './static/resource/药土路-山-2.png',
@@ -924,25 +915,7 @@ var infoData = [{
   opacity: 100,
   left: -799 + 6000,
   top: -533 + 800,
-  index: 692 + 250
-}, {
-  name: '高铁',
-  fileName: './static/resource/高铁.png',
-  width: 869,
-  height: 53,
-  opacity: 100,
-  left: 300 + 6000,
-  top: -371 + 800,
-  index: 693.8 + 250
-}, {
-  name: '桥面',
-  fileName: './static/resource/桥面.png',
-  width: 3706,
-  height: 102,
-  opacity: 100,
-  left: 282 + 6000,
-  top: -317 + 800,
-  index: 693 + 250
+  index: 692 + 350
 }, {
   name: '药土路-远山-copy',
   fileName: './static/resource/药土路-远山.png',
@@ -951,7 +924,7 @@ var infoData = [{
   opacity: 100,
   left: -3445 + 6000,
   top: -758 + 800,
-  index: 713 + 250
+  index: 713 + 350
 }, {
   name: '药土路-背景-copy',
   fileName: './static/resource/药土路-背景.png',
@@ -960,7 +933,53 @@ var infoData = [{
   opacity: 100,
   left: -1330 + 6000,
   top: -402 + 800,
-  index: 693.2 + 250
+  index: 693.2 + 350
+}, // 桥面
+{
+  name: '药土路-远山-copy-2',
+  fileName: './static/resource/药土路-远山.png',
+  width: 7440,
+  height: 591,
+  opacity: 100,
+  left: -3445 + 6000,
+  top: -758 + 800,
+  index: 1245.5
+}, {
+  name: '药土路-背景-copy-2',
+  fileName: './static/resource/药土路-背景.png',
+  width: 5441,
+  height: 676,
+  opacity: 100,
+  left: -1330 + 6000,
+  top: -402 + 800,
+  index: 693.2 + 500
+}, {
+  name: '文字-路',
+  fileName: './static/resource/文字-路.png',
+  width: 85,
+  height: 84,
+  opacity: 0,
+  left: 1226 + 6000,
+  top: -432 + 800,
+  index: 673 + 500
+}, {
+  name: '高铁',
+  fileName: './static/resource/高铁.png',
+  width: 869,
+  height: 53,
+  opacity: 100,
+  left: 5300,
+  top: 379,
+  index: 693 + 500
+}, {
+  name: '桥面',
+  fileName: './static/resource/桥面.png',
+  width: 3706,
+  height: 102,
+  opacity: 100,
+  left: 282 + 6000,
+  top: -371 + 800,
+  index: 693 + 500
 }];
 owo.script = {
   "page1": {
@@ -1077,6 +1096,7 @@ owo.script = {
           logo.scale.set(element.width / 10, element.height / 10, 0.1);
           logo.name = element.name;
           if (element.rotationY) logo.rotation.y = element.rotationY;
+          if (element.rotationX) logo.rotation.x = element.rotationX;
           logo.updateMatrix();
           logo.position.set(objL + obgW / 2, -objT - obgH / 2, -2 * element.index);
           scene.add(logo);
@@ -1176,13 +1196,13 @@ owo.script = {
       .to(camera.rotation, 4, {
         y: 0,
         ease: Power1.easeOut
-      }, 29).to(camera.position, 1, {
+      }, 30).to(camera.position, 1, {
         bezier: [{
           x: 235,
           y: -60,
           z: -730
         }]
-      }, 27).to(camera.position, 4, {
+      }, 28).to(camera.position, 4, {
         bezier: [{
           x: 425,
           y: -30,
@@ -1192,16 +1212,16 @@ owo.script = {
           y: -5,
           z: -820
         }]
-      }, 29).to(scene.getObjectByName('文字-橙').material, 2, {
+      }, 30).to(scene.getObjectByName('文字-橙').material, 2, {
         opacity: 1
-      }, 31) // 移动到水
+      }, 32) // 移动到水
       .to(camera.position, 1, {
         bezier: [{
           x: 571.1,
           y: -3.5,
           z: -923.2
         }]
-      }, 34).to(camera.position, 4, {
+      }, 35).to(camera.position, 4, {
         bezier: [{
           x: 690,
           y: -12,
@@ -1211,23 +1231,94 @@ owo.script = {
           y: -25,
           z: -1055
         }]
-      }, 36).to(scene.getObjectByName('文字-水').material, 2, {
+      }, 38).to(scene.getObjectByName('文字-水').material, 2, {
         opacity: 1
-      }, 31); // // 茶
-      // .to(camera.position, 4, {bezier:[{x: 790, y: -25, z: -1145}, {x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 34)
-      // .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 33)
-      // // 药
-      // .to(camera.position, 4, {bezier:[{x: 480, y: 0, z: -1445}, {x: 550, y: 30, z: -1625}]}, 39)
-      // .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 38)
-      // // 土路
-      // .to(camera.position, 4, {bezier:[{x: 550, y: 26, z: -1690}, {x: 670, y: -40, z: -1765}]}, 44)
-      // .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 46)
-      // .to(camera.position, 6, {bezier:[{x: 690, y: -40, z: -1785}, {x: 1240, y: -40, z: -1825}]}, 49)
-      // .to(scene.getObjectByName('高铁').position, 6, {x: 1200}, 49)
-      // .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 50)
-      // .to(scene.getObjectByName('桥面').material, 1, {opacity: 0}, 50)
-      // .to(camera.rotation, 3, {y: -0.6}, 49)
-      // .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 47)
+      }, 40) // 茶
+      .to(camera.position, 1, {
+        bezier: [{
+          x: 781,
+          y: -26,
+          z: -1137
+        }]
+      }, 41).to(camera.position, 4, {
+        bezier: [{
+          x: 640,
+          y: -35,
+          z: -1235
+        }, {
+          x: 480,
+          y: -45,
+          z: -1345
+        }]
+      }, 44).to(scene.getObjectByName('文字-茶').material, 2, {
+        opacity: 1
+      }, 46) // 药
+      .to(camera.position, 1, {
+        bezier: [{
+          x: 508,
+          y: 11,
+          z: -1447
+        }]
+      }, 49).to(camera.position, 4, {
+        bezier: [{
+          x: 550,
+          y: 30,
+          z: -1675
+        }]
+      }, 52).to(scene.getObjectByName('文字-药').material, 2, {
+        opacity: 1
+      }, 54) // 土路
+      .to(camera.position, 1, {
+        bezier: [{
+          x: 552,
+          y: 30,
+          z: -1785
+        }]
+      }, 57).to(camera.position, 4, {
+        bezier: [{
+          x: 600,
+          y: 35,
+          z: -1885
+        }, {
+          x: 670,
+          y: -40,
+          z: -1965
+        }]
+      }, 60).to(scene.getObjectByName('文字-土').material, 2, {
+        opacity: 1
+      }, 62).to(camera.position, 1, {
+        bezier: [{
+          x: 674,
+          y: -64,
+          z: -2083
+        }]
+      }, 66).to(camera.rotation, 4, {
+        y: -0.5,
+        ease: Power1.easeOut
+      }, 69).to(camera.position, 4, {
+        bezier: [{
+          x: 693,
+          y: -43,
+          z: -2300
+        }]
+      }, 69).to(scene.getObjectByName('文字-路').material, 2, {
+        opacity: 1
+      }, 71) // 等待两秒出现文字后高铁驶出
+      .to(scene.getObjectByName('高铁').position, 4, {
+        x: 9330
+      }, 72).to(scene.getObjectByName('高铁').material, 1, {
+        opacity: 0
+      }, 74).to(scene.getObjectByName('桥面').material, 1, {
+        opacity: 0
+      }, 74).to(camera.position, 4, {
+        bezier: [{
+          x: 994,
+          y: -43,
+          z: -2331
+        }]
+      }, 73).to(camera.rotation, 4, {
+        y: -0.9
+      }, 73); // .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 47)
     },
     "onWindowResize": function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
