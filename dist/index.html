@@ -28,18 +28,18 @@
       
   </head>
   <body>
-    
+    <div class="rotate-box-pc">
     <!-- 页面[loading]-->
     <div class="loading-box page" template="loading" style="display: none;"><img class="loading" src="https://cunchu.site/ozzx/resource/loading-clould.png"><img class="loading-2" src="https://cunchu.site/ozzx/resource/loading-ani.png"><div class="num">0%</div></div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><canvas id="mainText"></canvas><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div></div>
+    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><canvas id="mainText"></canvas><img class="play" src="./static/resource/开始按钮.png" o-tap="start"></div></div>
     
 
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/three.min.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/TweenMax.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="./static/js/OrbitControls.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="./static/js/autoScale.js" type="text/javascript"  charset="UTF-8"></script>
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
 <script type="text/javascript" charset="UTF-8">
@@ -47,16 +47,17 @@
 var renderer = null;
 var scene = null;
 var camera = null;
-var infoData = [{
-  name: '开始按钮',
-  fileName: './static/resource/开始按钮.png',
-  width: 339,
-  height: 208,
-  opacity: 100,
-  left: 2350,
-  top: 956,
-  index: 0
-}, {
+var infoData = [// {
+//   name: '开始按钮',
+//   fileName: './static/resource/开始按钮.png',
+//   width: 339,
+//   height: 208,
+//   opacity: 100,
+//   left: 2350,
+//   top: 956,
+//   index: 0
+// },
+{
   name: '编者按',
   fileName: './static/resource/编者按.png',
   width: 1681,
@@ -1036,7 +1037,7 @@ var infoData = [{
   height: 84,
   opacity: 0,
   left: 1226 + 6000,
-  top: -432 + 800,
+  top: -532 + 800,
   index: 673 + 500
 }, {
   name: '高铁',
@@ -1064,7 +1065,7 @@ var infoData = [{
   opacity: 100,
   left: 5782,
   top: 258,
-  index: 1168
+  index: 1158
 }, {
   name: '路山村-大山-4-copy-2',
   fileName: './static/resource/路山村-大山-4.png',
@@ -1073,7 +1074,7 @@ var infoData = [{
   opacity: 100,
   left: 5982,
   top: -82,
-  index: 1218
+  index: 1208
 }, {
   name: '路山村-大山-5-copy-2',
   fileName: './static/resource/路山村-大山-5.png',
@@ -1082,7 +1083,7 @@ var infoData = [{
   opacity: 100,
   left: 5052,
   top: 208,
-  index: 1191.5
+  index: 1181.5
 }, {
   name: '路山村-大山-2-copy-2',
   fileName: './static/resource/路山村-大山-2.png',
@@ -1091,7 +1092,7 @@ var infoData = [{
   opacity: 100,
   left: 5552,
   top: 108,
-  index: 1184.5
+  index: 1174.5
 }];
 owo.script = {
   "loading": {
@@ -1159,7 +1160,7 @@ owo.script = {
           imgMask = new Image();
       imgMask.src = "https://cunchu.site/owo/material/shuimo/cloud-texture.png";
       img.src = "./static/resource/头-主文字.png";
-      var speed = 20;
+      var speed = 30;
       var requestId;
 
       function draw() {
@@ -1183,7 +1184,7 @@ owo.script = {
         }, 1000);
         setTimeout(function () {
           _this2.query('#mainText').style.opacity = '0';
-        }, 5000); // 播放动画
+        }, 6000); // 播放动画
 
         var t = new TimelineMax({});
         t // 燕子飞行
@@ -1228,15 +1229,14 @@ owo.script = {
             y: -1.15
           }); // tm.to(scene.getObjectByName('水-江水-3').position, 3, {x:830.9,y:-16.15})
           // tm.to(scene.getObjectByName('水-江水-3').material, 3, {opacity: 0.1})
-
-          _this2.play();
-        }, 5000);
+          // this.play()
+        }, 6000);
       };
     },
     "init": function init() {
       var container = document.getElementById('container'); // 设立相机
 
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 800);
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth > window.innerHeight ? window.innerWidth / window.innerHeight : window.innerHeight / window.innerWidth, 0.1, 800);
       camera.position.set(150, -65, 100);
       camera.lookAt(150, -65, 0); // 建立一个场景
 
@@ -1249,7 +1249,9 @@ owo.script = {
       });
       renderer.setClearColor(0xfffefb, 1.0);
       renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      if (window.innerWidth > window.innerHeight) renderer.setSize(window.innerWidth, window.innerHeight);else {
+        renderer.setSize(window.innerHeight, window.innerWidth);
+      }
       container.appendChild(renderer.domElement); // renderer.outputEncoding = THREE.sRGBEncoding;
       // renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
@@ -1523,6 +1525,9 @@ owo.script = {
           rotationY: target.rotation.y
         });
       }
+    },
+    "start": function start() {
+      this.play();
     }
   }
 };
