@@ -1,4 +1,4 @@
-// Sat Aug 01 2020 08:41:37 GMT+0800 (GMT+08:00)
+// Sat Aug 01 2020 20:10:45 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -15,11 +15,6 @@ var _owo = {
 
 /* 运行页面初始化方法 */
 _owo.runCreated = function (pageFunction) {
-  // 如果dom已经被删掉那么不会运行对应的方法
-  if (!pageFunction.$el) {
-    console.info('dom元素不存在!')
-    return;
-  }
   try {
     // console.log(pageFunction)
     if (pageFunction.show) {pageFunction.show.apply(pageFunction)}
@@ -156,10 +151,7 @@ _owo.addEvent = function (tempDom, moudleScript) {
                     if (value == undefined) value = ''
                     tempDom.value = value
                     tempDom.oninput = function (e) {
-                      var eventFor = e.target.getAttribute('o-value')
-                      var value = e.target.value
-                      if (value == '') value = '""'
-                      shaheRun.apply(moudleScript, [eventFor + '=' + value])
+                      shaheRun.apply(moudleScript, [eventFor + '=' + e.target.value])
                     }
                     break;
                   case 'password':
@@ -291,16 +283,13 @@ function Page(pageScript, parentScript) {
 }
 
 function owoPageInit () {
+  // console.log(entryDom)
+  // console.log(this)
   _owo.runCreated(this)
-  // 递归处理
-  function recursion (entry) {
-    for (var key in entry.template) {
-      var templateScript = entry.template[key]
-      _owo.runCreated(templateScript)
-      recursion(templateScript)
-    }
+  for (var key in this.template) {
+    var templateScript = this.template[key]
+    _owo.runCreated(templateScript)
   }
-  recursion(this)
   
   
 }
@@ -381,6 +370,82 @@ _owo.addHTMLElementFun('query', function(str) {
 
 
 
+owo.go = function (config) {
+  if (!config) return
+  var paramString = ''
+  var pageString = ''
+  var activePageName = config.page || owo.activePage
+  
+  // 处理动画缩写
+  if (config['ani']) {
+    var temp = config['ani'].split('/')
+    config.inAnimation = temp[0]
+    config.outAnimation = temp[1]
+  }
+  // 待优化 不需要这段代码的情况不打包这段代码
+  if (!config.inAnimation && !config.outAnimation) {
+    if (owo.globalAni) {
+      if (owo.globalAni["in"]) config.inAnimation =  owo.globalAni["in"]
+      if (owo.globalAni.out) config.outAnimation = owo.globalAni.out
+      if (owo.globalAni["backIn"]) config.backInAnimation = owo.globalAni["backIn"]
+      if (owo.globalAni["backOut"]) config.backOutAnimation = owo.globalAni["backOut"]
+    }
+    if (owo.pageAni && owo.pageAni[activePageName]) {
+      if (owo.pageAni[activePageName]["in"]) config.inAnimation = owo.pageAni[activePageName]["in"]
+      if (owo.pageAni[activePageName]["out"]) config.outAnimation = owo.pageAni[activePageName]["out"]
+      if (owo.pageAni[activePageName]["backIn"]) config.backInAnimation = owo.globalAni["backIn"]
+      if (owo.pageAni[activePageName]["backOut"]) config.backOutAnimation = owo.globalAni["backOut"]
+    }
+  }
+  if (config.inAnimation && config.outAnimation) {
+    owo.state._animation = {
+      "in": config.inAnimation,
+      "out": config.outAnimation,
+      "backIn": config.backInAnimation,
+      "backOut": config.backOutAnimation,
+      "forward": true
+    }
+  }
+  if (config.page) {
+    if (!owo.script[config.page]) {console.error("导航到不存在的页面: " + config.page); return}
+    if (config.page != owo.activePage) pageString = '#' + config.page
+  }
+  if (config.paramString) {
+    var search = _owo.getQueryVariable()
+    var addSEarch = config.paramString.split('=')
+    search[addSEarch[0]] = addSEarch[1]
+    paramString = '?'
+    for (var key in search) {
+      var value = search[key]
+      if (value) paramString += (paramString == '?' ?  '' : '&') + key + '=' + value
+    }
+  }
+  // 防止在同一个页面刷新
+  if (!paramString && !pageString) return
+  // owo.state._animation = null
+  // 判断是否支持history模式
+  if (window.history && window.history.pushState) {
+    if (config.noBack) {
+      window.history.replaceState({
+        url: window.location.href
+      }, '', paramString + pageString)
+    } else {
+      window.history.pushState({
+        url: window.location.href
+      }, '', paramString + pageString)
+    }
+
+    if (config.page) _owo.hashchange()
+    if (config.paramString) _owo.getViewChange()
+  } else {
+    if (config.noBack) {
+      location.replace(paramString + pageString)
+    } else {
+      window.location.href = paramString + pageString
+    }
+  }
+}
+
 
 // 沙盒运行
 function shaheRun (code) {
@@ -437,41 +502,115 @@ _owo.ready = (function() {               //这个函数返回whenReady()函数
   }
 })()
 
-// 单页面-页面资源加载完毕事件
+
+_owo.getarg = function (url) { // 获取URL #后面内容
+  if (!url) return null
+  var arg = url.split("#");
+  return arg[1] ? arg[1].split('?')[0] : null
+}
+
+// 页面资源加载完毕事件
 _owo.showPage = function() {
+  var _index = 0
   for (var key in owo.script) {
     owo.script[key].$el = document.querySelector('.page[template="' + key + '"]')
     owo.script[key] = new Page(owo.script[key])
+    owo.script[key]._index = _index++
   }
-  var firstPageList = document.querySelector('.page[template]')
-  // 允许项目只有模块没有页面
-  if (firstPageList) {
-    owo.entry = firstPageList.getAttribute('template')
-    // 查找入口
-    if (!owo.script[owo.entry] || !owo.script[owo.entry].$el) {
-      console.error('找不到页面入口!')
-    } else {
-      owo.activePage = owo.entry
-      var activeScript = owo.script[owo.activePage]
-      activeScript.owoPageInit()
-      activeScript.handleEvent()
+  owo.entry = document.querySelector('[template]').getAttribute('template')
+  // 取出URL地址判断当前所在页面
+  var pageArg = _owo.getarg(window.location.hash)
+  
+  
+
+  // 从配置项中取出程序入口
+  var page = pageArg ? pageArg : owo.entry
+  if (page) {
+    if (!owo.script[page] || !owo.script[page].$el) {
+      console.error('入口文件设置错误,错误值为: ', page)
+      page = owo.script[page].$el.getAttribute('template')
+      window.location.replace('#' + page)
+      return
     }
+    // 显示主页面
+    owo.script[page].$el.style.display = ''
+    window.owo.activePage = page
+    owo.script[page].owoPageInit()
+    owo.script[page].handleEvent()
+    // 处理插件
+    var plugList = document.querySelectorAll('.owo-block')
+    for (var ind = 0; ind < plugList.length; ind++) {
+      var plugEL = plugList[ind]
+      var plugName = plugEL.getAttribute('template')
+      owo.script[plugName].$el = plugEL
+      owo.script[plugName].owoPageInit()
+      owo.script[plugName].handleEvent()
+      plugEL.style.display = ''
+    }
+    
+  } else {
+    console.error('未设置程序入口!')
   }
-  // 处理插件
-  var plugList = document.querySelectorAll('.owo-block')
-  for (var ind = 0; ind < plugList.length; ind++) {
-    var plugEL = plugList[ind]
-    var plugName = plugEL.getAttribute('template')
-    owo.script[plugName].$el = plugEL
-    owo.script[plugName].owoPageInit()
-    owo.script[plugName].handleEvent()
-    plugEL.style.display = ''
-  }
+  // 设置当前页面为活跃页面
+  owo.state.newUrlParam = _owo.getarg(document.URL)
 }
+
+// url发生改变事件
+_owo.hashchange = function () {
+  // 这样处理而不是直接用event中的URL，是因为需要兼容IE
+  owo.state.oldUrlParam = owo.state.newUrlParam;
+  owo.state.newUrlParam = _owo.getarg(document.URL); 
+  // console.log(owo.state.oldUrlParam, owo.state.newUrlParam)
+  // 如果旧页面不存在则为默认页面
+  if (!owo.state.oldUrlParam) owo.state.oldUrlParam = owo.entry;
+  var newUrlParam = owo.state.newUrlParam;
+
+  // 如果没有跳转到任何页面则跳转到主页
+  if (newUrlParam === undefined) {
+    newUrlParam = owo.entry;
+  }
+
+  // 如果没有发生页面跳转则不需要进行操作
+  // 进行页面切换
+  switchPage(owo.state.oldUrlParam, newUrlParam);
+}
+
+// 切换页面前的准备工作
+function switchPage (oldUrlParam, newUrlParam) {
+  
+  var oldPage = oldUrlParam ? oldUrlParam.split('&')[0] : owo.entry
+  var newPage = newUrlParam ? newUrlParam.split('&')[0] : owo.entry
+  // 查找页面跳转前的page页(dom节点)
+  var oldDom = document.querySelector('.page[template="' + oldPage + '"]')
+  var newDom = document.querySelector('.page[template="' + newPage + '"]')
+  
+  if (!newDom) {console.error('页面不存在!'); return}
+
+  setTimeout(function () {
+    window.owo.activePage = newPage
+    window.owo.script[newPage].$el = newDom
+    window.owo.script[newPage].owoPageInit()
+    window.owo.script[newPage].handleEvent()
+    
+    // 显示路由
+    if (window.owo.script[newPage].view) window.owo.script[newPage].view._list[0].showIndex(0)
+  }, 0)
+
+  
+  
+  if (oldDom) {
+    // 隐藏掉旧的节点
+    oldDom.style.display = 'none'
+  }
+  // 查找页面跳转后的page
+  newDom.style.display = ''
+}
+
+// ios的QQ有BUG 无法触发onhashchange事件
+if(/iPhone\sOS.*QQ[^B]/.test(navigator.userAgent)) {window.onpopstate = _owo.hashchange;} else {window.onhashchange = _owo.hashchange;}
 
 // 执行页面加载完毕方法
 _owo.ready(_owo.showPage)
-
 
 
 // 这是用于代码调试的自动刷新代码，他不应该出现在正式上线版本!

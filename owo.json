@@ -104,6 +104,11 @@
 	],
 	"pageList": [
 		{
+			"name": "loading",
+			"src": "https://template.owo.ink/caa855c658c9a3b7.owo",
+			"type": "page"
+		},
+		{
 			"name": "page1",
 			"src": "./src/page/page1.owo",
 			"type": "page"

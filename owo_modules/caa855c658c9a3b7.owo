@@ -1,0 +1,206 @@
+<template lang="pug">
+.loading-box
+  img.loading(src="https://cunchu.site/ozzx/resource/loading-clould.png")
+  img.loading-2(src="https://cunchu.site/ozzx/resource/loading-ani.png")
+  .num 0%
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      imgList: [
+        "@|药土路-背景.png|",
+        "@|首页-背景.png|",
+        "@|远山.png|",
+        "@|路山村-背景.png|",
+        "@|药土路-远山.png|",
+        "@|路山村-房子-2.png|",
+        "@|头-卷轴.png|",
+        "@|远山-2.png|",
+        "@|头-背后的山.png|",
+        "@|茶叶-加1.png|",
+        "@|路山村-大山-4.png|",
+        "@|茶.png|",
+        "@|药土路-山-2.png|",
+        "@|路山村-大山-3.png|",
+        "@|路山村-大山.png|",
+        "@|路山村-大山-5.png|",
+        "@|水-宝塔.png|",
+        "@|橙-路面.png|",
+        "@|茶叶-加2.png|",
+        "@|路山村-大山-2.png|",
+        "@|药土路-山-3.png|",
+        "@|橙-橙子.png|",
+        "@|竹子.png|",
+        "@|橙-橙树-1.png|",
+        "@|药土路-山-1.png|",
+        "@|橙-石头.png|",
+        "@|药土路-房间-2.png|",
+        "@|头-树-1.png|",
+        "@|路山村-房子-10.png|",
+        "@|桥面.png|",
+        "@|头-花.png|",
+        "@|路山村-云.png|",
+        "@|路山村-大树.png|",
+        "@|头-山-2.png|",
+        "@|橙-橙树-2.png|",
+        "@|橙-树.png|",
+        "@|橙-橙树-4.png|",
+        "@|路山村-房子-6.png|",
+        "@|路山村-房子-5.png|",
+        "@|橙-房子-1.png|",
+        "@|头-山.png|",
+        "@|橙-橙树-3.png|",
+        "@|头-主文字.png|",
+        "@|路山村-井冈山装饰.png|",
+        "@|路山村-房子-4.png|",
+        "@|路山村-房子-8.png|",
+        "@|路山村-房子-1.png|",
+        "@|路山村-大树-2.png|",
+        "@|房子-加-2.png|",
+        "@|药土路-房间-1.png|",
+        "@|路山村-房子-11.png|",
+        "@|路山村-房子-7.png|",
+        "@|路山村-房子-9.png|",
+        "@|路山村-房子-3.png|",
+        "@|水-江水-4.png|",
+        "@|编者按.png|",
+        "@|开始按钮.png|",
+        "@|水-渔网.png|",
+        "@|路山村-竹子-2.png|",
+        "@|药土路-土块.png|",
+        "@|房子-加-1.png|",
+        "@|路山村-瓷器-1.png|",
+        "@|水-江水-3.png|",
+        "@|高铁.png|",
+        "@|头-山-3.png|",
+        "@|水-江水-2.png|",
+        "@|橙-江水.png|",
+        "@|水-小舟.png|",
+        "@|路山村-竹子.png|",
+        "@|水-江水-5.png|",
+        "@|水-江水.png|",
+        "@|头-燕子1.png|",
+        "@|房子-加-3.png|",
+        "@|头-燕子2.png|",
+        "@|文字-药.png|",
+        "@|文字-路.png|",
+        "@|文字-瓷.png|",
+        "@|文字-茶.png|",
+        "@|文字-村.png|",
+        "@|文字-水.png|",
+        "@|文字-橙.png|",
+        "@|文字-土.png|",
+        "@|文字-山.png|",
+        "@|水-鸟.png|",
+      ]
+    },
+    show: function () {
+      const mum = owo.query('.num')[0]
+      this.preloadImages(this.data.imgList, (e) => {
+        setTimeout(() => {
+          owo.go({noBack: true,page: "page1"})
+        }, 500)
+      }, (num) => {
+        mum.innerHTML = num + '%'
+      })
+    },
+    preloadImage: function (src, successFn) {
+      var image = new Image()
+      image.src = src
+      image.onload = function () {
+        successFn && successFn(src)
+      }
+      image.onerror = function (error) {
+        successFn && successFn(src)
+      }
+    },
+    preloadImages: function (srcs, doneFn, progressFn) {
+      if (!Array.isArray(srcs)) {
+        console.log('第一个参数只能是一个数组')
+      } else {
+        var allCount = srcs.length
+        var doneCount = 0
+        srcs.forEach((srcItem) => {
+          this.preloadImage(srcItem, function () {
+            doneCount++
+            progressFn && progressFn(Math.ceil(100 * doneCount / allCount))
+            if (doneCount === allCount) {
+              doneFn && doneFn()
+            }
+          })
+        })
+      }
+    }
+  }
+</script>
+
+
+<style lang="less">
+.loading-box {
+  background-image: url('https://cunchu.site/ozzx/resource/loading-bg.png');
+  background-color: #fbe0e8;
+  z-index: 10;
+}
+.loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -16%;
+  bottom: 0;
+  margin: auto;
+}
+.num {
+  position: absolute;
+  font-size: 34px;
+  line-height: 40px;
+  width: 100%;
+  text-align: center;
+  top: 53%;
+  font-weight: bold;
+}
+.loading-2 {
+  position: absolute;
+  left: -7%;
+  right: 0;
+  top: -19%;
+  bottom: 0;
+  margin: auto;
+}
+@keyframes float{
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(5px) translateY(5px);
+  }
+  100% {
+    transform: rotate(xx) translateX(0px) translateY(0px);
+  }
+}
+
+.loading {
+  animation: float 3s infinite 0s linear;
+}
+@keyframes float2 {
+  0%{
+    transform: translateY(0);
+  }
+  25%{
+    transform: translateY(-6px);
+  }
+  50%{
+    transform: translateY(0px);
+  }
+  75%{
+    transform: translateY(6px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+.loading-2 {
+    animation: float2 3s infinite 0s linear;
+}
+</style>

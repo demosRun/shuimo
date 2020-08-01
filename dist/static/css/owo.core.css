@@ -2,7 +2,7 @@ body, html, .page, .page-box {
   padding: 0;
   margin: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
 }
 
 .owo-animation {
@@ -31,10 +31,6 @@ img {
   border: none;
 }
 
-[route-active="false"] {
-  display: none;
-}
-
 /* 清除浮动 */
 .clear:after {
   content: "";
@@ -55,11 +51,126 @@ li {
   list-style: none;
 }
 
-#mainText {
-  display: block;
-  width: 38%;
+.loading-box {
+  background-image: url('https://cunchu.site/ozzx/resource/loading-bg.png');
+  background-color: #fbe0e8;
+  z-index: 10;
+}
+
+.loading-box .loading {
   position: absolute;
   left: 0;
+  right: 0;
+  top: -16%;
+  bottom: 0;
+  margin: auto;
+}
+
+.loading-box .num {
+  position: absolute;
+  font-size: 34px;
+  line-height: 40px;
+  width: 100%;
+  text-align: center;
+  top: 53%;
+  font-weight: bold;
+}
+
+.loading-box .loading-2 {
+  position: absolute;
+  left: -7%;
+  right: 0;
+  top: -19%;
+  bottom: 0;
+  margin: auto;
+}
+
+@-webkit-keyframes float {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(5px) translateY(5px);
+  }
+
+  100% {
+    transform: rotate(xx) translateX(0px) translateY(0px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(5px) translateY(5px);
+  }
+
+  100% {
+    transform: rotate(xx) translateX(0px) translateY(0px);
+  }
+}
+
+.loading-box .loading {
+  -webkit-animation: float 3s infinite 0s linear;
+          animation: float 3s infinite 0s linear;
+}
+
+@-webkit-keyframes float2 {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-6px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  75% {
+    transform: translateY(6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-6px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  75% {
+    transform: translateY(6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.loading-box .loading-2 {
+  -webkit-animation: float2 3s infinite 0s linear;
+          animation: float2 3s infinite 0s linear;
+}
+.page-1 #mainText {
+  display: block;
+  width: 44%;
+  position: absolute;
+  left: 2%;
   right: 0;
   top: -2%;
   bottom: 0;
@@ -68,7 +179,7 @@ li {
   transition: opacity 1s;
 }
 
-.conn-box {
+.page-1 .conn-box {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -77,11 +188,11 @@ li {
   background-color: #ccc;
 }
 
-.conn-box input {
+.page-1 .conn-box input {
   display: block;
 }
 
-.conn-box span {
+.page-1 .conn-box span {
   background-color: #009fe9;
   color: white;
   padding: 5px;

@@ -29,8 +29,10 @@
   </head>
   <body>
     
+    <!-- 页面[loading]-->
+    <div class="loading-box page" template="loading" style="display: none;"><img class="loading" src="https://cunchu.site/ozzx/resource/loading-clould.png"><img class="loading-2" src="https://cunchu.site/ozzx/resource/loading-ani.png"><div class="num">0%</div></div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: block;"><div id="container"></div><canvas id="mainText"></canvas><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div></div>
+    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><canvas id="mainText"></canvas><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div></div>
     
 
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
@@ -69,9 +71,9 @@ var infoData = [{
   width: 92,
   height: 115,
   opacity: 100,
-  left: 1822,
-  top: 395,
-  index: 2
+  left: 1051,
+  top: 692,
+  index: -37
 }, {
   name: '头-花',
   fileName: './static/resource/头-花.png',
@@ -87,9 +89,9 @@ var infoData = [{
   width: 92,
   height: 87,
   opacity: 100,
-  left: 1905,
-  top: 343,
-  index: 3
+  left: 1051,
+  top: 692,
+  index: -37
 }, // {
 //   name: '头-主文字',
 //   fileName: './static/resource/头-主文字.png',
@@ -380,6 +382,15 @@ var infoData = [{
   left: 49,
   top: 389,
   index: 286.5
+}, {
+  name: '路山村-大山-copy',
+  fileName: './static/resource/路山村-大山.png',
+  width: 949,
+  height: 557,
+  opacity: 100,
+  left: 49,
+  top: 159,
+  index: 288
 }, // 增加的装饰性房子
 {
   name: '房子-加-1',
@@ -435,9 +446,9 @@ var infoData = [{
   width: 1071,
   height: 445,
   opacity: 100,
-  left: 4323 - 2000,
-  top: 9,
-  index: 374 + 60,
+  left: 2393,
+  top: -31,
+  index: 431.5,
   rotationY: -1.3
 }, {
   name: '路山村-大山-4-copy',
@@ -445,9 +456,9 @@ var infoData = [{
   width: 1097,
   height: 515,
   opacity: 100,
-  left: 4134 - 2000,
-  top: 29,
-  index: 336 + 60,
+  left: 2194,
+  top: 69,
+  index: 386.5,
   rotationY: -1.3
 }, {
   name: '路山村-瓷器-1',
@@ -475,7 +486,7 @@ var infoData = [{
   width: 477,
   height: 325,
   opacity: 100,
-  left: 4060 - 2000,
+  left: 4080 - 2000,
   top: 427,
   index: 320 + 60,
   rotationY: -1.3
@@ -535,7 +546,7 @@ var infoData = [{
   width: 601,
   height: 305,
   opacity: 100,
-  left: 3760 - 2000,
+  left: 1740,
   top: 397,
   index: 340 + 60,
   rotationY: -1.3
@@ -559,6 +570,26 @@ var infoData = [{
   top: -361,
   index: 417.5,
   rotationY: -1.3
+}, {
+  name: '头-树-1-copy',
+  fileName: './static/resource/头-树-1.png',
+  width: 315,
+  height: 429,
+  opacity: 100,
+  left: 2260,
+  top: 207,
+  index: 367,
+  rotationY: -1.3
+}, {
+  name: '路山村-云-copy-2',
+  fileName: './static/resource/路山村-云.png',
+  width: 851,
+  height: 372,
+  opacity: 100,
+  left: 860,
+  top: 307,
+  index: 378.5,
+  rotationY: -1.1
 }, // 橙子
 {
   name: '路山村-云-copy',
@@ -576,9 +607,9 @@ var infoData = [{
   width: 85,
   height: 85,
   opacity: 0,
-  left: -1254 + 6000,
-  top: -115,
-  index: 405 + 40
+  left: 5816,
+  top: 45,
+  index: 445
 }, {
   name: '橙-橙子',
   fileName: './static/resource/橙-橙子.png',
@@ -594,8 +625,8 @@ var infoData = [{
   width: 565,
   height: 378,
   opacity: 100,
-  left: -1069 + 6000,
-  top: -75,
+  left: 4931,
+  top: -115,
   index: 420 + 40
 }, {
   name: '橙-房子-1',
@@ -612,18 +643,18 @@ var infoData = [{
   width: 1421,
   height: 472,
   opacity: 100,
-  left: -1614 + 6000,
+  left: 4356,
   top: 28,
-  index: 420 + 40
+  index: 460.5
 }, {
   name: '橙-橙树-2',
   fileName: './static/resource/橙-橙树-2.png',
   width: 359,
   height: 368,
   opacity: 100,
-  left: -1263 + 6000,
-  top: -33,
-  index: 420.5 + 40
+  left: 4737,
+  top: -93,
+  index: 461
 }, {
   name: '橙-橙树-3',
   fileName: './static/resource/橙-橙树-3.png',
@@ -678,6 +709,15 @@ var infoData = [{
   left: -1699 + 6000,
   top: -807,
   index: 436 + 40
+}, {
+  name: '水-江水-4-copy-3',
+  fileName: './static/resource/水-江水-4.png',
+  width: 1171,
+  height: 265,
+  opacity: 100,
+  left: 5867,
+  top: -193,
+  index: 463
 }, // 水
 {
   name: '文字-水',
@@ -787,6 +827,15 @@ var infoData = [{
   left: 259 + 7000,
   top: -201,
   index: 470 + 100
+}, {
+  name: '水-加-石头',
+  fileName: './static/resource/水-加-石头.png',
+  width: 1436 / 1.5,
+  height: 485 / 1.5,
+  opacity: 100,
+  left: 7008,
+  top: 349,
+  index: 570
 }, // 茶
 {
   name: '远山-copy-2',
@@ -897,6 +946,24 @@ var infoData = [{
   left: -3445 + 6000,
   top: -758,
   index: 713 + 200
+}, {
+  name: '水-江水-4-copy-4',
+  fileName: './static/resource/水-江水-4.png',
+  width: 1171,
+  height: 265,
+  opacity: 100,
+  left: 4222,
+  top: 151,
+  index: 891.8
+}, {
+  name: '水-江水-3-copy-2',
+  fileName: './static/resource/水-江水-3.png',
+  width: 1062,
+  height: 123,
+  opacity: 100,
+  left: 3622,
+  top: -149,
+  index: 901.8
 }, // 土路
 {
   name: '文字-土',
@@ -936,13 +1003,13 @@ var infoData = [{
   index: 713 + 350
 }, {
   name: '药土路-背景-copy',
-  fileName: './static/resource/药土路-背景.png',
-  width: 5441,
-  height: 676,
+  fileName: './static/resource/土-加-草地.png',
+  width: 3038,
+  height: 484,
   opacity: 100,
-  left: -1330 + 6000,
-  top: -402 + 800,
-  index: 693.2 + 350
+  left: 5770,
+  top: 398,
+  index: 1044.2
 }, // 桥面
 {
   name: '药土路-远山-copy-2',
@@ -989,15 +1056,101 @@ var infoData = [{
   left: 282 + 6000,
   top: -371 + 800,
   index: 693 + 500
+}, {
+  name: '路山村-大山-3-copy',
+  fileName: './static/resource/路山村-大山-3.png',
+  width: 868,
+  height: 601,
+  opacity: 100,
+  left: 5782,
+  top: 258,
+  index: 1168
+}, {
+  name: '路山村-大山-4-copy-2',
+  fileName: './static/resource/路山村-大山-4.png',
+  width: 1097,
+  height: 515,
+  opacity: 100,
+  left: 5982,
+  top: -82,
+  index: 1218
+}, {
+  name: '路山村-大山-5-copy-2',
+  fileName: './static/resource/路山村-大山-5.png',
+  width: 1071,
+  height: 445,
+  opacity: 100,
+  left: 5052,
+  top: 208,
+  index: 1191.5
+}, {
+  name: '路山村-大山-2-copy-2',
+  fileName: './static/resource/路山村-大山-2.png',
+  width: 799,
+  height: 499,
+  opacity: 100,
+  left: 5552,
+  top: 108,
+  index: 1184.5
 }];
 owo.script = {
+  "loading": {
+    "data": {
+      "imgList": ["./static/resource/药土路-背景.png", "./static/resource/首页-背景.png", "./static/resource/远山.png", "./static/resource/路山村-背景.png", "./static/resource/药土路-远山.png", "./static/resource/路山村-房子-2.png", "./static/resource/头-卷轴.png", "./static/resource/远山-2.png", "./static/resource/头-背后的山.png", "./static/resource/茶叶-加1.png", "./static/resource/路山村-大山-4.png", "./static/resource/茶.png", "./static/resource/药土路-山-2.png", "./static/resource/路山村-大山-3.png", "./static/resource/路山村-大山.png", "./static/resource/路山村-大山-5.png", "./static/resource/水-宝塔.png", "./static/resource/橙-路面.png", "./static/resource/茶叶-加2.png", "./static/resource/路山村-大山-2.png", "./static/resource/药土路-山-3.png", "./static/resource/橙-橙子.png", "./static/resource/竹子.png", "./static/resource/橙-橙树-1.png", "./static/resource/药土路-山-1.png", "./static/resource/橙-石头.png", "./static/resource/药土路-房间-2.png", "./static/resource/头-树-1.png", "./static/resource/路山村-房子-10.png", "./static/resource/桥面.png", "./static/resource/头-花.png", "./static/resource/路山村-云.png", "./static/resource/路山村-大树.png", "./static/resource/头-山-2.png", "./static/resource/橙-橙树-2.png", "./static/resource/橙-树.png", "./static/resource/橙-橙树-4.png", "./static/resource/路山村-房子-6.png", "./static/resource/路山村-房子-5.png", "./static/resource/橙-房子-1.png", "./static/resource/头-山.png", "./static/resource/橙-橙树-3.png", "./static/resource/头-主文字.png", "./static/resource/路山村-井冈山装饰.png", "./static/resource/路山村-房子-4.png", "./static/resource/路山村-房子-8.png", "./static/resource/路山村-房子-1.png", "./static/resource/路山村-大树-2.png", "./static/resource/房子-加-2.png", "./static/resource/药土路-房间-1.png", "./static/resource/路山村-房子-11.png", "./static/resource/路山村-房子-7.png", "./static/resource/路山村-房子-9.png", "./static/resource/路山村-房子-3.png", "./static/resource/水-江水-4.png", "./static/resource/编者按.png", "./static/resource/开始按钮.png", "./static/resource/水-渔网.png", "./static/resource/路山村-竹子-2.png", "./static/resource/药土路-土块.png", "./static/resource/房子-加-1.png", "./static/resource/路山村-瓷器-1.png", "./static/resource/水-江水-3.png", "./static/resource/高铁.png", "./static/resource/头-山-3.png", "./static/resource/水-江水-2.png", "./static/resource/橙-江水.png", "./static/resource/水-小舟.png", "./static/resource/路山村-竹子.png", "./static/resource/水-江水-5.png", "./static/resource/水-江水.png", "./static/resource/头-燕子1.png", "./static/resource/房子-加-3.png", "./static/resource/头-燕子2.png", "./static/resource/文字-药.png", "./static/resource/文字-路.png", "./static/resource/文字-瓷.png", "./static/resource/文字-茶.png", "./static/resource/文字-村.png", "./static/resource/文字-水.png", "./static/resource/文字-橙.png", "./static/resource/文字-土.png", "./static/resource/文字-山.png", "./static/resource/水-鸟.png"]
+    },
+    "show": function show() {
+      var mum = owo.query('.num')[0];
+      this.preloadImages(this.data.imgList, function (e) {
+        setTimeout(function () {
+          owo.go({
+            noBack: true,
+            page: "page1"
+          });
+        }, 500);
+      }, function (num) {
+        mum.innerHTML = num + '%';
+      });
+    },
+    "preloadImage": function preloadImage(src, successFn) {
+      var image = new Image();
+      image.src = src;
+
+      image.onload = function () {
+        successFn && successFn(src);
+      };
+
+      image.onerror = function (error) {
+        successFn && successFn(src);
+      };
+    },
+    "preloadImages": function preloadImages(srcs, doneFn, progressFn) {
+      var _this = this;
+
+      if (!Array.isArray(srcs)) {
+        console.log('第一个参数只能是一个数组');
+      } else {
+        var allCount = srcs.length;
+        var doneCount = 0;
+        srcs.forEach(function (srcItem) {
+          _this.preloadImage(srcItem, function () {
+            doneCount++;
+            progressFn && progressFn(Math.ceil(100 * doneCount / allCount));
+
+            if (doneCount === allCount) {
+              doneFn && doneFn();
+            }
+          });
+        });
+      }
+    }
+  },
   "page1": {
     "data": {
       "inputValue": "",
       "beishu": 1
     },
     "created": function created() {
-      var _this = this;
+      var _this2 = this;
 
       this.init();
       var canv = document.getElementById("mainText"),
@@ -1006,11 +1159,11 @@ owo.script = {
           imgMask = new Image();
       imgMask.src = "https://cunchu.site/owo/material/shuimo/cloud-texture.png";
       img.src = "./static/resource/头-主文字.png";
-      var speed = 0;
+      var speed = 20;
       var requestId;
 
       function draw() {
-        speed += 20;
+        speed += 15;
         var maskX = (canv.width - (70 + speed)) / 2,
             maskY = (canv.height - (40 + speed)) / 2;
         ctx.clearRect(0, 0, canv.width, canv.height);
@@ -1027,13 +1180,57 @@ owo.script = {
         setTimeout(function () {
           canv.style.display = "block";
           draw();
-        }, 500);
+        }, 1000);
         setTimeout(function () {
-          _this.query('#mainText').style.opacity = '0';
-        }, 3000); // 播放动画
+          _this2.query('#mainText').style.opacity = '0';
+        }, 5000); // 播放动画
 
-        setTimeout(function () {// this.play()
-        }, 3000);
+        var t = new TimelineMax({});
+        t // 燕子飞行
+        .to(scene.getObjectByName('头-燕子1').position, 4, {
+          bezier: [{
+            x: 166.7,
+            y: -65,
+            z: 54
+          }, {
+            x: 291.7,
+            y: -35,
+            z: 0
+          }]
+        }, 0).to(scene.getObjectByName('头-燕子1').material, 4, {
+          opacity: 0
+        }, 0).to(scene.getObjectByName('头-燕子1').rotation, 4, {
+          z: 0.6
+        }, 0).to(scene.getObjectByName('头-燕子2').position, 4, {
+          bezier: [{
+            x: 163.7,
+            y: -48,
+            z: 54
+          }, {
+            x: 321.7,
+            y: -15,
+            z: -5
+          }]
+        }, 0).to(scene.getObjectByName('头-燕子2').material, 4, {
+          opacity: 0
+        }, 0).to(scene.getObjectByName('头-燕子2').rotation, 4, {
+          z: 0.6
+        }, 0);
+        setTimeout(function () {
+          // 循环往复的动画
+          var tm = new TimelineMax({
+            repeat: -1,
+            yoyo: true,
+            repeatDelay: 0
+          });
+          tm.to(scene.getObjectByName('水-小舟').position, 3, {
+            x: 847.95,
+            y: -1.15
+          }); // tm.to(scene.getObjectByName('水-江水-3').position, 3, {x:830.9,y:-16.15})
+          // tm.to(scene.getObjectByName('水-江水-3').material, 3, {opacity: 0.1})
+
+          _this2.play();
+        }, 5000);
       };
     },
     "init": function init() {
@@ -1116,27 +1313,7 @@ owo.script = {
       // gaotie.opacity = 0
       var tl = new TimelineMax({}); // 火车驶过
 
-      tl.to(scene.getObjectByName('头-燕子1').position, 2, {
-        bezier: [{
-          x: 260,
-          y: -25
-        }, {
-          x: 280,
-          y: -10
-        }]
-      }, 0).to(scene.getObjectByName('头-燕子1').material, 2, {
-        opacity: 0
-      }, 0).to(scene.getObjectByName('头-燕子2').position, 2, {
-        bezier: [{
-          x: 260,
-          y: -20
-        }, {
-          x: 288,
-          y: 6
-        }]
-      }, 0).to(scene.getObjectByName('头-燕子2').material, 2, {
-        opacity: 0
-      }, 0) // 摄像机前移
+      tl // 摄像机前移
       .to(camera.position, 5.5, {
         bezier: [{
           x: 140,
@@ -1314,19 +1491,19 @@ owo.script = {
       }, 73) // 等待两秒出现文字后高铁驶出
       .to(scene.getObjectByName('高铁').position, 4, {
         x: 973.45
-      }, 74).to(scene.getObjectByName('高铁').material, 1, {
+      }, 75).to(scene.getObjectByName('高铁').material, 1, {
         opacity: 0
-      }, 76).to(scene.getObjectByName('桥面').material, 1, {
+      }, 77).to(scene.getObjectByName('桥面').material, 1, {
         opacity: 0
-      }, 76).to(camera.position, 4, {
+      }, 77).to(camera.position, 4, {
         bezier: [{
           x: 1013,
           y: -43,
           z: -2331
         }]
-      }, 75).to(camera.rotation, 4, {
+      }, 76).to(camera.rotation, 4, {
         y: -0.9
-      }, 75); // .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 47)
+      }, 76);
     },
     "onWindowResize": function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
