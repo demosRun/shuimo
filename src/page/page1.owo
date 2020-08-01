@@ -123,14 +123,12 @@
       index: 3.2
     },
     {
-      name: '头-背后的山',
-      fileName: '@|头-背后的山.png|',
-      width: 2390,
-      height: 593,
+      name: '首页-背景',
+      fileName: '@|首页-背景.png|',
+      width: 3283,
+      height: 710,
       opacity: 100,
-      left: 274,
-      top: 154,
-      index: 4
+      left: -76, top: -46, index: 14
     },
     {
       name: '头-卷轴',
@@ -141,6 +139,14 @@
       left: 93,
       top: 525,
       index: 3.5
+    },
+    {
+      name: '竹子',
+      fileName: '@|竹子.png|',
+      width: 642,
+      height: 806,
+      opacity: 100,
+      left: 1993, top: 25, index: -1.5
     },
     {name: '药土路-背景-copy-2',fileName: '@|药土路-背景.png|',width: 5441,height: 676,opacity: 100,left: -3247, top: 600, index: 165.1},
     {name: '文字-山',fileName: '@|文字-山.png|',width: 85,height: 85,opacity: 0,left: 558,top: 721,index: 163},
@@ -284,7 +290,7 @@
         }, 3000);
         // 播放动画
         setTimeout(() => {
-          this.play()
+          // this.play()
         }, 3000);
       };
     },
@@ -403,27 +409,27 @@
         .to(camera.position, 4, {bezier:[{x: 690, y: -12, z: -985}, {x: 800, y: -25, z: -1055}]}, 38)
         .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 40)
         // 茶
-        .to(camera.position, 1, {bezier:[{x: 781, y: -26, z: -1137}]}, 41)
-        .to(camera.position, 4, {bezier:[{x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 44)
-        .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 46)
+        .to(camera.position, 1, {bezier:[{x: 781, y: -26, z: -1137}]}, 43)
+        .to(camera.position, 4, {bezier:[{x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 46)
+        .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 48)
         // 药
-        .to(camera.position, 1, {bezier:[{x: 508, y: 11, z: -1447}]}, 49)
-        .to(camera.position, 4, {bezier:[{x: 550, y: 30, z: -1675}]}, 52)
-        .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 54)
+        .to(camera.position, 1, {bezier:[{x: 508, y: 11, z: -1447}]}, 51)
+        .to(camera.position, 4, {bezier:[{x: 550, y: 30, z: -1675}]}, 54)
+        .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 56)
         // 土路
-        .to(camera.position, 1, {bezier:[{x: 552, y: 30, z: -1785}]}, 57)
-        .to(camera.position, 4, {bezier:[{x: 600, y: 35, z: -1885}, {x: 670, y: -40, z: -1965}]}, 60)
-        .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 62)
-        .to(camera.position, 1, {bezier:[{x: 674, y: -64, z: -2083}]}, 66)
-        .to(camera.rotation, 4, {y: -0.5, ease:Power1.easeOut}, 69)
-        .to(camera.position, 4, {bezier:[{x: 693, y: -43, z: -2300}]}, 69)
-        .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 71)
+        .to(camera.position, 1, {bezier:[{x: 552, y: 30, z: -1785}]}, 59)
+        .to(camera.position, 4, {bezier:[{x: 600, y: 35, z: -1885}, {x: 670, y: -40, z: -1965}]}, 62)
+        .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 64)
+        .to(camera.position, 1, {bezier:[{x: 674, y: -64, z: -2083}]}, 68)
+        .to(camera.rotation, 4, {y: -0.5, ease:Power1.easeOut}, 71)
+        .to(camera.position, 4, {bezier:[{x: 693, y: -43, z: -2300}]}, 71)
+        .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 73)
         // 等待两秒出现文字后高铁驶出
-        .to(scene.getObjectByName('高铁').position, 4, {x: 9330}, 72)
-        .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 74)
-        .to(scene.getObjectByName('桥面').material, 1, {opacity: 0}, 74)
-        .to(camera.position, 4, {bezier:[{x: 994, y: -43, z: -2331}]}, 73)
-        .to(camera.rotation, 4, {y: -0.9}, 73)
+        .to(scene.getObjectByName('高铁').position, 4, {x: 973.45}, 74)
+        .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 76)
+        .to(scene.getObjectByName('桥面').material, 1, {opacity: 0}, 76)
+        .to(camera.position, 4, {bezier:[{x: 1013, y: -43, z: -2331}]}, 75)
+        .to(camera.rotation, 4, {y: -0.9}, 75)
         // .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 47)
     },
     onWindowResize: function () {
