@@ -1,7 +1,6 @@
 <template lang="pug">
 .loading-box
-  img.loading(src="https://cunchu.site/ozzx/resource/loading-clould.png")
-  img.loading-2(src="https://cunchu.site/ozzx/resource/loading-ani.png")
+  img.loading(src="http://www.people.com.cn/img/2016people/images/rmw_logo.png")
   .num 0%
 </template>
 
@@ -10,14 +9,12 @@
     data: {
       imgList: [
         "@|药土路-背景.png|",
-        "@|首页-背景.png|",
         "@|远山.png|",
         "@|路山村-背景.png|",
         "@|药土路-远山.png|",
         "@|路山村-房子-2.png|",
         "@|头-卷轴.png|",
         "@|远山-2.png|",
-        "@|头-背后的山.png|",
         "@|茶叶-加1.png|",
         "@|路山村-大山-4.png|",
         "@|茶.png|",
@@ -93,6 +90,8 @@
         "@|文字-土.png|",
         "@|文字-山.png|",
         "@|水-鸟.png|",
+        "@|头-背后的山.png|",
+        "@|首页-背景.png|",
       ]
     },
     show: function () {
@@ -138,25 +137,24 @@
 
 <style lang="less">
 .loading-box {
-  background-image: url('https://cunchu.site/ozzx/resource/loading-bg.png');
-  background-color: #fbe0e8;
+  background-color: white;
   z-index: 10;
 }
 .loading {
   position: absolute;
   left: 0;
   right: 0;
-  top: -16%;
+  top: -20%;
   bottom: 0;
   margin: auto;
 }
 .num {
   position: absolute;
-  font-size: 34px;
+  font-size: 24px;
   line-height: 40px;
   width: 100%;
   text-align: center;
-  top: 53%;
+  top: 57%;
   font-weight: bold;
 }
 .loading-2 {
@@ -177,30 +175,5 @@
   100% {
     transform: rotate(xx) translateX(0px) translateY(0px);
   }
-}
-
-.loading {
-  animation: float 3s infinite 0s linear;
-}
-@keyframes float2 {
-  0%{
-    transform: translateY(0);
-  }
-  25%{
-    transform: translateY(-6px);
-  }
-  50%{
-    transform: translateY(0px);
-  }
-  75%{
-    transform: translateY(6px);
-  }
-  100%{
-    transform: translateY(0px);
-  }
-}
-
-.loading-2 {
-    animation: float2 3s infinite 0s linear;
 }
 </style>

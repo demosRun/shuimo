@@ -3,7 +3,7 @@
   #container
   canvas#mainText
   //- 播放按钮
-  img.play(src="@|开始按钮.png|" o-tap="start")
+  img.play(src="@|开始按钮.png|" o-tap="start" o-animation="flicker")
   //- .conn-box
   //-   input(type="text" o-value="this.data.inputValue")
   //-   input(type="number" o-value="this.data.beishu")
@@ -17,6 +17,10 @@
   //-   span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
   //-   span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
   //-   span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
+  img.share(src="@|share.png|" o-tap="swiShare")
+  img.replay(src="@|replay.png|" o-tap="location.reload()")
+  .share-box(o-tap="swiShare")
+    img.share-point(src="@|share-point.png|")
 </template>
 
 <script>
@@ -224,14 +228,14 @@
     // 茶
     {name: '远山-copy-2',fileName: '@|远山.png|',width: 5094,height: 779,opacity: 100,left: -600 + 3000,top: -507,index: 567 + 160},
     {name: '文字-茶',fileName: '@|文字-茶.png|',width: 87,height: 87,opacity: 0,left: 2054 + 3000,top: 161,index: 540 + 160},
-    {name: '茶',fileName: '@|茶.png|',width: 1835,height: 383,opacity: 100,left: 3874,top: 514,index: 566 + 160},
-    {name: '茶叶-加1',fileName: '@|茶叶-加1.png|',width: 1479,height: 577,opacity: 100,left: 3384,top: 114,index: 742},
-    {name: '茶叶-加2',fileName: '@|茶叶-加2.png|',width: 1242,height: 553,opacity: 100,left: 4874,top: 234,index: 735},
+    {name: '茶',fileName: '@|茶.png|',width: 1835,height: 383,opacity: 100,left: 4074,top: 214,index: 726},
+    {name: '茶叶-加1',fileName: '@|茶叶-加1.png|',width: 1479,height: 577,opacity: 100,left: 3384,top: 784,index: 726},
+    {name: '茶叶-加2',fileName: '@|茶叶-加2.png|',width: 1242,height: 553,opacity: 100,left: 5124,top: 784,index: 726},
     // 药土路
     
     {name: '文字-药',fileName: '@|文字-药.png|',width: 88,height: 87,opacity: 0,left: -509 + 6000,top: -449,index: 685 + 200},
     {name: '药土路-房间-1',fileName: '@|药土路-房间-1.png|',width: 248,height: 172,opacity: 100,left: -778 + 6000,top: -401,index: 691.8 + 200},
-    {name: '药土路-房间-2',fileName: '@|药土路-房间-2.png|',width: 609,height: 130,opacity: 100,left: -522 + 6000,top: -349,index: 692 + 200},
+    {name: '药土路-房间-2',fileName: '@|药土路-房间-2.png|',width: 609,height: 130,opacity: 100,left: -522 + 6000,top: -349,index: 691 + 200},
     {name: '药土路-山-1',fileName: '@|药土路-山-1.png|',width: 977,height: 240,opacity: 100,left: -1403 + 6000,top: -520,index: 692.6 + 200},
     {name: '药土路-山-3',fileName: '@|药土路-山-3.png|',width: 1178,height: 289,opacity: 100,left: -852 + 6000,top: -593,index: 698 + 200},
     {name: '药土路-背景',fileName: '@|药土路-背景.png|',width: 5441,height: 676,opacity: 100,left: -1330 + 6000,top: -402,index: 693.2 + 200},
@@ -250,16 +254,17 @@
     {name: '药土路-背景-copy-2',fileName: '@|药土路-背景.png|',width: 5441,height: 676,opacity: 100,left: -1330 + 6000,top: -402 + 800,index: 693.2 + 500},
     {name: '文字-路',fileName: '@|文字-路.png|',width: 85,height: 84,opacity: 0,left: 1226 + 6000,top: -532 + 800,index: 673 + 500},
     {name: '高铁',fileName: '@|高铁.png|',width: 869,height: 53,opacity: 100,left: 5300,top: 379,index: 693 + 500},
-    {name: '桥面',fileName: '@|桥面.png|',width: 3706,height: 102,opacity: 100,left: 282 + 6000,top: -371 + 800,index: 693 + 500},
+    {name: '桥面',fileName: '@|桥面.png|',width: 3706,height: 102,opacity: 100,left: 5982,top: -371 + 800,index: 693 + 500},
     {name: '路山村-大山-3-copy',fileName: '@|路山村-大山-3.png|',width: 868,height: 601,opacity: 100, left: 5782, top: 258, index: 1158},
     {name: '路山村-大山-4-copy-2',fileName: '@|路山村-大山-4.png|',width: 1097,height: 515,opacity: 100,left: 5982, top: -82, index: 1208},
     {name: '路山村-大山-5-copy-2',fileName: '@|路山村-大山-5.png|',width: 1071,height: 445,opacity: 100,left: 5052, top: 208, index: 1181.5},
-    {name: '路山村-大山-2-copy-2',fileName: '@|路山村-大山-2.png|',width: 799,height: 499,opacity: 100,left: 5552, top: 108, index: 1174.5},
+    {name: '路山村-大山-2-copy-2',fileName: '@|路山村-大山-2.png|',width: 799,height: 499,opacity: 100,left: 5552, top: 108, index: 1187.5},
   ]
   module.exports = {
     data: {
       inputValue: '',
-      beishu: 1
+      beishu: 1,
+      shareShow: false
     },
     created: function () {
       this.init()
@@ -291,12 +296,13 @@
           canv.style.display = "block";
           draw();
         }, 1000);
-        setTimeout(() => {
-          this.query('#mainText').style.opacity = '0'
-        }, 6000);
         // 播放动画
-        var t = new TimelineMax({});
-        t
+        var t = new TimelineMax({
+          onComplete: function () {
+          }
+        });
+        setTimeout(() => {
+          t
           // 燕子飞行
           .to(scene.getObjectByName('头-燕子1').position, 4, {bezier:[{x:166.7, y:-65, z:54}, {x:291.7, y:-35, z:0}]}, 0)
           .to(scene.getObjectByName('头-燕子1').material, 4, {opacity: 0}, 0)
@@ -304,8 +310,9 @@
           .to(scene.getObjectByName('头-燕子2').position, 4, {bezier:[{x:163.7, y:-48, z:54}, {x:321.7, y:-15, z:-5}]}, 0)
           .to(scene.getObjectByName('头-燕子2').material, 4, {opacity: 0}, 0)
           .to(scene.getObjectByName('头-燕子2').rotation, 4, {z: 0.6}, 0)
+        }, 100);
+        
         setTimeout(() => {
-          
           // 循环往复的动画
           const tm = new TimelineMax({repeat: -1, yoyo: true, repeatDelay: 0});
           tm.to(scene.getObjectByName('水-小舟').position, 3, {x:847.95,y:-1.15})
@@ -319,14 +326,14 @@
       var container = document.getElementById('container');
       // 设立相机
       camera = new THREE.PerspectiveCamera( 75, window.innerWidth >  window.innerHeight ? (window.innerWidth / window.innerHeight) : (window.innerHeight / window.innerWidth), 0.1, 800 );
-      camera.position.set(150, -65, 100)
-      camera.lookAt(150, -65, 0)
+      camera.position.set(160, -65, 90)
+      camera.lookAt(160, -65, 0)
       // 建立一个场景
       scene = new THREE.Scene();
       scene.fog = new THREE.Fog( 0xffffff, 100, 300)
       // 像素级的渲染，渲染效果更好
       renderer = new THREE.WebGLRenderer({
-        antialias: true,
+        // antialias: true,
         depthTest: false
       });
       renderer.setClearColor(0xfffefb, 1.0);
@@ -400,14 +407,22 @@
       // gaotie.position.x = 160
       // gaotie.opacity = 0
       var tl = new TimelineMax({
+        onComplete: function () {
+          document.getElementsByClassName('share')[0].style.display = 'block'
+          document.getElementsByClassName('replay')[0].style.display = 'block'
+          setTimeout(() => {
+            document.getElementsByClassName('share')[0].style.opacity = 1
+            document.getElementsByClassName('replay')[0].style.opacity = 1
+          }, 0);
+        }
       });
       // 火车驶过
       tl
         // 摄像机前移
         .to(camera.position, 5.5, {bezier:[{x: 140, y: -65, z: -60}, {x: 100, y: -65, z: -210}, {x: 90, y: -60, z: -290}]}, 1)
         // 摄像机旋转
-        .to(camera.rotation, 1.5, {z: -0.4, ease:Power1.easeOut }, 4.5)
-        .to(camera.rotation, 1.5, {z: 0, ease:Power1.easeOut }, 6)
+        // .to(camera.rotation, 1.5, {z: -0.4, ease:Power1.easeOut }, 4.5)
+        // .to(camera.rotation, 1.5, {z: 0, ease:Power1.easeOut }, 6)
         .to(scene.getObjectByName('文字-山').material, 2, {opacity: 1}, 6)
         // 视角移动到村
         .to(camera.position, 1, {bezier:[{x: 82, y: -65, z: -329.4}]}, 9)
@@ -421,23 +436,23 @@
         // 视角移动到橙子
         .to(camera.rotation, 4, {y: 0, ease:Power1.easeOut}, 30)
         .to(camera.position, 1, {bezier:[{x: 235, y: -60, z: -730}]}, 28)
-        .to(camera.position, 4, {bezier:[{x: 425, y: -30, z: -770}, {x: 545, y: -5, z: -820}]}, 30)
+        .to(camera.position, 4, {bezier:[{x: 425, y: -30, z: -770}, {x: 545, y: -5, z: -830}]}, 30)
         .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 32)
         // 移动到水
         .to(camera.position, 1, {bezier:[{x: 571.1, y: -3.5, z: -923.2}]}, 35)
-        .to(camera.position, 4, {bezier:[{x: 690, y: -12, z: -985}, {x: 800, y: -25, z: -1055}]}, 38)
+        .to(camera.position, 4, {bezier:[{x: 690, y: -12, z: -985}, {x: 800, y: -25, z: -1065}]}, 38)
         .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 40)
         // 茶
         .to(camera.position, 1, {bezier:[{x: 781, y: -26, z: -1137}]}, 43)
         .to(camera.position, 4, {bezier:[{x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 46)
         .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 48)
         // 药
-        .to(camera.position, 1, {bezier:[{x: 508, y: 11, z: -1447}]}, 51)
-        .to(camera.position, 4, {bezier:[{x: 550, y: 30, z: -1675}]}, 54)
+        .to(camera.position, 1, {bezier:[{x: 485, y: -40, z: -1451}]}, 51)
+        .to(camera.position, 4, {bezier:[{x: 564, y: 30, z: -1723}]}, 54)
         .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 56)
         // 土路
         .to(camera.position, 1, {bezier:[{x: 552, y: 30, z: -1785}]}, 59)
-        .to(camera.position, 4, {bezier:[{x: 600, y: 35, z: -1885}, {x: 670, y: -40, z: -1965}]}, 62)
+        .to(camera.position, 4, {bezier:[{x: 600, y: 35, z: -1905}, {x: 680, y: -40, z: -1994}]}, 62)
         .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 64)
         .to(camera.position, 1, {bezier:[{x: 674, y: -64, z: -2083}]}, 68)
         .to(camera.rotation, 4, {y: -0.5, ease:Power1.easeOut}, 71)
@@ -446,9 +461,9 @@
         // 等待两秒出现文字后高铁驶出
         .to(scene.getObjectByName('高铁').position, 4, {x: 973.45}, 75)
         .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 77)
-        .to(scene.getObjectByName('桥面').material, 1, {opacity: 0}, 77)
-        .to(camera.position, 4, {bezier:[{x: 1013, y: -43, z: -2331}]}, 76)
-        .to(camera.rotation, 4, {y: -0.9}, 76)
+        // .to(scene.getObjectByName('桥面').material, 1, {opacity: 0}, 77)
+        // .to(camera.position, 4, {bezier:[{x: 1013, y: -43, z: -2331}]}, 76)
+        // .to(camera.rotation, 4, {y: -0.9}, 76)
     },
     onWindowResize: function () {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -471,7 +486,19 @@
       
     },
     start: function () {
-      this.play()
+      this.query('#mainText').style.opacity = '0'
+      this.query('.play').style.display = 'none'
+      setTimeout(() => {
+        this.play()
+      }, 1000);
+    },
+    swiShare: function () {
+      this.data.shareShow = !this.data.shareShow
+      if (this.data.shareShow) {
+        this.query('.share-box').style.display = 'block'
+      } else {
+        this.query('.share-box').style.display = 'none'
+      }
     }
   }
 </script>
@@ -480,11 +507,11 @@
 <style lang="less">
 #mainText {
   display: block;
-  width: 44%;
+  width: 55%;
   position: absolute;
   left: 2%;
   right: 0;
-  top: -2%;
+  top: -4%;
   bottom: 0;
   margin: auto;
   opacity: 1;
@@ -513,11 +540,46 @@
 }
 .play {
   position: absolute;
-  left: 90%;
+  left: 80%;
   right: 0;
   margin: auto;
-  top: 46%;
-  bottom: 0%;
-  height: 14%;
+  bottom: 2%;
+  height: 18%;
+}
+.share-box {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  .share-point {
+    position: absolute;
+    max-height: 60%;
+    max-width: 60%;
+    left: 2%;
+    top: 0;
+    transform: rotate(-90deg);
+  }
+}
+.replay {
+  position: absolute;
+  top: 10%;
+  right: 16%;
+  height: 16%;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.share {
+  position: absolute;
+  top: 28%;
+  right: 6%;
+  height: 16%;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
 }
 </style>

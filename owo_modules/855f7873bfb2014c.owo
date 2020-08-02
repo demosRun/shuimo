@@ -1,6 +1,5 @@
 <template lang="pug">
 .loading-box
-  img.loading(src="https://cunchu.site/ozzx/resource/loadingLogo.png")
   .loading-bar
     .num-bar
   span.text Loading
