@@ -1,4 +1,4 @@
-// Sun Aug 02 2020 11:18:06 GMT+0800 (GMT+08:00)
+// Mon Aug 03 2020 14:11:42 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -15,6 +15,11 @@ var _owo = {
 
 /* 运行页面初始化方法 */
 _owo.runCreated = function (pageFunction) {
+  // 如果dom已经被删掉那么不会运行对应的方法
+  if (!pageFunction.$el) {
+    console.info('dom元素不存在!')
+    return;
+  }
   try {
     // console.log(pageFunction)
     if (pageFunction.show) {pageFunction.show.apply(pageFunction)}
@@ -151,7 +156,10 @@ _owo.addEvent = function (tempDom, moudleScript) {
                     if (value == undefined) value = ''
                     tempDom.value = value
                     tempDom.oninput = function (e) {
-                      shaheRun.apply(moudleScript, [eventFor + '=' + e.target.value])
+                      var eventFor = e.target.getAttribute('o-value')
+                      var value = e.target.value
+                      if (value == '') value = '""'
+                      shaheRun.apply(moudleScript, [eventFor + '=' + value])
                     }
                     break;
                   case 'password':
@@ -283,13 +291,16 @@ function Page(pageScript, parentScript) {
 }
 
 function owoPageInit () {
-  // console.log(entryDom)
-  // console.log(this)
   _owo.runCreated(this)
-  for (var key in this.template) {
-    var templateScript = this.template[key]
-    _owo.runCreated(templateScript)
+  // 递归处理
+  function recursion (entry) {
+    for (var key in entry.template) {
+      var templateScript = entry.template[key]
+      _owo.runCreated(templateScript)
+      recursion(templateScript)
+    }
   }
+  recursion(this)
   
   
 }
@@ -370,10 +381,23 @@ _owo.addHTMLElementFun('query', function(str) {
 
 
 
-owo.go = function (config) {
-  if (!config) return
+owo.go = function (aniStr) {
+  if (!aniStr || typeof aniStr !== 'string')  {
+    console.error('owo.go的正确使用方法为: owo.go("页面名/URL参数/入场动画/离场动画/是否允许返回/返回入场动画/返回离场动画")')
+    return
+  }
+  var target = aniStr.split('/')
+  var config = {
+    page: target[0],
+    paramString: target[1],
+    inAnimation: target[2],
+    outAnimation: target[3],
+    noBack: target[4],
+    backInAnimation: target[5],
+    backOutAnimation: target[6],
+  }
   var paramString = ''
-  var pageString = ''
+  var pageString = '#' + owo.activePage
   var activePageName = config.page || owo.activePage
   
   // 处理动画缩写
@@ -521,11 +545,6 @@ _owo.showPage = function() {
   // 取出URL地址判断当前所在页面
   var pageArg = _owo.getarg(window.location.hash)
   
-  if (pageArg !== null) {
-    window.location.href = ''
-    return
-  }
-  
   
 
   // 从配置项中取出程序入口
@@ -562,6 +581,16 @@ _owo.showPage = function() {
 
 // url发生改变事件
 _owo.hashchange = function () {
+  // 判断是否正在忙碌
+  if (owo.state.hashchange) {
+    setTimeout(function () {
+      if (owo.state.hashchange === 1) return
+      owo.state.hashchange = 1
+      _owo.hashchange()
+    }, 300);
+    return
+  }
+  owo.state.hashchange = true
   // 这样处理而不是直接用event中的URL，是因为需要兼容IE
   owo.state.oldUrlParam = owo.state.newUrlParam;
   owo.state.newUrlParam = _owo.getarg(document.URL); 
@@ -569,7 +598,8 @@ _owo.hashchange = function () {
   // 如果旧页面不存在则为默认页面
   if (!owo.state.oldUrlParam) owo.state.oldUrlParam = owo.entry;
   var newUrlParam = owo.state.newUrlParam;
-
+  // 如果新页面和旧页面一样那么不执行跳转
+  if (owo.state.oldUrlParam == newUrlParam) return
   // 如果没有跳转到任何页面则跳转到主页
   if (newUrlParam === undefined) {
     newUrlParam = owo.entry;
@@ -596,9 +626,11 @@ function switchPage (oldUrlParam, newUrlParam) {
     window.owo.script[newPage].$el = newDom
     window.owo.script[newPage].owoPageInit()
     window.owo.script[newPage].handleEvent()
-    
+    setTimeout(function () {
+      owo.state.hashchange = false
+    }, 1000);
     // 显示路由
-    if (window.owo.script[newPage].view) window.owo.script[newPage].view._list[0].showIndex(0)
+    // if (window.owo.script[newPage].view) _owo.getViewChange()
   }, 0)
 
   
@@ -611,9 +643,25 @@ function switchPage (oldUrlParam, newUrlParam) {
   newDom.style.display = ''
 }
 
-// ios的QQ有BUG 无法触发onhashchange事件
-if(/iPhone\sOS.*QQ[^B]/.test(navigator.userAgent)) {window.onpopstate = _owo.hashchange;} else {window.onhashchange = _owo.hashchange;}
-
+// 防止有些平台不支持onhashchange
+if (window.onhashchange) {window.onhashchange = _owo.hashchange;} else {window.onpopstate = _owo.hashchange;}
 // 执行页面加载完毕方法
 _owo.ready(_owo.showPage)
+
+
+// 这是用于代码调试的自动刷新代码，他不应该出现在正式上线版本!
+if ("WebSocket" in window) {
+  // 打开一个 web socket
+  if (!window._owo.ws) window._owo.ws = new WebSocket("ws://" + window.location.host)
+  window._owo.ws.onmessage = function (evt) { 
+    if (evt.data == 'reload') {
+      location.reload()
+    }
+  }
+  window._owo.ws.onclose = function() { 
+    console.info('与服务器断开连接')
+  }
+} else {
+  console.error('浏览器不支持WebSocket')
+}
 

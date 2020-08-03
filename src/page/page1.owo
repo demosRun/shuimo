@@ -1,6 +1,6 @@
 <template lang="pug">
 .page-1
-  #container
+  #container(o-tap="nextPlay")
   canvas#mainText
   //- 播放按钮
   img.play(src="@|开始按钮.png|" o-tap="start" o-animation="flicker")
@@ -21,6 +21,9 @@
   img.replay(src="@|replay.png|" o-tap="location.reload()")
   .share-box(o-tap="swiShare")
     img.share-point(src="@|share-point.png|")
+  .video-play-box
+    .skip 跳过
+    video#videoPlay(src="" x5-playsinline="true" x5-video-player-fullscreen="true" preload="auto" x5-video-orientation="landscape" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5")
 </template>
 
 <script>
@@ -41,11 +44,11 @@
     {
       name: '编者按',
       fileName: '@|编者按.png|',
-      width: 1681,
-      height: 164,
+      width: 1737,
+      height: 149,
       opacity: 100,
-      left: 606,
-      top: 991,
+      left: 706,
+      top:1011,
       index: 0
     },
     {
@@ -231,7 +234,7 @@
     {name: '茶',fileName: '@|茶.png|',width: 1835,height: 383,opacity: 100,left: 4074,top: 214,index: 726},
     {name: '茶叶-加1',fileName: '@|茶叶-加1.png|',width: 1479,height: 577,opacity: 100,left: 3384,top: 784,index: 726},
     {name: '茶叶-加2',fileName: '@|茶叶-加2.png|',width: 1242,height: 553,opacity: 100,left: 5124,top: 784,index: 726},
-    // 药土路
+    // 药
     
     {name: '文字-药',fileName: '@|文字-药.png|',width: 88,height: 87,opacity: 0,left: -509 + 6000,top: -449,index: 685 + 200},
     {name: '药土路-房间-1',fileName: '@|药土路-房间-1.png|',width: 248,height: 172,opacity: 100,left: -778 + 6000,top: -401,index: 691.8 + 200},
@@ -242,14 +245,15 @@
     {name: '药土路-远山',fileName: '@|药土路-远山.png|',width: 7440,height: 591,opacity: 100,left: -3445 + 6000,top: -758,index: 713 + 200},
     {name: '水-江水-4-copy-4',fileName: '@|水-江水-4.png|',width: 1171,height: 265,opacity: 100,left: 4222, top: 151, index: 891.8},
     {name: '水-江水-3-copy-2',fileName: '@|水-江水-3.png|',width: 1062,height: 123,opacity: 100,left: 3622, top: -149, index: 901.8,},
-    // 土路
+    // 土
     
     {name: '文字-土',fileName: '@|文字-土.png|',width: 88,height: 88,opacity: 0,left: 370 + 6000,top: -366 + 800,index: 673 + 350},
     {name: '药土路-土块',fileName: '@|药土路-土块.png|',width: 129,height: 86,opacity: 100,left: 731 + 6000,top: -198 + 800,index: 691 + 350},
     {name: '药土路-山-2',fileName: '@|药土路-山-2.png|',width: 2361,height: 555,opacity: 100,left: -799 + 6000,top: -533 + 800,index: 692 + 350},
     {name: '药土路-远山-copy',fileName: '@|药土路-远山.png|',width: 7440,height: 591,opacity: 100,left: -3445 + 6000,top: -758 + 800,index: 713 + 350},
     {name: '药土路-背景-copy',fileName: '@|土-加-草地.png|',width: 3038,height: 484,opacity: 100,left: 5770, top: 398, index: 1044.2},
-    // 桥面
+    {name: '路山村-大山-copy-2',fileName: '@|路山村-大山.png|',width: 949,height: 557,opacity: 100,left: 5770,top: 68,index: 1046.2},
+    // 路
     {name: '药土路-远山-copy-2',fileName: '@|药土路-远山.png|',width: 7440,height: 591,opacity: 100,left: -3445 + 6000,top: -758 + 800,index: 1245.5},
     {name: '药土路-背景-copy-2',fileName: '@|药土路-背景.png|',width: 5441,height: 676,opacity: 100,left: -1330 + 6000,top: -402 + 800,index: 693.2 + 500},
     {name: '文字-路',fileName: '@|文字-路.png|',width: 85,height: 84,opacity: 0,left: 1226 + 6000,top: -532 + 800,index: 673 + 500},
@@ -264,7 +268,12 @@
     data: {
       inputValue: '',
       beishu: 1,
-      shareShow: false
+      shareShow: false,
+      bgMusic: null,
+      // 允许点击的元素
+      clickObjects: [],
+      playing: false,
+      step: 0
     },
     created: function () {
       this.init()
@@ -366,7 +375,7 @@
       function render() {
 				renderer.render( scene, camera );
       }
-      
+      // this.initThreeClickEvent()
     },
     creatMode: function () {
       // 辅助参考线
@@ -400,10 +409,14 @@
           
           logo.position.set(objL + (obgW / 2), -objT - (obgH / 2), -2 * element.index);
           scene.add(logo);
+          if (element.name.startsWith('文字-')) {
+            this.data.clickObjects.push(logo)
+          }
+          
         })
       });
     },
-    play: function () {
+    playVideo: function () {
       // gaotie.position.x = 160
       // gaotie.opacity = 0
       var tl = new TimelineMax({
@@ -460,15 +473,262 @@
         .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 73)
         // 等待两秒出现文字后高铁驶出
         .to(scene.getObjectByName('高铁').position, 4, {x: 973.45}, 75)
-        .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 77)
+        // 视频才会视角转移
+        // .to(scene.getObjectByName('高铁').material, 1, {opacity: 0}, 77)
         // .to(scene.getObjectByName('桥面').material, 1, {opacity: 0}, 77)
         // .to(camera.position, 4, {bezier:[{x: 1013, y: -43, z: -2331}]}, 76)
         // .to(camera.rotation, 4, {y: -0.9}, 76)
+    },
+    play: function () {
+      // 播放音乐
+      this.data.bgMusic = new Audio("@|bg.mp3|")
+      this.data.bgMusic.loop = true
+      this.data.bgMusic.volume = 0.5
+      this.data.bgMusic.play()
+      var tl = new TimelineMax({
+        onComplete: () => {
+          this.data.busying = false
+        }
+      });
+      this.query('#videoPlay').addEventListener('ended', () => {
+        this.data.busying = false
+        this.nextPlay()
+      }, false);
+      this.data.busying = true
+      tl
+        // 摄像机前移
+        .to(camera.position, 5.5, {bezier:[{x: 140, y: -65, z: -60}, {x: 100, y: -65, z: -210}, {x: 90, y: -60, z: -290}]}, 1)
+        .to(scene.getObjectByName('文字-山').material, 2, {opacity: 1}, 6)
+
+      // var tl = new TimelineMax({
+      //   onComplete: function () {
+      //     document.getElementsByClassName('share')[0].style.display = 'block'
+      //     document.getElementsByClassName('replay')[0].style.display = 'block'
+      //     setTimeout(() => {
+      //       document.getElementsByClassName('share')[0].style.opacity = 1
+      //       document.getElementsByClassName('replay')[0].style.opacity = 1
+      //     }, 0);
+      //   }
+      // });
+      // // 火车驶过
+      // tl
+      //   // 摄像机前移
+      //   .to(camera.position, 5.5, {bezier:[{x: 140, y: -65, z: -60}, {x: 100, y: -65, z: -210}, {x: 90, y: -60, z: -290}]}, 1)
+      //   // 摄像机旋转
+      //   // .to(camera.rotation, 1.5, {z: -0.4, ease:Power1.easeOut }, 4.5)
+      //   // .to(camera.rotation, 1.5, {z: 0, ease:Power1.easeOut }, 6)
+      //   .to(scene.getObjectByName('文字-山').material, 2, {opacity: 1}, 6)
+      //   // 视角移动到村
+      //   .to(camera.position, 4, {bezier:[{x: 82, y: -65, z: -329.4}, {x: 75, y: -35, z: -390}, {x: 70, y: -65, z: -500}]}, 9)
+      //   .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 16)
+      //   // 视角移动到瓷
+      //   .to(camera.rotation, 4, {y: -1.4}, 22)
+      //   .to(camera.position, 1, {bezier:[{x: 70, y: -66, z: -559.5}]}, 19)
+      //   .to(camera.position, 4, {bezier:[{x: 110, y: -62, z: -650}, {x: 140, y: -50, z: -780}]}, 22)
+      //   .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 24)
+      //   // 视角移动到橙子
+      //   .to(camera.rotation, 4, {y: 0, ease:Power1.easeOut}, 30)
+      //   .to(camera.position, 1, {bezier:[{x: 235, y: -60, z: -730}]}, 28)
+      //   .to(camera.position, 4, {bezier:[{x: 425, y: -30, z: -770}, {x: 545, y: -5, z: -830}]}, 30)
+      //   .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 32)
+      //   // 移动到水
+      //   .to(camera.position, 1, {bezier:[{x: 571.1, y: -3.5, z: -923.2}]}, 35)
+      //   .to(camera.position, 4, {bezier:[{x: 690, y: -12, z: -985}, {x: 800, y: -25, z: -1065}]}, 38)
+      //   .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 40)
+      //   // 茶
+      //   .to(camera.position, 1, {bezier:[{x: 781, y: -26, z: -1137}]}, 43)
+      //   .to(camera.position, 4, {bezier:[{x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 46)
+      //   .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 48)
+      //   // 药
+      //   .to(camera.position, 1, {bezier:[{x: 485, y: -40, z: -1451}]}, 51)
+      //   .to(camera.position, 4, {bezier:[{x: 564, y: 30, z: -1723}]}, 54)
+      //   .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 56)
+      //   // 土路
+      //   .to(camera.position, 1, {bezier:[{x: 552, y: 30, z: -1785}]}, 59)
+      //   .to(camera.position, 4, {bezier:[{x: 600, y: 35, z: -1905}, {x: 680, y: -40, z: -1994}]}, 62)
+      //   .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 64)
+      //   .to(camera.position, 1, {bezier:[{x: 674, y: -64, z: -2083}]}, 68)
+      //   .to(camera.rotation, 4, {y: -0.5, ease:Power1.easeOut}, 71)
+      //   .to(camera.position, 4, {bezier:[{x: 693, y: -43, z: -2300}]}, 71)
+      //   .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 73)
+      //   // 等待两秒出现文字后高铁驶出
+      //   .to(scene.getObjectByName('高铁').position, 4, {x: 973.45}, 75)
     },
     onWindowResize: function () {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize( window.innerWidth, window.innerHeight );
+    },
+    initThreeClickEvent: function () {
+      const _this = this
+      //点击射线
+      var raycaster = new THREE.Raycaster();
+      var mouse = new THREE.Vector2();
+
+      document.getElementById("mainText").addEventListener('mousedown', onDocumentMouseDown, false);
+      function onDocumentMouseDown(event) {
+        event.preventDefault();
+        mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+        mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+
+        //总结一下，这里必须装网格，mesh，装入组是没有效果的
+        //所以我们将所有的盒子的网格放入对象就可以了
+        // 需要被监听的对象要存储在clickObjects中。
+        console.log(_this.data.clickObjects)
+        var intersects = raycaster.intersectObjects(_this.data.clickObjects);
+
+        
+        if (intersects.length > 0) {
+          // 在这里填写点击代码
+          console.log("dianji");
+        }
+      }
+    },
+    nextPlay: function () {
+      console.log(this.data.busying)
+      if (this.data.busying) return
+      if (this.data.playing == true) {
+        this.data.playing = false
+        this.data.busying = true
+        this.query('.video-play-box').style.display = 'none'
+        this.data.bgMusic.play()
+        this.data.step++
+        switch (this.data.step) {
+          case 1:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+              }
+            });
+            // 视角移动到村
+            tl.to(camera.position, 4, {bezier:[{x: 82, y: -65, z: -329.4}, {x: 75, y: -35, z: -390}, {x: 70, y: -65, z: -500}]}, 1)
+              .to(scene.getObjectByName('文字-村').material, 2, {opacity: 1}, 3)
+            break;
+          case 2:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+              }
+            });
+            // 视角移动到瓷
+            tl.to(camera.rotation, 4, {y: -1.4}, 2)
+              .to(camera.position, 5, {bezier:[{x: 70, y: -66, z: -559.5}, {x: 110, y: -62, z: -650}, {x: 140, y: -50, z: -780}]}, 1)
+              .to(scene.getObjectByName('文字-瓷').material, 2, {opacity: 1}, 3)
+            break;
+          case 3:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+              }
+            });
+            // 视角移动到橙子
+            tl.to(camera.rotation, 4, {y: 0, ease:Power1.easeOut}, 2)
+              .to(camera.position, 5, {bezier:[{x: 235, y: -60, z: -730}, {x: 425, y: -30, z: -770}, {x: 545, y: -5, z: -830}]}, 1)
+              .to(scene.getObjectByName('文字-橙').material, 2, {opacity: 1}, 3)
+            break;
+          case 4:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+              }
+            });
+            // 移动到水
+            tl.to(camera.position, 5, {bezier:[{x: 571.1, y: -3.5, z: -923.2}, {x: 690, y: -12, z: -985}, {x: 800, y: -25, z: -1065}]}, 1)
+              .to(scene.getObjectByName('文字-水').material, 2, {opacity: 1}, 3)
+            break;
+          case 5:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+              }
+            });
+            // 茶
+            tl.to(camera.position, 5, {bezier:[{x: 781, y: -26, z: -1137}, {x: 640, y: -35, z: -1235}, {x: 480, y: -45, z: -1345}]}, 1)
+              .to(scene.getObjectByName('文字-茶').material, 2, {opacity: 1}, 3)
+            break;
+          case 6:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+              }
+            });
+            // 药
+            tl.to(camera.position, 5, {bezier:[{x: 485, y: -40, z: -1451}, {x: 564, y: 30, z: -1723}]}, 1)
+              .to(scene.getObjectByName('文字-药').material, 2, {opacity: 1}, 3)
+            break;
+          case 7:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+              }
+            });
+            // 土
+            tl.to(camera.position, 5, {bezier:[{x: 552, y: 30, z: -1785}, {x: 600, y: 35, z: -1905}, {x: 680, y: -40, z: -1994}]}, 1)
+              .to(scene.getObjectByName('文字-土').material, 2, {opacity: 1}, 3)
+            break;
+          case 8:
+            var tl = new TimelineMax({
+              onComplete: () => {
+                this.data.busying = false
+                document.getElementsByClassName('share')[0].style.display = 'block'
+                document.getElementsByClassName('replay')[0].style.display = 'block'
+                setTimeout(() => {
+                  document.getElementsByClassName('share')[0].style.opacity = 1
+                  document.getElementsByClassName('replay')[0].style.opacity = 1
+                }, 0);
+              }
+            });
+            // 路
+            tl.to(camera.position, 5, {bezier:[{x: 674, y: -64, z: -2083}, {x: 693, y: -43, z: -2300}]}, 1)
+              .to(scene.getObjectByName('文字-路').material, 2, {opacity: 1}, 3)
+              .to(camera.rotation, 4, {y: -0.5, ease:Power1.easeOut}, 2)
+            break;
+          default:
+            break;
+        }
+      } else {
+        this.data.playing = true
+        this.data.busying = true
+        switch (this.data.step) {
+          case 0:
+            this.query('#videoPlay').src = '@|山.mp4|'
+            break;
+          case 1:
+            this.query('#videoPlay').src = '@|村.mp4|'
+            break;
+          case 2:
+            this.query('#videoPlay').src = '@|瓷.mp4|'
+            break;
+          case 3:
+            this.query('#videoPlay').src = '@|橙.mp4|'
+            break;
+          case 4:
+            this.query('#videoPlay').src = '@|水.mp4|'
+            break;
+          case 5:
+            this.query('#videoPlay').src = '@|茶.mp4|'
+            break;
+          case 6:
+            this.query('#videoPlay').src = '@|药.mp4|'
+            break;
+          case 7:
+            this.query('#videoPlay').src = '@|土.mp4|'
+            break;
+          case 8:
+            this.query('#videoPlay').src = '@|路.mp4|'
+            break;
+          case 9:
+            this.query('#videoPlay').src = '@|山.mp4|'
+            break;
+          default:
+            break;
+        }
+        this.data.bgMusic.pause()
+        this.query('.video-play-box').style.display = 'block'
+        this.query('#videoPlay').play()
+      }
     },
     changeValue: function (item, key, value) {
       value = parseFloat(value) * this.data.beishu
@@ -499,6 +759,10 @@
       } else {
         this.query('.share-box').style.display = 'none'
       }
+    },
+    // 跳过视频播放
+    skip: function () {
+      
     }
   }
 </script>
@@ -516,6 +780,8 @@
   margin: auto;
   opacity: 1;
   transition: opacity 1s;
+  user-select: none;
+  pointer-events: none;
 }
 #container {
   width: 100%;
@@ -581,5 +847,18 @@
   display: none;
   opacity: 0;
   transition: opacity 1s;
+}
+.video-play-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: black;
+}
+#videoPlay {
+  width: 100%;
+  height: 100%;
 }
 </style>

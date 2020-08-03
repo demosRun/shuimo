@@ -2,7 +2,7 @@ body, html, .page, .page-box {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
 .owo-animation {
@@ -29,6 +29,10 @@ body, html, .page, .page-box {
 
 img {
   border: none;
+}
+
+[route-active="false"] {
+  display: none;
 }
 
 /* 清除浮动 */
@@ -147,6 +151,11 @@ li {
   margin: auto;
   opacity: 1;
   transition: opacity 1s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 
 .page-1 #container {
@@ -221,5 +230,20 @@ li {
   display: none;
   opacity: 0;
   transition: opacity 1s;
+}
+
+.page-1 .video-play-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: black;
+}
+
+.page-1 #videoPlay {
+  width: 100%;
+  height: 100%;
 }
 
