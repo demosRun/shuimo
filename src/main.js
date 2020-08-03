@@ -38,3 +38,37 @@ document.body.addEventListener('keyup', function (e) {
       break;
   }
 }, {passive: false})
+
+var musicIsPlay = false
+
+document.addEventListener("WeixinJSBridgeReady", function () {
+  musicIsPlay = true
+  setTimeout(function () {
+    owo.script.page1.data.bgMusic = new Audio("./static/resource/bg.mp3")
+    owo.script.page1.data.bgMusic.loop = true
+    owo.script.page1.data.bgMusic.volume = 0.5
+    owo.script.page1.data.bgMusic.play()
+  }, 0);
+}, false)
+
+setTimeout(function() {
+  var box = document.getElementById('videoPlay')
+  if (document.body.offsetWidth / document.body.offsetHeight < 1) {
+    if (document.body.offsetWidth / document.body.offsetHeight < 1.77) {
+      box.style.height = 'auto'
+      box.style.width = '100%'
+    } else {
+      box.style.height = '100%'
+      box.style.width = 'auto'
+    }
+  } else {
+    if (document.body.offsetWidth / document.body.offsetHeight > 1.77) {
+      box.style.height = 'auto'
+      box.style.width = '100%'
+    } else {
+      box.style.height = '100%'
+      box.style.width = 'auto'
+    }
+  }
+  
+}, 1000);
