@@ -138,7 +138,9 @@
 <style lang="less">
 .loading-box {
   background-color: white;
-  z-index: 10;
+  z-index: 999;
+  height: 100%;
+  position: absolute;
 }
 .loading {
   position: absolute;

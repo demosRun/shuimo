@@ -93,6 +93,11 @@
 		{
 			"name": "autoScale",
 			"src": "./owo_modules/autoScale.js"
+		},
+		{
+			"name": "toast",
+			"afterbody": true,
+			"src": "./owo_modules/toast.js"
 		}
 	],
 	"styleList": [
@@ -112,6 +117,11 @@
 			"name": "page1",
 			"src": "./src/page/page1.owo",
 			"type": "page"
+		},
+		{
+			"name": "playMusic",
+			"src": "https://template.owo.ink/947eded0f03783ad.owo",
+			"type": "block"
 		}
 	],
 	"mode": {
