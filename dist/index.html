@@ -207,14 +207,14 @@
         top: 721,
         index: 163
       }, {
-        name: '小手',
+        name: '小手-山',
         fileName: './static/resource/hand.png',
         width: 64,
         height: 64,
         opacity: 0,
-        left: 588,
-        top: 761,
-        index: 162.9
+        left: 558 + 50,
+        top: 721 + 50,
+        index: 162.9 - 0.1
       }, {
         name: '路山村-井冈山装饰',
         fileName: './static/resource/路山村-井冈山装饰.png',
@@ -333,6 +333,15 @@
         left: 380,
         top: 712,
         index: 276
+      }, {
+        name: '小手-村',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: 380 + 50,
+        top: 712 + 50,
+        index: 276 - 0.1
       }, {
         name: '远山-copy',
         fileName: './static/resource/远山.png',
@@ -461,6 +470,16 @@
         left: 1934,
         top: 322,
         index: 370.5,
+        rotationY: -1.6
+      }, {
+        name: '小手-瓷',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: 1934,
+        top: 372,
+        index: 368.5,
         rotationY: -1.6
       }, {
         name: '橙-树-copy',
@@ -643,6 +662,15 @@
         top: 45,
         index: 445
       }, {
+        name: '小手-橙',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: 5816 + 50,
+        top: 45 + 50,
+        index: 445 - 0.1
+      }, {
         name: '橙-橙子',
         fileName: './static/resource/橙-橙子.png',
         width: 196,
@@ -760,6 +788,15 @@
         left: 408 + 7000,
         top: -67,
         index: 460 + 100
+      }, {
+        name: '小手-水',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: 408 + 7000 + 50,
+        top: -67 + 50,
+        index: 460 + 100 - 0.1
       }, {
         name: '水-小舟',
         fileName: './static/resource/水-小舟.png',
@@ -888,6 +925,15 @@
         top: 161,
         index: 540 + 160
       }, {
+        name: '小手-茶',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: 2054 + 3000 + 50,
+        top: 161 + 50,
+        index: 540 + 160 - 0.1
+      }, {
         name: '茶',
         fileName: './static/resource/茶.png',
         width: 1835,
@@ -924,6 +970,15 @@
         left: -509 + 6000,
         top: -449,
         index: 685 + 200
+      }, {
+        name: '小手-药',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: -509 + 6000 + 50,
+        top: -449 + 50,
+        index: 685 + 200 - 0.1
       }, {
         name: '药土路-房间-1',
         fileName: './static/resource/药土路-房间-1.png',
@@ -1007,6 +1062,15 @@
         top: -366 + 800,
         index: 673 + 350
       }, {
+        name: '小手-土',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: 370 + 6000 + 50,
+        top: -366 + 800 + 50,
+        index: 673 + 350 - 0.1
+      }, {
         name: '药土路-土块',
         fileName: './static/resource/药土路-土块.png',
         width: 129,
@@ -1058,9 +1122,9 @@
         width: 7440,
         height: 591,
         opacity: 100,
-        left: -3445 + 6000,
-        top: -758 + 800,
-        index: 1256
+        left: 2555,
+        top: -158,
+        index: 1238.5
       }, {
         name: '药土路-背景-copy-2',
         fileName: './static/resource/药土路-背景.png',
@@ -1080,6 +1144,15 @@
         top: -532 + 800,
         index: 673 + 500
       }, {
+        name: '小手-路',
+        fileName: './static/resource/hand.png',
+        width: 64,
+        height: 64,
+        opacity: 0,
+        left: 1226 + 6000 + 50,
+        top: -532 + 800 + 50,
+        index: 673 + 500 - 0.4
+      }, {
         name: '高铁',
         fileName: './static/resource/高铁.png',
         width: 869,
@@ -1091,7 +1164,7 @@
       }, {
         name: '桥面',
         fileName: './static/resource/桥面.png',
-        width: 4706,
+        width: 6206,
         height: 102,
         opacity: 100,
         left: 5982,
@@ -1575,7 +1648,7 @@
                 repeat: 5,
                 yoyo: true,
                 repeatDelay: 0
-              }).to(scene.getObjectByName('小手').material, 1.5, {
+              }).to(scene.getObjectByName('小手-山').material, 1.5, {
                 opacity: 1
               }, 0);
             }
@@ -1590,7 +1663,7 @@
           this.data.nmMusic = new Audio("./static/resource/niaoming.mp3");
           this.data.nmMusic.loop = true;
           this.data.nmMusic.volume = 0.3;
-          this.data.nmMusic.play();
+          if (owo.script.playMusic.data.userNoClose) this.data.nmMusic.play();
           tl // 摄像机前移
             .to(camera.position, 5.5, {
               bezier: [{
@@ -1650,10 +1723,9 @@
             this.data.busying = true;
             this.query('.video-play-box').style.opacity = 0;
             setTimeout(function() {
-              document.getElementsByClassName('music-menu')[0].style.display = 'block';
               _this5.query('.video-play-box').style.display = 'none';
             }, 1500);
-            owo.script.playMusic.play();
+            if (owo.script.playMusic.data.userNoClose) owo.script.playMusic.data.music.play();
             this.data.step++;
 
             switch (this.data.step) {
@@ -1665,18 +1737,11 @@
                       repeat: 5,
                       yoyo: true,
                       repeatDelay: 0
-                    }).to(scene.getObjectByName('文字-村').material, 2, {
-                      opacity: 0
+                    }).to(scene.getObjectByName('小手-村').material, 1.5, {
+                      opacity: 1
                     }, 0);
                   }
-                }); // 视角移动到村
-
-                setTimeout(function() {
-                  // 播放鼓声
-                  _this5.data.nmMusic.src = './static/resource/gu.mp3';
-
-                  _this5.data.nmMusic.play();
-                }, 500);
+                });
                 tl.to(camera.position, 4, {
                   bezier: [{
                     x: 75,
@@ -1700,8 +1765,8 @@
                       repeat: 5,
                       yoyo: true,
                       repeatDelay: 0
-                    }).to(scene.getObjectByName('文字-瓷').material, 2, {
-                      opacity: 0
+                    }).to(scene.getObjectByName('小手-瓷').material, 1.5, {
+                      opacity: 1
                     }, 0);
                   }
                 }); // 视角移动到瓷
@@ -1731,18 +1796,11 @@
                       repeat: 5,
                       yoyo: true,
                       repeatDelay: 0
-                    }).to(scene.getObjectByName('文字-橙').material, 2, {
-                      opacity: 0
+                    }).to(scene.getObjectByName('小手-橙').material, 1.5, {
+                      opacity: 1
                     }, 0);
                   }
-                }); // 视角移动到橙子
-
-                setTimeout(function() {
-                  // 播放车声
-                  _this5.data.nmMusic.src = './static/resource/che.mp3';
-
-                  _this5.data.nmMusic.play();
-                }, 500);
+                });
                 tl.to(camera.rotation, 4, {
                   y: 0,
                   ease: Power1.easeOut
@@ -1769,11 +1827,18 @@
                       repeat: 5,
                       yoyo: true,
                       repeatDelay: 0
-                    }).to(scene.getObjectByName('文字-水').material, 2, {
-                      opacity: 0
+                    }).to(scene.getObjectByName('小手-水').material, 1.5, {
+                      opacity: 1
                     }, 0);
                   }
-                }); // 移动到水
+                });
+
+                if (owo.script.playMusic.data.userNoClose) {
+                  this.data.nmMusic.volume = 1;
+                  this.data.nmMusic.src = './static/resource/shui.mp3';
+                  this.data.nmMusic.play();
+                } // 移动到水
+
 
                 tl.to(camera.position, 4, {
                   bezier: [{
@@ -1798,8 +1863,8 @@
                       repeat: 5,
                       yoyo: true,
                       repeatDelay: 0
-                    }).to(scene.getObjectByName('文字-茶').material, 2, {
-                      opacity: 0
+                    }).to(scene.getObjectByName('小手-茶').material, 1.5, {
+                      opacity: 1
                     }, 0);
                   }
                 }); // 茶
@@ -1827,8 +1892,8 @@
                       repeat: 5,
                       yoyo: true,
                       repeatDelay: 0
-                    }).to(scene.getObjectByName('文字-药').material, 2, {
-                      opacity: 0
+                    }).to(scene.getObjectByName('小手-药').material, 1.5, {
+                      opacity: 1
                     }, 0);
                   }
                 }); // 药
@@ -1852,8 +1917,8 @@
                       repeat: 5,
                       yoyo: true,
                       repeatDelay: 0
-                    }).to(scene.getObjectByName('文字-土').material, 2, {
-                      opacity: 0
+                    }).to(scene.getObjectByName('小手-土').material, 1.5, {
+                      opacity: 1
                     }, 0);
                   }
                 }); // 土
@@ -1877,6 +1942,13 @@
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
                     _this5.data.busying = false;
+                    new TimelineMax({
+                      repeat: 5,
+                      yoyo: true,
+                      repeatDelay: 0
+                    }).to(scene.getObjectByName('小手-路').material, 1.5, {
+                      opacity: 1
+                    }, 0);
                   }
                 }); // 路
 
@@ -1896,27 +1968,36 @@
 
               case 9:
                 var tl = new TimelineMax();
-                tl.to(scene.getObjectByName('高铁').position, 4, {
-                    x: 1073.45
+
+                if (owo.script.playMusic.data.userNoClose) {
+                  this.data.nmMusic.volume = 1;
+                  this.data.nmMusic.loop = false;
+                  this.data.nmMusic.src = './static/resource/huoche.mp3';
+                  this.data.nmMusic.play();
+                }
+
+                owo.script.playMusic.data.music.pause();
+                tl.to(scene.getObjectByName('高铁').position, 6, {
+                    x: 1133.45
                   }, 0) // 视频才会视角转移
                   .to(scene.getObjectByName('高铁').material, 1, {
                     opacity: 0
-                  }, 2).to(scene.getObjectByName('桥面').material, 1, {
+                  }, 3).to(scene.getObjectByName('桥面').material, 1, {
                     opacity: 0
-                  }, 2).to(camera.position, 4, {
+                  }, 3).to(camera.position, 6, {
                     bezier: [{
-                      x: 1013,
+                      x: 1063,
                       y: -43,
                       z: -2331
                     }]
-                  }, 0).to(camera.rotation, 4, {
+                  }, 0).to(camera.rotation, 6, {
                     y: -0.9
                   }, 0);
                 setTimeout(function() {
                   _this5.data.busying = false;
 
                   _this5.nextPlay();
-                }, 2000);
+                }, 4000);
                 break;
 
               case 10:
@@ -1966,7 +2047,7 @@
                     z: -329.4
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/山.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/山.mp4';
                 break;
 
               case 1:
@@ -1977,7 +2058,7 @@
                     z: -559.5
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/村.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/村.mp4';
                 break;
 
               case 2:
@@ -1988,7 +2069,7 @@
                     z: -730
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/瓷.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/瓷.mp4';
                 break;
 
               case 3:
@@ -1999,7 +2080,7 @@
                     z: -923.2
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/橙.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/橙.mp4';
                 break;
 
               case 4:
@@ -2010,7 +2091,7 @@
                     z: -1137
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/水.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/水.mp4';
                 break;
 
               case 5:
@@ -2021,7 +2102,7 @@
                     z: -1451
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/叶.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/叶.mp4';
                 break;
 
               case 6:
@@ -2032,7 +2113,7 @@
                     z: -1785
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/药.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/药.mp4';
                 break;
 
               case 7:
@@ -2043,7 +2124,7 @@
                     z: -2083
                   }]
                 }, 0);
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/土.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/土.mp4';
                 break;
 
               case 8:
@@ -2055,11 +2136,11 @@
                 }, 0); // new TimelineMax().to(camera.position, 1, {bezier:[{x: 82, y: -65, z: -329.4}]}, 0)
 
 
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/路.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/路.mp4';
                 break;
 
               case 9:
-                this.query('#videoPlay').src = 'http://cunchu.site/people/video/新.mp4';
+                this.query('#videoPlay').src = 'https://cunchu.site/people/test/新.mp4';
                 break;
 
               default:
@@ -2067,12 +2148,17 @@
             }
 
             setTimeout(function() {
-              document.getElementsByClassName('music-menu')[0].style.display = 'none';
-              owo.script.playMusic.pause();
+              owo.script.playMusic.data.music.pause();
               _this5.query('.video-play-box').style.display = 'block';
               setTimeout(function() {
                 _this5.query('.video-play-box').style.opacity = 1;
               }, 100);
+
+              if (owo.script.playMusic.data.userNoClose) {
+                _this5.query('#videoPlay').muted = false;
+              } else {
+                _this5.query('#videoPlay').muted = true;
+              }
 
               _this5.query('#videoPlay').play();
             }, 500);
@@ -2119,16 +2205,23 @@
       "playMusic": {
         "data": {
           "music": null,
-          "musicIsPlay": false
+          "musicIsPlay": false,
+          "userNoClose": true
         },
         "created": function created() {
           if (window.innerWidth / window.innerHeight < 1) {
-            this.$el.style.top = 'auto';
-            this.$el.style.bottom = '15px';
+            this.$el.style.left = 'auto';
+            this.$el.style.right = '15px';
           }
         },
         "switchPlay": function switchPlay() {
-          this.data.musicIsPlay ? this.pause() : this.play();
+          if (this.data.musicIsPlay) {
+            this.data.userNoClose = false;
+            this.pause();
+          } else {
+            this.data.userNoClose = true;
+            this.play();
+          }
         },
         "play": function play() {
           console.log('播放音乐');
@@ -2142,6 +2235,7 @@
             this.data.music.play();
             var icon = document.getElementsByClassName('music-icon')[0];
             icon.classList.add('active');
+            document.getElementById('videoPlay').muted = false;
           }
         },
         "pause": function pause() {
@@ -2150,6 +2244,7 @@
             this.data.music.pause();
             var icon = document.getElementsByClassName('music-icon')[0];
             icon.classList.remove('active');
+            document.getElementById('videoPlay').muted = true;
           }
         }
       }

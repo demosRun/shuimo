@@ -11,16 +11,23 @@
   module.exports = {
     data: {
       music: null,
-      musicIsPlay: false
+      musicIsPlay: false,
+      userNoClose: true
     },
     created: function () {
       if ((window.innerWidth / window.innerHeight) < 1) {
-        this.$el.style.top = 'auto'
-        this.$el.style.bottom = '15px'
+        this.$el.style.left = 'auto'
+        this.$el.style.right = '15px'
       }
     },
     switchPlay: function () {
-      (this.data.musicIsPlay) ? this.pause() : this.play()
+      if (this.data.musicIsPlay) {
+        this.data.userNoClose = false
+        this.pause()
+      } else {
+        this.data.userNoClose = true
+        this.play()
+      }
     },
     play: function () {
       console.log('播放音乐')
@@ -33,6 +40,7 @@
         this.data.music.play()
         const icon = document.getElementsByClassName('music-icon')[0]
         icon.classList.add('active')
+        document.getElementById('videoPlay').muted = false
       }
     },
     pause: function () {
@@ -41,6 +49,7 @@
         this.data.music.pause()
         const icon = document.getElementsByClassName('music-icon')[0]
         icon.classList.remove('active')
+        document.getElementById('videoPlay').muted = true
       }
     }
   }
@@ -50,8 +59,8 @@
 <style lang="less">
 .music-menu {
   position: absolute;
-  right: 15px;
-  top: 10%;
+  left: 15px;
+  top: 15px;
   z-index: 9;
   width: 35px;
   height: 35px;

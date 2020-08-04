@@ -271,8 +271,8 @@ li {
 }
 .music-menu {
   position: absolute;
-  right: 15px;
-  top: 10%;
+  left: 15px;
+  top: 15px;
   z-index: 9;
   width: 35px;
   height: 35px;
