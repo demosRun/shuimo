@@ -20,6 +20,7 @@
   img.share.button-item(src="@|share.png|" o-tap="swiShare")
   img.replay.button-item(src="@|replay.png|" o-tap="location.reload()")
   img.more.button-item(src="@|more.png|" o-tap="showName")
+  img.logo(src="@|logo.png|")
   .share-box(o-tap="swiShare")
     img.share-point(src="@|share-point.png|")
   .name-box(o-tap="showName")
@@ -694,10 +695,12 @@
             document.getElementsByClassName('share')[0].style.display = 'block'
             document.getElementsByClassName('replay')[0].style.display = 'block'
             document.getElementsByClassName('more')[0].style.display = 'block'
+            document.getElementsByClassName('logo')[0].style.display = 'block'
             setTimeout(() => {
               document.getElementsByClassName('share')[0].style.opacity = 1
               document.getElementsByClassName('replay')[0].style.opacity = 1
               document.getElementsByClassName('more')[0].style.opacity = 1
+              document.getElementsByClassName('logo')[0].style.opacity = 1
             }, 0);
             break;
           default:
@@ -960,5 +963,12 @@
     margin: auto;
   }
 }
-
+.logo {
+  position: absolute;
+  right: 7%;
+  bottom: 12%;
+  height: 20%;
+  opacity: 0;
+  display: none;
+}
 </style>

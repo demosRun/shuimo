@@ -52,6 +52,7 @@
       <img class="share button-item" src="./static/resource/share.png" o-tap="swiShare">
       <img class="replay button-item" src="./static/resource/replay.png" o-tap="location.reload()">
       <img class="more button-item" src="./static/resource/more.png" o-tap="showName">
+      <img class="logo" src="./static/resource/logo.png">
       <div class="share-box" o-tap="swiShare">
         <img class="share-point" src="./static/resource/share-point.png">
       </div>
@@ -2082,10 +2083,12 @@
                 document.getElementsByClassName('share')[0].style.display = 'block';
                 document.getElementsByClassName('replay')[0].style.display = 'block';
                 document.getElementsByClassName('more')[0].style.display = 'block';
+                document.getElementsByClassName('logo')[0].style.display = 'block';
                 setTimeout(function() {
                   document.getElementsByClassName('share')[0].style.opacity = 1;
                   document.getElementsByClassName('replay')[0].style.opacity = 1;
                   document.getElementsByClassName('more')[0].style.opacity = 1;
+                  document.getElementsByClassName('logo')[0].style.opacity = 1;
                 }, 0);
                 break;
 
@@ -2301,7 +2304,7 @@
             this.data.musicIsPlay = true;
             musicIsPlay = true;
             this.data.music = new Audio("./static/resource/bg.mp3");
-            this.data.music.volume = 1;
+            this.data.music.volume = 2;
             this.data.music.loop = true;
             if (!owo.script.page1.data.videoIsPlay) this.data.music.play();
             var icon = document.getElementsByClassName('music-icon')[0];

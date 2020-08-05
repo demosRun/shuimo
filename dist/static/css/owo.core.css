@@ -370,6 +370,15 @@ li {
   bottom: 0;
   margin: auto;
 }
+
+.page-1 .logo {
+  position: absolute;
+  right: 7%;
+  bottom: 12%;
+  height: 20%;
+  opacity: 0;
+  display: none;
+}
 .music-menu {
   position: absolute;
   left: 15px;
