@@ -64,9 +64,9 @@ li {
 
 .loading-box .loading {
   position: absolute;
-  left: 0;
+  left: -5%;
   right: 0;
-  top: -20%;
+  top: -13%;
   bottom: 0;
   margin: auto;
 }
@@ -77,8 +77,13 @@ li {
   line-height: 40px;
   width: 100%;
   text-align: center;
-  top: 57%;
+  top: 0;
+  right: 0;
+  bottom: -140px;
+  color: #e26230;
   font-weight: bold;
+  margin: auto;
+  height: 40px;
 }
 
 .loading-box .loading-2 {
@@ -116,6 +121,71 @@ li {
   100% {
     transform: rotate(xx) translateX(0px) translateY(0px);
   }
+}
+
+.loading-box .loading-image {
+  width: 400px;
+  height: 250px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -100px;
+  bottom: 0;
+  margin: auto;
+}
+
+.loading-box .so {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1s;
+}
+
+.loading-box .so-0 {
+  left: 263px;
+  top: 48px;
+  z-index: 7;
+}
+
+.loading-box .so-1 {
+  left: 49px;
+  top: 46px;
+  z-index: 6;
+}
+
+.loading-box .so-2 {
+  left: 254px;
+  top: 82px;
+  z-index: 5;
+}
+
+.loading-box .so-3 {
+  left: 167px;
+  top: 130px;
+  z-index: 4;
+}
+
+.loading-box .so-4 {
+  left: 48px;
+  top: 103px;
+  z-index: 3;
+}
+
+.loading-box .so-5 {
+  left: 88px;
+  top: 178px;
+  z-index: 2;
+}
+
+.loading-box .so-6 {
+  left: 171px;
+  top: 158px;
+  z-index: 1;
+}
+
+.loading-box .so-7 {
+  left: 246px;
+  top: 102px;
+  z-index: 0;
 }
 @-webkit-keyframes flicker {
   from {
@@ -216,9 +286,20 @@ li {
 
 .page-1 .replay {
   position: absolute;
-  top: 10%;
+  top: 4%;
   right: 16%;
-  height: 16%;
+  height: 14%;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 999;
+}
+
+.page-1 .more {
+  position: absolute;
+  top: 32%;
+  right: 11%;
+  height: 14%;
   display: none;
   opacity: 0;
   transition: opacity 1s;
@@ -227,9 +308,9 @@ li {
 
 .page-1 .share {
   position: absolute;
-  top: 28%;
-  right: 6%;
-  height: 16%;
+  top: 17.5%;
+  right: 4%;
+  height: 14%;
   display: none;
   opacity: 0;
   transition: opacity 1s;
@@ -268,6 +349,26 @@ li {
   z-index: 999;
   height: 40px;
   transform: translate3d(0, 0, 0);
+}
+
+.page-1 .name-box {
+  position: fixed;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  transition: top 1s;
+}
+
+.page-1 .name-box img {
+  max-width: 90%;
+  max-height: 95%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 .music-menu {
   position: absolute;

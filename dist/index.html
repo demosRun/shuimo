@@ -33,17 +33,30 @@
   <div class="rotate-box-pc">
     <!-- 页面[loading]-->
     <div class="loading-box page" template="loading" style="display: none;">
-      <img class="loading" src="http://www.people.com.cn/img/2016people/images/rmw_logo.png">
+      <div class="loading-image">
+        <img class="so so-0" src="./static/resource/988.png">
+        <img class="so so-1" src="./static/resource/697.png">
+        <img class="so so-2" src="./static/resource/981.png">
+        <img class="so so-3" src="./static/resource/1016.png">
+        <img class="so so-4" src="./static/resource/987.png">
+        <img class="so so-5" src="./static/resource/1017.png">
+        <img class="so so-6" src="./static/resource/1014.png">
+        <img class="so so-7" src="./static/resource/1018.png">
+      </div>
       <div class="num">0%</div>
     </div>
     <!-- 页面[page1]-->
     <div class="page-1 page" template="page1" style="display: none;">
       <div id="container" o-tap="nextPlay"></div><canvas id="mainText"></canvas>
       <img class="play" src="./static/resource/开始按钮.png" o-tap="start" o-animation="flicker">
-      <img class="share" src="./static/resource/share.png" o-tap="swiShare">
-      <img class="replay" src="./static/resource/replay.png" o-tap="location.reload()">
+      <img class="share button-item" src="./static/resource/share.png" o-tap="swiShare">
+      <img class="replay button-item" src="./static/resource/replay.png" o-tap="location.reload()">
+      <img class="more button-item" src="./static/resource/more.png" o-tap="showName">
       <div class="share-box" o-tap="swiShare">
         <img class="share-point" src="./static/resource/share-point.png">
+      </div>
+      <div class="name-box" o-tap="showName">
+        <img src="./static/resource/name.png">
       </div>
       <div class="video-play-box">
         <img class="skip" o-tap="skip" src="./static/resource/next.png">
@@ -1219,12 +1232,46 @@
           "imgList": ["./static/resource/药土路-背景.png", "./static/resource/远山.png", "./static/resource/路山村-背景.png", "./static/resource/药土路-远山.png", "./static/resource/路山村-房子-2.png", "./static/resource/头-卷轴.png", "./static/resource/远山-2.png", "./static/resource/茶叶-加1.png", "./static/resource/路山村-大山-4.png", "./static/resource/茶.png", "./static/resource/药土路-山-2.png", "./static/resource/路山村-大山-3.png", "./static/resource/路山村-大山.png", "./static/resource/路山村-大山-5.png", "./static/resource/水-宝塔.png", "./static/resource/橙-路面.png", "./static/resource/茶叶-加2.png", "./static/resource/路山村-大山-2.png", "./static/resource/药土路-山-3.png", "./static/resource/橙-橙子.png", "./static/resource/竹子.png", "./static/resource/橙-橙树-1.png", "./static/resource/药土路-山-1.png", "./static/resource/橙-石头.png", "./static/resource/药土路-房间-2.png", "./static/resource/头-树-1.png", "./static/resource/路山村-房子-10.png", "./static/resource/桥面.png", "./static/resource/头-花.png", "./static/resource/路山村-云.png", "./static/resource/路山村-大树.png", "./static/resource/头-山-2.png", "./static/resource/橙-橙树-2.png", "./static/resource/橙-树.png", "./static/resource/橙-橙树-4.png", "./static/resource/路山村-房子-6.png", "./static/resource/路山村-房子-5.png", "./static/resource/橙-房子-1.png", "./static/resource/头-山.png", "./static/resource/橙-橙树-3.png", "./static/resource/头-主文字.png", "./static/resource/路山村-井冈山装饰.png", "./static/resource/路山村-房子-4.png", "./static/resource/路山村-房子-8.png", "./static/resource/路山村-房子-1.png", "./static/resource/路山村-大树-2.png", "./static/resource/房子-加-2.png", "./static/resource/药土路-房间-1.png", "./static/resource/路山村-房子-11.png", "./static/resource/路山村-房子-7.png", "./static/resource/路山村-房子-9.png", "./static/resource/路山村-房子-3.png", "./static/resource/水-江水-4.png", "./static/resource/编者按.png", "./static/resource/开始按钮.png", "./static/resource/水-渔网.png", "./static/resource/路山村-竹子-2.png", "./static/resource/药土路-土块.png", "./static/resource/房子-加-1.png", "./static/resource/路山村-瓷器-1.png", "./static/resource/水-江水-3.png", "./static/resource/高铁.png", "./static/resource/头-山-3.png", "./static/resource/水-江水-2.png", "./static/resource/橙-江水.png", "./static/resource/水-小舟.png", "./static/resource/路山村-竹子.png", "./static/resource/水-江水-5.png", "./static/resource/水-江水.png", "./static/resource/头-燕子1.png", "./static/resource/房子-加-3.png", "./static/resource/头-燕子2.png", "./static/resource/文字-药.png", "./static/resource/文字-路.png", "./static/resource/文字-瓷.png", "./static/resource/文字-茶.png", "./static/resource/文字-村.png", "./static/resource/文字-水.png", "./static/resource/文字-橙.png", "./static/resource/文字-土.png", "./static/resource/文字-山.png", "./static/resource/水-鸟.png", "./static/resource/头-背后的山.png", "./static/resource/首页-背景.png"]
         },
         "show": function show() {
+          var _this2 = this;
+
           var mum = owo.query('.num')[0];
           this.preloadImages(this.data.imgList, function(e) {
             setTimeout(function() {
               owo.go('page1////true');
             }, 500);
           }, function(num) {
+            if (num > 0) {
+              _this2.query('.so-6').style.opacity = 1;
+            }
+
+            if (num > 12) {
+              _this2.query('.so-5').style.opacity = 1;
+            }
+
+            if (num > 24) {
+              _this2.query('.so-4').style.opacity = 1;
+            }
+
+            if (num > 36) {
+              _this2.query('.so-3').style.opacity = 1;
+            }
+
+            if (num > 50) {
+              _this2.query('.so-7').style.opacity = 1;
+            }
+
+            if (num > 64) {
+              _this2.query('.so-2').style.opacity = 1;
+            }
+
+            if (num > 76) {
+              _this2.query('.so-1').style.opacity = 1;
+            }
+
+            if (num > 88) {
+              _this2.query('.so-0').style.opacity = 1;
+            }
+
             mum.innerHTML = num + '%';
           });
         },
@@ -1241,7 +1288,7 @@
           };
         },
         "preloadImages": function preloadImages(srcs, doneFn, progressFn) {
-          var _this2 = this;
+          var _this3 = this;
 
           if (!Array.isArray(srcs)) {
             console.log('第一个参数只能是一个数组');
@@ -1249,7 +1296,7 @@
             var allCount = srcs.length;
             var doneCount = 0;
             srcs.forEach(function(srcItem) {
-              _this2.preloadImage(srcItem, function() {
+              _this3.preloadImage(srcItem, function() {
                 doneCount++;
                 progressFn && progressFn(Math.ceil(100 * doneCount / allCount));
 
@@ -1270,7 +1317,9 @@
           "playing": false,
           "step": 0,
           "busying": true,
-          "nmMusic": null
+          "nmMusic": null,
+          "videoIsPlay": false,
+          "nameIsShow": false
         },
         "created": function created() {
           this.init();
@@ -1348,10 +1397,17 @@
               tm.to(scene.getObjectByName('水-小舟').position, 3, {
                 x: 847.95,
                 y: -1.15
+              });
+              new TimelineMax({
+                repeat: -1,
+                repeatDelay: 0
+              }).to(scene.getObjectByName('水-鸟').position, 16, {
+                x: 920,
+                y: 18
               }); // tm.to(scene.getObjectByName('水-江水-3').position, 3, {x:830.9,y:-16.15})
               // tm.to(scene.getObjectByName('水-江水-3').material, 3, {opacity: 0.1})
               // this.play()
-            }, 6000);
+            }, 10000);
           };
         },
         "init": function init() {
@@ -1400,7 +1456,7 @@
 
         },
         "creatMode": function creatMode() {
-          var _this3 = this;
+          var _this4 = this;
 
           // 辅助参考线
           // var grid = new THREE.GridHelper(500, 100);
@@ -1434,7 +1490,7 @@
               scene.add(logo);
 
               if (element.name.startsWith('文字-')) {
-                _this3.data.clickObjects.push(logo);
+                _this4.data.clickObjects.push(logo);
               }
             });
           });
@@ -1634,7 +1690,7 @@
           // .to(camera.rotation, 4, {y: -0.9}, 76)
         },
         "play": function play() {
-          var _this4 = this;
+          var _this5 = this;
 
           // 播放音乐
           if (!musicIsPlay) {
@@ -1643,7 +1699,7 @@
 
           var tl = new TimelineMax({
             onComplete: function onComplete() {
-              _this4.data.busying = false;
+              _this5.data.busying = false;
               new TimelineMax({
                 repeat: 5,
                 yoyo: true,
@@ -1654,9 +1710,10 @@
             }
           });
           this.query('#videoPlay').addEventListener('ended', function() {
-            _this4.data.busying = false;
+            _this5.data.videoIsPlay = false;
+            _this5.data.busying = false;
 
-            _this4.nextPlay();
+            _this5.nextPlay();
           }, false);
           this.data.busying = true; // 播放鸟鸣音效
 
@@ -1714,7 +1771,7 @@
           }
         },
         "nextPlay": function nextPlay() {
-          var _this5 = this;
+          var _this6 = this;
 
           if (this.data.busying) return;
 
@@ -1723,7 +1780,7 @@
             this.data.busying = true;
             this.query('.video-play-box').style.opacity = 0;
             setTimeout(function() {
-              _this5.query('.video-play-box').style.display = 'none';
+              _this6.query('.video-play-box').style.display = 'none';
             }, 1500);
             if (owo.script.playMusic.data.userNoClose) owo.script.playMusic.data.music.play();
             this.data.step++;
@@ -1732,7 +1789,7 @@
               case 1:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1760,7 +1817,7 @@
               case 2:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1791,7 +1848,7 @@
               case 3:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1822,7 +1879,7 @@
               case 4:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1858,7 +1915,7 @@
               case 5:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1887,7 +1944,7 @@
               case 6:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1912,7 +1969,7 @@
               case 7:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1941,7 +1998,7 @@
               case 8:
                 var tl = new TimelineMax({
                   onComplete: function onComplete() {
-                    _this5.data.busying = false;
+                    _this6.data.busying = false;
                     new TimelineMax({
                       repeat: 5,
                       yoyo: true,
@@ -1994,9 +2051,9 @@
                     y: -0.9
                   }, 0);
                 setTimeout(function() {
-                  _this5.data.busying = false;
+                  _this6.data.busying = false;
 
-                  _this5.nextPlay();
+                  _this6.nextPlay();
                 }, 4000);
                 break;
 
@@ -2018,15 +2075,17 @@
                 new TimelineMax({
                   repeat: -1,
                   repeatDelay: 0
-                }).to(scene.getObjectByName('高铁').position, 14, {
+                }).to(scene.getObjectByName('高铁').position, 12, {
                   x: 1873.45
                 });
                 scene.getObjectByName('文字-路').material.opacity = 0;
                 document.getElementsByClassName('share')[0].style.display = 'block';
                 document.getElementsByClassName('replay')[0].style.display = 'block';
+                document.getElementsByClassName('more')[0].style.display = 'block';
                 setTimeout(function() {
                   document.getElementsByClassName('share')[0].style.opacity = 1;
                   document.getElementsByClassName('replay')[0].style.opacity = 1;
+                  document.getElementsByClassName('more')[0].style.opacity = 1;
                 }, 0);
                 break;
 
@@ -2149,19 +2208,21 @@
 
             setTimeout(function() {
               owo.script.playMusic.data.music.pause();
-              _this5.query('.video-play-box').style.display = 'block';
+              _this6.query('.video-play-box').style.display = 'block';
               setTimeout(function() {
-                _this5.query('.video-play-box').style.opacity = 1;
-              }, 100);
+                _this6.query('.video-play-box').style.opacity = 1;
+              }, 500);
 
               if (owo.script.playMusic.data.userNoClose) {
-                _this5.query('#videoPlay').muted = false;
+                _this6.query('#videoPlay').muted = false;
               } else {
-                _this5.query('#videoPlay').muted = true;
+                _this6.query('#videoPlay').muted = true;
               }
 
-              _this5.query('#videoPlay').play();
-            }, 500);
+              _this6.data.videoIsPlay = true;
+
+              _this6.query('#videoPlay').play();
+            }, 0);
           }
         },
         "changeValue": function changeValue(item, key, value) {
@@ -2179,12 +2240,12 @@
           }
         },
         "start": function start() {
-          var _this6 = this;
+          var _this7 = this;
 
           this.query('#mainText').style.opacity = '0';
           this.query('.play').style.display = 'none';
           setTimeout(function() {
-            _this6.play();
+            _this7.play();
           }, 1000);
         },
         "swiShare": function swiShare() {
@@ -2197,9 +2258,19 @@
           }
         },
         "skip": function skip() {
+          this.data.videoIsPlay = false;
           this.query('#videoPlay').pause();
           this.data.busying = false;
           this.nextPlay();
+        },
+        "showName": function showName() {
+          this.data.nameIsShow = !this.data.nameIsShow;
+
+          if (this.data.nameIsShow) {
+            document.body.classList.add('name-active');
+          } else {
+            document.body.classList.remove('name-active');
+          }
         }
       },
       "playMusic": {
@@ -2230,9 +2301,9 @@
             this.data.musicIsPlay = true;
             musicIsPlay = true;
             this.data.music = new Audio("./static/resource/bg.mp3");
-            this.data.music.volume = 0.5;
+            this.data.music.volume = 1;
             this.data.music.loop = true;
-            this.data.music.play();
+            if (!owo.script.page1.data.videoIsPlay) this.data.music.play();
             var icon = document.getElementsByClassName('music-icon')[0];
             icon.classList.add('active');
             document.getElementById('videoPlay').muted = false;
