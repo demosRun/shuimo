@@ -121,14 +121,18 @@ function getScale () {
     scaleBox.style.margin = "0 auto"
   }
   // 只对手机生效
-  if ((autoScaleInfo.innerWidth / autoScaleInfo.innerHeight) < 1) {
-    var rotateListPC = document.getElementsByClassName('rotate-box-pc')
-    for (var index = 0; index < rotateListPC.length; index++) {
-      var rotateBox = rotateListPC[index];
+  var rotateListPC = document.getElementsByClassName('rotate-box-pc')
+  for (var index = 0; index < rotateListPC.length; index++) {
+    var rotateBox = rotateListPC[index];
+    if ((autoScaleInfo.innerWidth / autoScaleInfo.innerHeight) < 1) {
       rotateBox.style.transform = 'rotate(90deg) translate(0, ' + -autoScaleInfo.innerWidth + 'px)'
       rotateBox.style.height = autoScaleInfo.innerWidth + 'px'
       rotateBox.style.width = autoScaleInfo.innerHeight + 'px'
       rotateBox.style.transformOrigin = '0px 0px 0px'
+    } else {
+      rotateBox.style.transform = ''
+      rotateBox.style.height = autoScaleInfo.innerHeight + 'px'
+      rotateBox.style.width = autoScaleInfo.innerWidth + 'px'
     }
   }
 }

@@ -50,3 +50,18 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   visibility: hidden;
   clear: both;
 }
+
+.button-item {
+  transition: right 1s;
+}
+.name-active .name-box {
+  top: 0;
+}
+
+.name-active .button-item {
+  right: -40%;
+}
+video {
+  background-color: transparent;
+  mix-blend-mode: screen;
+}
