@@ -1,6 +1,14 @@
 <template lang="pug">
 .loading-box
-  img.loading(src="http://www.people.com.cn/img/2016people/images/rmw_logo.png")
+  .loading-image
+    img.so.so-0(src="@|988.png|")
+    img.so.so-1(src="@|697.png|")
+    img.so.so-2(src="@|981.png|")
+    img.so.so-3(src="@|1016.png|")
+    img.so.so-4(src="@|987.png|")
+    img.so.so-5(src="@|1017.png|")
+    img.so.so-6(src="@|1014.png|")
+    img.so.so-7(src="@|1018.png|")
   .num 0%
 </template>
 
@@ -101,6 +109,30 @@
           owo.go('page1////true')
         }, 500)
       }, (num) => {
+        if (num > 0) {
+          this.query('.so-6').style.opacity = 1
+        }
+        if (num > 12) {
+          this.query('.so-5').style.opacity = 1
+        }
+        if (num > 24) {
+          this.query('.so-4').style.opacity = 1
+        }
+        if (num > 36) {
+          this.query('.so-3').style.opacity = 1
+        }
+        if (num > 50) {
+          this.query('.so-7').style.opacity = 1
+        }
+        if (num > 64) {
+          this.query('.so-2').style.opacity = 1
+        }
+        if (num > 76) {
+          this.query('.so-1').style.opacity = 1
+        }
+        if (num > 88) {
+          this.query('.so-0').style.opacity = 1
+        }
         mum.innerHTML = num + '%'
       })
     },
@@ -144,9 +176,9 @@
 }
 .loading {
   position: absolute;
-  left: 0;
+  left: -5%;
   right: 0;
-  top: -20%;
+  top: -13%;
   bottom: 0;
   margin: auto;
 }
@@ -156,8 +188,13 @@
   line-height: 40px;
   width: 100%;
   text-align: center;
-  top: 57%;
+  top: 0;
+  right: 0;
+  bottom: -140px;
+  color: #e26230;
   font-weight: bold;
+  margin: auto;
+  height: 40px;
 }
 .loading-2 {
   position: absolute;
@@ -177,5 +214,61 @@
   100% {
     transform: rotate(xx) translateX(0px) translateY(0px);
   }
+}
+.loading-image {
+  position: absolute;
+  width: 400px;
+  height: 250px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -100px;
+  bottom: 0;
+  margin: auto;
+}
+.so {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1s;
+}
+.so-0 {
+  left: 263px;
+  top: 48px;
+  z-index: 7;
+}
+.so-1 {
+  left: 49px;
+  top: 46px;
+  z-index: 6;
+}
+.so-2 {
+  left: 254px;
+  top: 82px;
+  z-index: 5;
+}
+.so-3 {
+  left: 167px;
+  top: 130px;
+  z-index: 4;
+}
+.so-4 {
+  left: 48px;
+  top: 103px;
+  z-index: 3;
+}
+.so-5 {
+  left: 88px;
+  top: 178px;
+  z-index: 2;
+}
+.so-6 {
+  left: 171px;
+  top: 158px;
+  z-index: 1;
+}
+.so-7 {
+  left: 246px;
+  top: 102px;
+  z-index: 0;
 }
 </style>

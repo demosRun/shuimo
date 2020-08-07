@@ -61,18 +61,29 @@
     <!-- 页面[page1]-->
     <div class="page-1 page" template="page1" style="display: none;">
       <div id="container" o-tap="nextPlay"></div><canvas id="mainText"></canvas>
+<<<<<<< HEAD:publish/index.html
       <img class="play" src="./static/resource/kaishi.png" o-tap="start" o-animation="flicker">
       <img class="share button-item" src="./static/resource/share.png" o-tap="swiShare">
       <img class="replay button-item" src="./static/resource/replay.png" o-tap="location.reload()">
       <img class="more button-item" src="./static/resource/more.png" o-tap="showName">
       <img class="logo" src="./static/resource/logo.png" o-tap="window.location.href='http://rmfp.people.com.cn/GB/407411/433253/433282/index.html'">
+=======
+      <img class="play" src="./static/resource/开始按钮.png" o-tap="start" o-animation="flicker">
+      <img class="share button-item" src="./static/resource/share.png" o-tap="swiShare">
+      <img class="replay button-item" src="./static/resource/replay.png" o-tap="location.reload()">
+      <img class="more button-item" src="./static/resource/more.png" o-tap="showName">
+      <img class="logo" src="./static/resource/logo.png">
+>>>>>>> bcb2a65278f0bc48ebcdee5200cc8011092bdb94:dist/index.html
       <div class="share-box" o-tap="swiShare">
         <img class="share-point" src="./static/resource/share-point.png">
       </div>
       <div class="name-box" o-tap="showName">
         <img src="./static/resource/name.png">
       </div>
+<<<<<<< HEAD:publish/index.html
       <video id="preload" style="display: none;" muted></video>
+=======
+>>>>>>> bcb2a65278f0bc48ebcdee5200cc8011092bdb94:dist/index.html
       <div class="video-play-box">
         <img class="skip" o-tap="skip" src="./static/resource/next.png">
         <video id="videoPlay" src="" x5-playsinline="true" x5-video-player-fullscreen="true" preload="auto" x5-video-orientation="landscape" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5"></video>
@@ -2323,7 +2334,11 @@
             this.data.musicIsPlay = true;
             musicIsPlay = true;
             this.data.music = new Audio("./static/resource/bg.mp3");
+<<<<<<< HEAD:publish/index.html
             this.data.music.volume = 1;
+=======
+            this.data.music.volume = 2;
+>>>>>>> bcb2a65278f0bc48ebcdee5200cc8011092bdb94:dist/index.html
             this.data.music.loop = true;
             if (!owo.script.page1.data.videoIsPlay) this.data.music.play();
             var icon = document.getElementsByClassName('music-icon')[0];

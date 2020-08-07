@@ -17,10 +17,14 @@
   //-   span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
   //-   span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
   //-   span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
-  img.share(src="@|share.png|" o-tap="swiShare")
-  img.replay(src="@|replay.png|" o-tap="location.reload()")
+  img.share.button-item(src="@|share.png|" o-tap="swiShare")
+  img.replay.button-item(src="@|replay.png|" o-tap="location.reload()")
+  img.more.button-item(src="@|more.png|" o-tap="showName")
+  img.logo(src="@|logo.png|")
   .share-box(o-tap="swiShare")
     img.share-point(src="@|share-point.png|")
+  .name-box(o-tap="showName")
+    img(src="@|name.png|")
   .video-play-box
     img.skip(o-tap="skip" src="@|next.png|")
     video#videoPlay(src="" x5-playsinline="true" x5-video-player-fullscreen="true" preload="auto" x5-video-orientation="landscape" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5")
@@ -283,7 +287,9 @@
       playing: false,
       step: 0,
       busying: true,
-      nmMusic: null
+      nmMusic: null,
+      videoIsPlay: false,
+      nameIsShow: false
     },
     created: function () {
       this.init()
@@ -335,10 +341,11 @@
           // 循环往复的动画
           const tm = new TimelineMax({repeat: -1, yoyo: true, repeatDelay: 0});
           tm.to(scene.getObjectByName('水-小舟').position, 3, {x:847.95,y:-1.15})
+          new TimelineMax({repeat: -1, repeatDelay: 0}).to(scene.getObjectByName('水-鸟').position, 16, {x:920, y:18})
           // tm.to(scene.getObjectByName('水-江水-3').position, 3, {x:830.9,y:-16.15})
           // tm.to(scene.getObjectByName('水-江水-3').material, 3, {opacity: 0.1})
           // this.play()
-        }, 6000);
+        }, 10000);
       };
     },
     init: function () {
@@ -501,6 +508,7 @@
         }
       });
       this.query('#videoPlay').addEventListener('ended', () => {
+        this.data.videoIsPlay = false
         this.data.busying = false
         this.nextPlay()
       }, false);
@@ -682,14 +690,17 @@
             scene.getObjectByName('高铁').material.opacity = 1
             // 列车往复驶过
             scene.getObjectByName('高铁').position.set(573.45, -40.55, -2386)
-            new TimelineMax({repeat: -1, repeatDelay: 0}).to(scene.getObjectByName('高铁').position, 14, {x: 1873.45})
+            new TimelineMax({repeat: -1, repeatDelay: 0}).to(scene.getObjectByName('高铁').position, 12, {x: 1873.45})
             scene.getObjectByName('文字-路').material.opacity = 0
             document.getElementsByClassName('share')[0].style.display = 'block'
             document.getElementsByClassName('replay')[0].style.display = 'block'
-            
+            document.getElementsByClassName('more')[0].style.display = 'block'
+            document.getElementsByClassName('logo')[0].style.display = 'block'
             setTimeout(() => {
               document.getElementsByClassName('share')[0].style.opacity = 1
               document.getElementsByClassName('replay')[0].style.opacity = 1
+              document.getElementsByClassName('more')[0].style.opacity = 1
+              document.getElementsByClassName('logo')[0].style.opacity = 1
             }, 0);
             break;
           default:
@@ -750,14 +761,15 @@
           this.query('.video-play-box').style.display = 'block'
           setTimeout(() => {
             this.query('.video-play-box').style.opacity = 1
-          }, 100);
+          }, 500);
           if (owo.script.playMusic.data.userNoClose) {
             this.query('#videoPlay').muted = false
           } else {
             this.query('#videoPlay').muted = true
           }
+          this.data.videoIsPlay = true
           this.query('#videoPlay').play()
-        }, 500);
+        }, 0);
         
       }
     },
@@ -793,9 +805,18 @@
     },
     // 跳过视频播放
     skip: function () {
+      this.data.videoIsPlay = false
       this.query('#videoPlay').pause()
       this.data.busying = false
       this.nextPlay()
+    },
+    showName: function () {
+      this.data.nameIsShow = !this.data.nameIsShow
+      if (this.data.nameIsShow) {
+        document.body.classList.add('name-active')
+      } else {
+        document.body.classList.remove('name-active')
+      }
     }
   }
 </script>
@@ -865,9 +886,19 @@
 }
 .replay {
   position: absolute;
-  top: 10%;
+  top: 4%;
   right: 16%;
-  height: 16%;
+  height: 14%;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 999;
+}
+.more {
+  position: absolute;
+  top: 32%;
+  right: 11%;
+  height: 14%;
   display: none;
   opacity: 0;
   transition: opacity 1s;
@@ -875,9 +906,9 @@
 }
 .share {
   position: absolute;
-  top: 28%;
-  right: 6%;
-  height: 16%;
+  top: 17.5%;
+  right: 4%;
+  height: 14%;
   display: none;
   opacity: 0;
   transition: opacity 1s;
@@ -913,5 +944,31 @@
   z-index: 999;
   height: 40px;
   transform: translate3d(0, 0, 0);
+}
+.name-box {
+  position: fixed;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  transition: top 1s;
+  img {
+    max-width: 90%;
+    max-height: 95%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+.logo {
+  position: absolute;
+  right: 7%;
+  bottom: 12%;
+  height: 20%;
+  opacity: 0;
+  display: none;
 }
 </style>

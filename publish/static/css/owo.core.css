@@ -289,6 +289,20 @@ li {
   top: 4%;
   right: 16%;
   height: 14%;
+<<<<<<< HEAD:publish/static/css/owo.core.css
+=======
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 999;
+}
+
+.page-1 .more {
+  position: absolute;
+  top: 32%;
+  right: 11%;
+  height: 14%;
+>>>>>>> bcb2a65278f0bc48ebcdee5200cc8011092bdb94:dist/static/css/owo.core.css
   display: none;
   opacity: 0;
   transition: opacity 1s right 1s;
